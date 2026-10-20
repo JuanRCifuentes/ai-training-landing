@@ -1,0 +1,12 @@
+{
+  "name": "ai-training-landing",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:enterprise": "bun --filter enterprise dev",
+    "dev:people": "bun --filter people dev",
+    "build": "bun --filter '*' build"
+  }
+}
