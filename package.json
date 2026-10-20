@@ -8,5 +8,8 @@
     "dev:enterprise": "bun --filter enterprise dev",
     "dev:people": "bun --filter people dev",
     "build": "bun --filter '*' build"
+  },
+  "devDependencies": {
+    "wrangler": "4.151.3"
   }
 }
