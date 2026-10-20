@@ -1,5 +1,6 @@
 ---
 import type { ComponentProps } from 'astro/types';
+import { ClientRouter } from 'astro:transitions';
 // Fonts are self-hosted so visiting the site sends no data to third parties.
 // Only the Latin subset is loaded: it covers Spanish, and the other subsets would add unused files.
 import '@fontsource/space-grotesk/latin-400.css';
@@ -28,6 +29,10 @@ const seo = Astro.props;
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="color-scheme" content="light dark" />
+		<ClientRouter />
+		<script>
+			import '../lib/pageCache';
+		</script>
 		<link rel="preload" href={bodyFont} as="font" type="font/woff2" crossorigin />
 		<link rel="preload" href={headingFont} as="font" type="font/woff2" crossorigin />
 		<Seo {...seo} />
