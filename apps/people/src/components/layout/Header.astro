@@ -2,6 +2,7 @@
 import Logo from './Logo.astro';
 import Button from '../ui/Button.astro';
 import { nav, waitlistCta } from '../../config/site';
+import { routes } from '../../config/routes';
 ---
 
 <header class="header">
@@ -12,7 +13,7 @@ import { nav, waitlistCta } from '../../config/site';
 				{
 					nav.map((item) => (
 						<li>
-							<a href={item.href}>{item.label}</a>
+							<a href={routes.section(item.section)}>{item.label}</a>
 						</li>
 					))
 				}

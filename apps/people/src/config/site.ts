@@ -1,3 +1,5 @@
+import { routes } from './routes';
+
 export const site = {
 	name: 'AI en el trabajo',
 	title: 'AI en el trabajo · Cursos de IA para personas',
@@ -33,11 +35,12 @@ export const owner = {
 } as const;
 
 /** Call to action repeated across the site; every instance points at the waitlist section. */
-export const waitlistCta = { href: '/#waitlist', label: 'Únete a la lista' } as const;
+export const waitlistCta = { href: routes.section('waitlist'), label: 'Únete a la lista' } as const;
 
+/** Home page sections in the main navigation; `section` is the id of the section element. */
 export const nav = [
-	{ href: '/#courses', label: 'Cursos' },
-	{ href: '/#free-talk', label: 'Charla gratis' },
-	{ href: '/#how-it-works', label: 'Cómo funciona' },
-	{ href: '/#faq', label: 'Preguntas' },
+	{ section: 'courses', label: 'Cursos' },
+	{ section: 'free-talk', label: 'Charla gratis' },
+	{ section: 'how-it-works', label: 'Cómo funciona' },
+	{ section: 'faq', label: 'Preguntas' },
 ] as const;

@@ -1,0 +1,48 @@
+---
+// Accent-coloured panel: a heading and text in the default slot, and what to do next in the "action" slot.
+---
+
+<div class="panel">
+	<div class="text"><slot /></div>
+	<div class="action"><slot name="action" /></div>
+</div>
+
+<style>
+	.panel {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 28px;
+		align-items: center;
+		padding: 48px 28px;
+		border-radius: var(--radius-lg);
+		background: var(--accent);
+		color: var(--on-accent);
+	}
+
+	@media (min-width: 900px) {
+		.panel {
+			grid-template-columns: 1.4fr 1fr;
+			padding: 56px;
+		}
+	}
+
+	.text :global(h2) {
+		font-size: clamp(30px, 4vw, 48px);
+		font-weight: 700;
+		line-height: 1.05;
+	}
+
+	.text :global(p) {
+		max-width: 48ch;
+		margin-top: 14px;
+		font-size: 18px;
+		opacity: 0.92;
+	}
+
+	.action {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 22px;
+	}
+</style>

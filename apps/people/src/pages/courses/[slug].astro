@@ -5,8 +5,9 @@ import JsonLd from '../../components/seo/JsonLd.astro';
 import PageHeader from '../../components/layout/PageHeader.astro';
 import Section from '../../components/ui/Section.astro';
 import Button from '../../components/ui/Button.astro';
+import AccentPanel from '../../components/ui/AccentPanel.astro';
 import CoursePager from '../../components/courses/CoursePager.astro';
-import { courses } from '../../data/courses';
+import { courseLabel, courses } from '../../data/courses';
 import type { Fact } from '../../data/types';
 import { courseStructuredData } from '../../data/structuredData';
 import { routes } from '../../config/routes';
@@ -22,7 +23,7 @@ const { course, previous, next } = Astro.props;
 
 const trail = [
 	{ href: routes.home, label: 'Inicio' },
-	{ href: '/#courses', label: 'Cursos' },
+	{ href: routes.section('courses'), label: 'Cursos' },
 ];
 const facts: Fact[] = [
 	{ term: 'nivel', value: course.level },
@@ -35,11 +36,10 @@ const facts: Fact[] = [
 <BaseLayout
 	title={`${course.title} · Curso de IA · ${site.name}`}
 	description={course.summary}
-	image={routes.shareImage(`courses/${course.slug}`)}
 	imageAlt={`Curso ${course.ref}: ${course.title}`}
 >
 	<JsonLd slot="head" data={courseStructuredData(course, trail, Astro.site)} />
-	<PageHeader kicker={`curso ${course.ref} · ${course.level}`} title={course.title} trail={trail} current={course.title}>
+	<PageHeader kicker={courseLabel(course)} title={course.title} trail={trail} current={course.title}>
 		{course.summary}
 	</PageHeader>
 	<Section aria-label="Datos del curso">
@@ -47,7 +47,7 @@ const facts: Fact[] = [
 			{
 				facts.map((fact) => (
 					<div>
-						<dt>{fact.term}</dt>
+						<dt class="kicker">{fact.term}</dt>
 						<dd>{fact.value}</dd>
 					</div>
 				))
@@ -62,29 +62,20 @@ const facts: Fact[] = [
 			</div>
 			<ol class="topics">
 				{
-					course.topics.map((topic, index) => (
-						<li>
-							<span class="number" aria-hidden="true">
-								{String(index + 1).padStart(2, '0')}
-							</span>
-							{topic}
-						</li>
-					))
+					course.topics.map((topic) => <li>{topic}</li>)
 				}
 			</ol>
 		</div>
 	</Section>
 	<Section aria-labelledby="next-step-title">
-		<div class="cta">
-			<div>
-				<h2 id="next-step-title">¿Te apuntas a la primera cohorte?</h2>
-				<p>
-					Únete a la lista y te avisamos cuando abramos plazas, con fechas y precio. Antes puedes venir gratis a la
-					charla abierta.
-				</p>
-			</div>
-			<Button href={waitlistCta.href} variant="inverse" size="lg">{waitlistCta.label}</Button>
-		</div>
+		<AccentPanel>
+			<h2 id="next-step-title">¿Te apuntas a la primera cohorte?</h2>
+			<p>
+				Únete a la lista y te avisamos cuando abramos plazas, con fechas y precio. Antes puedes venir gratis a la charla
+				abierta.
+			</p>
+			<Button slot="action" href={waitlistCta.href} variant="inverse" size="lg">{waitlistCta.label}</Button>
+		</AccentPanel>
 		<div class="pager">
 			<CoursePager previous={previous} next={next} />
 		</div>
@@ -120,8 +111,6 @@ const facts: Fact[] = [
 
 	dt {
 		margin-bottom: 6px;
-		font: 13px var(--mono);
-		color: var(--accent);
 	}
 
 	dd {
@@ -163,6 +152,7 @@ const facts: Fact[] = [
 		padding: 0;
 		list-style: none;
 		border-top: 1px solid var(--line);
+		counter-reset: topic;
 	}
 
 	.topics li {
@@ -171,38 +161,16 @@ const facts: Fact[] = [
 		padding: 18px 0;
 		border-bottom: 1px solid var(--line);
 		font-size: 18px;
+		counter-increment: topic;
 	}
 
-	.number {
+	.topics li::before {
+		content: counter(topic, decimal-leading-zero);
 		padding-top: 3px;
 		font: 14px var(--mono);
 		color: var(--accent);
 	}
 
-	.cta {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		justify-content: space-between;
-		gap: 28px;
-		padding: 48px 28px;
-		border-radius: var(--radius-lg);
-		background: var(--accent);
-		color: var(--on-accent);
-	}
-
-	@media (min-width: 900px) {
-		.cta {
-			padding: 56px;
-		}
-	}
-
-	.cta p {
-		max-width: 52ch;
-		margin-top: 14px;
-		font-size: 18px;
-		opacity: 0.92;
-	}
 
 	.pager {
 		margin-top: 48px;

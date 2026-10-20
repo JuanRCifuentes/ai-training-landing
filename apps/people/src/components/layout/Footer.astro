@@ -15,7 +15,9 @@ const columns = [
 	{
 		title: 'la escuela',
 		links: [
-			...nav.filter((item) => item.href !== '/#courses'),
+			...nav
+				.filter((item) => item.section !== 'courses')
+				.map((item) => ({ href: routes.section(item.section), label: item.label })),
 			{ href: site.enterpriseSiteUrl, label: 'Formación para empresas' },
 		],
 	},

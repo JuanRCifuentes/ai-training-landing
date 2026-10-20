@@ -34,7 +34,6 @@ const ownerFacts = [
 <BaseLayout
 	title={`${title} · ${site.name}`}
 	description={description}
-	image={routes.shareImage(`legal/${document.id}`)}
 	imageAlt={title}
 >
 	<JsonLd slot="head" data={pageStructuredData(title, trail, Astro.site)} />

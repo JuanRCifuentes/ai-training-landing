@@ -102,3 +102,8 @@ export const courses: Course[] = [
 		],
 	},
 ];
+
+/** Short label shown above a course's title, e.g. "curso 03 · práctico". */
+export function courseLabel(course: Course) {
+	return `curso ${course.ref} · ${course.level}`;
+}

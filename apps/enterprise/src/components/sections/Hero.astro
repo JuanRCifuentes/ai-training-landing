@@ -1,6 +1,7 @@
 ---
 import DefinitionGrid from '../ui/DefinitionGrid.astro';
 import { cities } from '../../config/site';
+import { routes } from '../../config/routes';
 import { programFacts } from '../../data/program';
 ---
 
@@ -14,8 +15,8 @@ import { programFacts } from '../../data/program';
 		</p>
 		<p class="audience">Para direcciones de personas, transformación, operaciones y responsables de IA.</p>
 		<div class="links">
-			<a href="#modules">Explorar los módulos</a>
-			<a href="#roles">Ver rutas por rol</a>
+			<a href={routes.section('modules')}>Explorar los módulos</a>
+			<a href={routes.section('roles')}>Ver rutas por rol</a>
 		</div>
 		<div class="facts">
 			<DefinitionGrid facts={programFacts} />

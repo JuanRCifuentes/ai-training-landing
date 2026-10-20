@@ -8,7 +8,7 @@ import DefinitionGrid from '../../components/ui/DefinitionGrid.astro';
 import ContactCta from '../../components/ui/ContactCta.astro';
 import ModuleSyllabus from '../../components/modules/ModuleSyllabus.astro';
 import ModulePager from '../../components/modules/ModulePager.astro';
-import { programme } from '../../data/modules';
+import { moduleLabel, programme } from '../../data/modules';
 import { rolePaths } from '../../data/program';
 import { moduleStructuredData } from '../../data/structuredData';
 import { routes } from '../../config/routes';
@@ -22,10 +22,9 @@ export const getStaticPaths = (() =>
 
 const { module, previous, next } = Astro.props;
 
-const eyebrow = module.ref === '00' ? `${module.ref} · Sesión inicial` : `Módulo ${module.ref} · ${module.level}`;
 const trail = [
 	{ href: routes.home, label: 'Inicio' },
-	{ href: '/#modules', label: 'Módulos' },
+	{ href: routes.section('modules'), label: 'Módulos' },
 ];
 const facts = [
 	{ term: 'Nivel', value: module.level },
@@ -41,11 +40,10 @@ const roles = rolePaths
 <BaseLayout
 	title={`${module.title} · Módulo ${module.ref} · ${site.name}`}
 	description={module.summary}
-	image={routes.shareImage(`modules/${module.slug}`)}
 	imageAlt={`Módulo ${module.ref}: ${module.title}`}
 >
 	<JsonLd slot="head" data={moduleStructuredData(module, trail, Astro.site)} />
-	<PageHeader eyebrow={eyebrow} title={module.title} trail={trail} current={module.title}>
+	<PageHeader eyebrow={moduleLabel(module)} title={module.title} trail={trail} current={module.title}>
 		{module.summary}
 	</PageHeader>
 	<Section aria-label="Datos del módulo">
@@ -66,7 +64,7 @@ const roles = rolePaths
 						))}
 					</ul>
 					<p>
-						<a href="/#roles">Ver todas las rutas por rol</a>
+						<a href={routes.section('roles')}>Ver todas las rutas por rol</a>
 					</p>
 				</section>
 			)

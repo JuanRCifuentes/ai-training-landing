@@ -169,3 +169,8 @@ export const modules: Module[] = [
 
 /** Opening session followed by the modules, in programme order. */
 export const programme: Module[] = [introSession, ...modules];
+
+/** Short label shown above a module's title, e.g. "Módulo 03 · Intermedio". */
+export function moduleLabel(module: Module) {
+	return module === introSession ? `${module.ref} · Sesión inicial` : `Módulo ${module.ref} · ${module.level}`;
+}

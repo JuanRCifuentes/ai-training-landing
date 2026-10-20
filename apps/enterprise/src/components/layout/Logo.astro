@@ -1,9 +1,10 @@
 ---
 import { site } from '../../config/site';
+import { routes } from '../../config/routes';
 import { markLetters } from '../../config/brand';
 ---
 
-<a class="logo" href="/">
+<a class="logo" href={routes.home}>
 	<svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
 		<path fill="currentColor" d={markLetters}></path>
 		<path d="M6 36.5H42" stroke="currentColor" stroke-width="1.5"></path>

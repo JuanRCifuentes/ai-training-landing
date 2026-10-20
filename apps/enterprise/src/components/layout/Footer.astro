@@ -14,7 +14,9 @@ const columns = [
 	{
 		title: 'Programa',
 		links: [
-			...nav.filter((item) => item.href !== '/#modules'),
+			...nav
+				.filter((item) => item.section !== 'modules')
+				.map((item) => ({ href: routes.section(item.section), label: item.label })),
 			{ href: site.peopleSiteUrl, label: 'Cursos para personas' },
 		],
 	},

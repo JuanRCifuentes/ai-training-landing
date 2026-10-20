@@ -1,9 +1,10 @@
 ---
 import { site } from '../../config/site';
+import { routes } from '../../config/routes';
 import { markCells, markCursor } from '../../config/brand';
 ---
 
-<a class="logo" href="/">
+<a class="logo" href={routes.home}>
 	<svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
 		{markCells.map(([x, y]) => <rect x={x} y={y} width="6" height="6" rx="1.5" class="cell" />)}
 		<rect {...markCursor} rx="2" class="cursor" />

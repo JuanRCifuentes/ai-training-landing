@@ -34,7 +34,6 @@ const ownerFacts = [
 <BaseLayout
 	title={`${title} · ${site.name}`}
 	description={description}
-	image={routes.shareImage(`legal/${document.id}`)}
 	imageAlt={title}
 >
 	<JsonLd slot="head" data={pageStructuredData(title, trail, Astro.site)} />
@@ -47,7 +46,7 @@ const ownerFacts = [
 				<dl class="owner">
 					{ownerFacts.map((fact) => (
 						<>
-							<dt>{fact.term}</dt>
+							<dt class="kicker">{fact.term}</dt>
 							<dd>{fact.value}</dd>
 						</>
 					))}
@@ -82,8 +81,6 @@ const ownerFacts = [
 
 	.owner dt {
 		padding-top: 2px;
-		font: 13px var(--mono);
-		color: var(--accent);
 	}
 
 	.owner dd {

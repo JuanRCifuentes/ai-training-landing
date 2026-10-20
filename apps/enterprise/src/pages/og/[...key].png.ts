@@ -1,23 +1,25 @@
 import type { APIRoute, GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
-import { programme } from '../../data/modules';
+import { moduleLabel, programme } from '../../data/modules';
 import { renderShareImage, type ShareCard } from '../../lib/shareImage';
+import { routes } from '../../config/routes';
 import { site } from '../../config/site';
 
+// One image per page, keyed by the page's path so Seo finds it without being told.
 export const getStaticPaths = (async () => {
 	const legal = await getCollection('legal');
-	const cards: { key: string; card: ShareCard }[] = [
-		{ key: 'home', card: { eyebrow: 'Programa de formación', title: 'Formación en inteligencia artificial para el trabajo' } },
+	const cards: { path: string; card: ShareCard }[] = [
+		{ path: routes.home, card: { eyebrow: 'Programa de formación', title: 'Formación en inteligencia artificial para el trabajo' } },
 		...programme.map((module) => ({
-			key: `modules/${module.slug}`,
-			card: { eyebrow: `Módulo ${module.ref} · ${module.level}`, title: module.title },
+			path: routes.module(module.slug),
+			card: { eyebrow: moduleLabel(module), title: module.title },
 		})),
 		...legal.map((document) => ({
-			key: `legal/${document.id}`,
+			path: routes.legal(document.id),
 			card: { eyebrow: site.name, title: document.data.title },
 		})),
 	];
-	return cards.map(({ key, card }) => ({ params: { key }, props: card }));
+	return cards.map(({ path, card }) => ({ params: { key: routes.shareImageKey(path) }, props: card }));
 }) satisfies GetStaticPaths;
 
 export const GET: APIRoute<ShareCard> = async ({ props }) =>

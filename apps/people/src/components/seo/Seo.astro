@@ -6,7 +6,7 @@ import { shareImageSize } from '../../lib/shareImage';
 interface Props {
 	title?: string;
 	description?: string;
-	/** Path of the page's share image, from routes.shareImage. */
+	/** Path of the share image; defaults to the one generated for this page. */
 	image?: string;
 	imageAlt?: string;
 	noindex?: boolean;
@@ -15,7 +15,7 @@ interface Props {
 const {
 	title = site.title,
 	description = site.description,
-	image = routes.shareImage('home'),
+	image = routes.shareImage(Astro.url.pathname),
 	imageAlt = `${site.name} · ${site.tagline}`,
 	noindex = false,
 } = Astro.props;
