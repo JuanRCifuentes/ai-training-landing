@@ -4,7 +4,7 @@
 	"workers_dev": true,
 	"preview_urls": true,
 	"build": {
-		"command": "bun install --frozen-lockfile && bun run build"
+		"command": "bun run build"
 	},
 	"assets": {
 		"directory": "./dist",
