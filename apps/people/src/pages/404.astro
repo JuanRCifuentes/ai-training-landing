@@ -7,7 +7,7 @@ import { site } from '../config/site';
 
 <BaseLayout title={`Página no encontrada · ${site.name}`} noindex>
 	<Section aria-labelledby="not-found-title">
-		<p class="code">// 404</p>
+		<p class="kicker">// 404</p>
 		<h1 id="not-found-title">Esta página no existe</h1>
 		<p class="body">Puede que la dirección haya cambiado. Vuelve al inicio y mira los cursos.</p>
 		<Button href="/" variant="primary">Volver al inicio</Button>
@@ -15,11 +15,6 @@ import { site } from '../config/site';
 </BaseLayout>
 
 <style>
-	.code {
-		font: 13px var(--mono);
-		color: var(--accent);
-	}
-
 	h1 {
 		margin: 16px 0 20px;
 		font-size: clamp(40px, 6vw, 72px);

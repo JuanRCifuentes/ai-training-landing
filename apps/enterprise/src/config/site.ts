@@ -16,6 +16,8 @@ export const site = {
 	],
 } as const;
 
+export const cities = site.offices.map((office) => office.city);
+
 export const nav = [
 	{ href: '#modules', label: 'Módulos', priority: 'always' },
 	{ href: '#roles', label: 'Rutas por rol', priority: 'medium' },

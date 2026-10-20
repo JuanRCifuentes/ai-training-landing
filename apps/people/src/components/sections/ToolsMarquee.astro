@@ -1,10 +1,11 @@
 ---
 import { tools } from '../../data/content';
+
+// The list is rendered twice so the scroll loops seamlessly; it is decorative for screen readers.
 ---
 
 <div class="tools">
 	<p class="visually-hidden">Herramientas que se usan en los cursos: {tools.join(', ')}.</p>
-	<!-- The list is rendered twice so the scroll loops seamlessly; it is decorative for screen readers. -->
 	<ul aria-hidden="true">
 		{[...tools, ...tools].map((tool) => <li>{tool}</li>)}
 	</ul>

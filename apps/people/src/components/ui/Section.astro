@@ -4,9 +4,10 @@ import type { HTMLAttributes } from 'astro/types';
 type Props = HTMLAttributes<'section'>;
 
 const { class: className, ...attrs } = Astro.props;
+
+// Sections only pad their top edge, so consecutive sections are evenly spaced; main pads the end.
 ---
 
-<!-- Sections only pad their top edge, so consecutive sections are evenly spaced; main pads the end. -->
 <section class:list={['section', className]} {...attrs}>
 	<div class="container">
 		<slot />

@@ -16,11 +16,11 @@ const { index } = Astro.props;
 			Una orientación general. Los módulos marcados en azul son la base recomendada para ese rol.
 		</p>
 	</SectionHeader>
-	<table>
+	<table class="data-table">
 		<thead>
 			<tr>
-				<th scope="col">Rol</th>
-				<th scope="col">Módulos</th>
+				<th scope="col" class="eyebrow">Rol</th>
+				<th scope="col" class="eyebrow">Módulos</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -52,35 +52,10 @@ const { index } = Astro.props;
 </Section>
 
 <style>
-	table {
-		width: 100%;
-		border-collapse: collapse;
-		font-size: 15px;
-	}
-
-	thead th {
-		padding: 0 16px 14px 0;
-		border-bottom: 1px solid var(--ink);
-		font-family: var(--mono);
-		font-size: 12px;
-		font-weight: 400;
-		letter-spacing: 0.06em;
-		text-transform: uppercase;
-		text-align: left;
-		color: var(--muted);
-	}
-
-	tbody th,
-	td {
-		padding: 18px 16px 18px 0;
-		border-bottom: 1px solid var(--line);
-		vertical-align: top;
-		text-align: left;
-	}
-
-	tbody th {
-		width: 28%;
-		font-weight: 600;
+	@media (min-width: 701px) {
+		tbody th {
+			width: 28%;
+		}
 	}
 
 	.chips {
@@ -104,31 +79,5 @@ const { index } = Astro.props;
 	.chip.core {
 		border-color: var(--accent);
 		color: var(--accent);
-	}
-
-	@media (max-width: 700px) {
-		thead {
-			display: none;
-		}
-
-		table,
-		tbody,
-		tr,
-		tbody th,
-		td {
-			display: block;
-			width: 100%;
-		}
-
-		tr {
-			padding: 16px 0;
-			border-bottom: 1px solid var(--line);
-		}
-
-		tbody th,
-		td {
-			padding: 4px 0;
-			border: 0;
-		}
 	}
 </style>

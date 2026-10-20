@@ -1,4 +1,12 @@
-import type { FaqItem, Metric, Phase, RolePath, TitledItem } from './types';
+import type { FaqItem, Fact, Metric, Phase, RolePath, TitledItem } from './types';
+
+/** Programme summary shown under the hero. */
+export const programFacts: Fact[] = [
+	{ term: 'Estructura', value: 'Sesión inicial y siete módulos' },
+	{ term: 'Nivel', value: 'De introductorio a avanzado' },
+	{ term: 'Herramientas', value: 'ChatGPT, Copilot, Gemini, Claude' },
+	{ term: 'Modalidad', value: 'Presencial o remota, en español' },
+];
 
 export const rolePaths: RolePath[] = [
 	{ role: 'Toda la organización', core: ['00', '01', '02', '06'], optional: [] },

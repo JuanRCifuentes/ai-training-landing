@@ -1,19 +1,11 @@
 ---
-import { site } from '../../config/site';
-
-const facts = [
-	{ term: 'Estructura', value: 'Sesión inicial y siete módulos' },
-	{ term: 'Nivel', value: 'De introductorio a avanzado' },
-	{ term: 'Herramientas', value: 'ChatGPT, Copilot, Gemini, Claude' },
-	{ term: 'Modalidad', value: 'Presencial o remota, en español' },
-];
-
-const cities = site.offices.map((office) => office.city).join(' · ');
+import { cities } from '../../config/site';
+import { programFacts } from '../../data/program';
 ---
 
 <section class="hero" aria-labelledby="hero-title">
 	<div class="container">
-		<p class="label"><span class="accent">Programa de formación</span><span>{cities}</span></p>
+		<p class="label eyebrow"><span class="accent">Programa de formación</span><span>{cities.join(' · ')}</span></p>
 		<h1 id="hero-title">Formación en inteligencia artificial para el trabajo</h1>
 		<p class="lead">
 			Un programa en ocho partes para que equipos directivos y operativos usen la IA con método, con criterio sobre
@@ -26,9 +18,9 @@ const cities = site.offices.map((office) => office.city).join(' · ');
 		</div>
 		<dl class="facts">
 			{
-				facts.map((fact) => (
+				programFacts.map((fact) => (
 					<div>
-						<dt>{fact.term}</dt>
+						<dt class="eyebrow">{fact.term}</dt>
 						<dd>{fact.value}</dd>
 					</div>
 				))
@@ -47,11 +39,6 @@ const cities = site.offices.map((office) => office.city).join(' · ');
 		display: flex;
 		flex-wrap: wrap;
 		gap: 14px;
-		font-family: var(--mono);
-		font-size: 12px;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
-		color: var(--muted);
 	}
 
 	.accent {
@@ -103,11 +90,6 @@ const cities = site.offices.map((office) => office.city).join(' · ');
 
 	dt {
 		margin-bottom: 6px;
-		font-family: var(--mono);
-		font-size: 12px;
-		letter-spacing: 0.06em;
-		text-transform: uppercase;
-		color: var(--muted);
 	}
 
 	dd {

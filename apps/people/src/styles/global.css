@@ -60,6 +60,11 @@ a {
 	padding: 0 var(--gutter);
 }
 
+.kicker {
+	font: 13px var(--mono);
+	color: var(--accent);
+}
+
 .visually-hidden {
 	position: absolute;
 	width: 1px;

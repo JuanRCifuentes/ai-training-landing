@@ -70,6 +70,67 @@ a {
 	white-space: nowrap;
 }
 
+/* Small uppercase mono label used for section labels, table headers and definition terms. */
+.eyebrow {
+	font-family: var(--mono);
+	font-size: 12px;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--muted);
+}
+
+/* Ruled table that collapses into stacked rows on narrow screens. */
+.data-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 15px;
+}
+
+.data-table thead th {
+	padding: 0 16px 14px 0;
+	border-bottom: 1px solid var(--ink);
+	font-weight: 400;
+	text-align: left;
+}
+
+.data-table tbody th,
+.data-table td {
+	padding: 18px 16px 18px 0;
+	border-bottom: 1px solid var(--line);
+	vertical-align: top;
+	text-align: left;
+}
+
+.data-table tbody th {
+	font-weight: 600;
+}
+
+@media (max-width: 700px) {
+	.data-table thead {
+		display: none;
+	}
+
+	.data-table,
+	.data-table tbody,
+	.data-table tr,
+	.data-table tbody th,
+	.data-table td {
+		display: block;
+		width: 100%;
+	}
+
+	.data-table tr {
+		padding: 16px 0;
+		border-bottom: 1px solid var(--line);
+	}
+
+	.data-table tbody th,
+	.data-table td {
+		padding: 4px 0;
+		border: 0;
+	}
+}
+
 .body-text {
 	color: var(--ink-2);
 	max-width: 62ch;

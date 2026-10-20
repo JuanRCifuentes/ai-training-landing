@@ -16,13 +16,13 @@ const { index } = Astro.props;
 	</SectionHeader>
 	<dl>
 		<div>
-			<dt>Correo</dt>
+			<dt class="eyebrow">Correo</dt>
 			<dd><a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a></dd>
 		</div>
 		{
 			site.offices.map((office) => (
 				<div>
-					<dt>{office.city}</dt>
+					<dt class="eyebrow">{office.city}</dt>
 					<dd>
 						{office.country}
 						<span class="scope">{office.scope}</span>
@@ -48,11 +48,6 @@ const { index } = Astro.props;
 
 	dt {
 		margin-bottom: 6px;
-		font-family: var(--mono);
-		font-size: 12px;
-		letter-spacing: 0.06em;
-		text-transform: uppercase;
-		color: var(--muted);
 	}
 
 	dd {

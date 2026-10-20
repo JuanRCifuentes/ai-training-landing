@@ -33,6 +33,11 @@ export interface Metric {
 	received: string;
 }
 
+export interface Fact {
+	term: string;
+	value: string;
+}
+
 export interface TitledItem {
 	title: string;
 	body: string;

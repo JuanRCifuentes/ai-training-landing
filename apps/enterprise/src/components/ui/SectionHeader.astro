@@ -12,7 +12,7 @@ const { index, label, title, id } = Astro.props;
 ---
 
 <div class="section-header">
-	<p class="label"><span class="index">{index}</span><span>{label}</span></p>
+	<p class="label eyebrow"><span class="index">{index}</span><span>{label}</span></p>
 	<div class="stack">
 		<h2 id={id}>{title}</h2>
 		<slot />
@@ -42,11 +42,6 @@ const { index, label, title, id } = Astro.props;
 		display: flex;
 		gap: 14px;
 		align-items: baseline;
-		font-family: var(--mono);
-		font-size: 12px;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
-		color: var(--muted);
 	}
 
 	.index {

@@ -21,7 +21,7 @@ const { index } = Astro.props;
 		{
 			phases.map((phase) => (
 				<li>
-					<span class="step">{phase.step}</span>
+					<span class="step eyebrow">{phase.step}</span>
 					<h3>{phase.title}</h3>
 					<p>{phase.summary}</p>
 					<span class="deliverable">Documento: {phase.deliverable}</span>
@@ -53,10 +53,6 @@ const { index } = Astro.props;
 	}
 
 	.step {
-		font-family: var(--mono);
-		font-size: 12px;
-		letter-spacing: 0.06em;
-		text-transform: uppercase;
 		color: var(--accent);
 	}
 

@@ -1,14 +1,12 @@
 ---
-import { site } from '../../config/site';
-
-const cities = site.offices.map((office) => office.city).join(' · ');
+import { cities, site } from '../../config/site';
 ---
 
 <footer class="footer">
 	<div class="container inner">
 		<span>{site.name} · {site.tagline}</span>
 		<span>
-			{cities} · <a href={site.peopleSiteUrl}>Cursos para personas</a>
+			{cities.join(' · ')} · <a href={site.peopleSiteUrl}>Cursos para personas</a>
 		</span>
 	</div>
 </footer>

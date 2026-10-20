@@ -1,11 +1,5 @@
 ---
 import { site } from '../../config/site';
-
-interface Props {
-	subtitle?: string;
-}
-
-const { subtitle = 'Formación para organizaciones' } = Astro.props;
 ---
 
 <a class="logo" href="/" aria-label={`${site.name}, inicio`}>
@@ -19,7 +13,7 @@ const { subtitle = 'Formación para organizaciones' } = Astro.props;
 	</svg>
 	<span class="words">
 		<span class="name">{site.name}</span>
-		<span class="subtitle">{subtitle}</span>
+		<span class="subtitle">Formación para organizaciones</span>
 	</span>
 </a>
 

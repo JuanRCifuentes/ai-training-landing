@@ -64,15 +64,10 @@ import { promptExample } from '../../data/promptExample';
 
 	/* A lime underline disappears on dark backgrounds; colour the text instead. */
 	@media (prefers-color-scheme: dark) {
-		:root:not([data-theme='light']) mark {
+		mark {
 			background: none;
 			color: var(--pop);
 		}
-	}
-
-	:root[data-theme='dark'] mark {
-		background: none;
-		color: var(--pop);
 	}
 
 	.lead {

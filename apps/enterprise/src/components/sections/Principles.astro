@@ -8,18 +8,14 @@ interface Props {
 }
 
 const { index } = Astro.props;
-const numerals = ['I', 'II', 'III', 'IV', 'V', 'VI'];
 ---
 
 <Section id="about" aria-labelledby="about-title">
 	<SectionHeader index={index} label="Acerca de" title="Principios del programa" id="about-title" />
 	<ol>
 		{
-			principles.map((principle, i) => (
+			principles.map((principle) => (
 				<li>
-					<span class="numeral" aria-hidden="true">
-						{numerals[i]}
-					</span>
 					<h3>{principle.title}</h3>
 					<p>{principle.body}</p>
 				</li>
@@ -36,6 +32,7 @@ const numerals = ['I', 'II', 'III', 'IV', 'V', 'VI'];
 		padding: 0;
 		list-style: none;
 		border-top: 1px solid var(--ink);
+		counter-reset: principle;
 	}
 
 	li {
@@ -46,7 +43,9 @@ const numerals = ['I', 'II', 'III', 'IV', 'V', 'VI'];
 		border-bottom: 1px solid var(--line);
 	}
 
-	.numeral {
+	li::before {
+		content: counter(principle, upper-roman);
+		counter-increment: principle;
 		font-family: var(--mono);
 		font-size: 13px;
 		color: var(--accent);
