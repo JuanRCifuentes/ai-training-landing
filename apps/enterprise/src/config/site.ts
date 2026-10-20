@@ -20,11 +20,24 @@ export const site = {
 
 export const cities = site.offices.map((office) => office.city);
 
+/**
+ * Legal owner of the site, shown on the legal notice and the privacy policy.
+ * TODO: replace the bracketed values with the company's registered details before launch.
+ */
+export const owner = {
+	name: '[Razón social]',
+	taxId: '[NIF]',
+	address: '[Domicilio social]',
+	registry: '[Datos de inscripción en el Registro Mercantil]',
+	email: site.contactEmail,
+} as const;
+
+/** Home page sections in the main navigation; `section` is the id of the section element. */
 export const nav = [
-	{ href: '#modules', label: 'Módulos', priority: 'always' },
-	{ href: '#roles', label: 'Rutas por rol', priority: 'medium' },
-	{ href: '#methodology', label: 'Metodología', priority: 'low' },
-	{ href: '#responsible-use', label: 'Uso responsable', priority: 'low' },
-	{ href: '#about', label: 'Acerca de', priority: 'medium' },
-	{ href: '#contact', label: 'Contacto', priority: 'always' },
+	{ section: 'modules', label: 'Módulos', priority: 'always' },
+	{ section: 'roles', label: 'Rutas por rol', priority: 'medium' },
+	{ section: 'methodology', label: 'Metodología', priority: 'low' },
+	{ section: 'responsible-use', label: 'Uso responsable', priority: 'low' },
+	{ section: 'about', label: 'Acerca de', priority: 'medium' },
+	{ section: 'contact', label: 'Contacto', priority: 'always' },
 ] as const;

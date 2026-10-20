@@ -1,0 +1,46 @@
+---
+import Breadcrumbs from './Breadcrumbs.astro';
+import type { ComponentProps } from 'astro/types';
+
+interface Props extends ComponentProps<typeof Breadcrumbs> {
+	/** Short code-comment style label above the title, e.g. "curso 03". */
+	kicker: string;
+	title: string;
+}
+
+const { kicker, title, trail, current } = Astro.props;
+---
+
+<header class="page-header">
+	<div class="container">
+		<Breadcrumbs trail={trail} current={current} />
+		<p class="kicker">// {kicker}</p>
+		<h1>{title}</h1>
+		{Astro.slots.has('default') && <p class="lead"><slot /></p>}
+	</div>
+</header>
+
+<style>
+	.page-header {
+		padding: 32px 0 64px;
+		border-bottom: 1px solid var(--line);
+	}
+
+	.kicker {
+		margin-top: 48px;
+	}
+
+	h1 {
+		max-width: 18ch;
+		margin: 14px 0 20px;
+		font-size: clamp(40px, 6vw, 72px);
+		font-weight: 700;
+		line-height: 1;
+	}
+
+	.lead {
+		max-width: 52ch;
+		color: var(--ink-2);
+		font-size: 19px;
+	}
+</style>

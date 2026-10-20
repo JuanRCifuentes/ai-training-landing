@@ -3,14 +3,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Section from '../components/ui/Section.astro';
 import Button from '../components/ui/Button.astro';
 import { site } from '../config/site';
+import { routes } from '../config/routes';
 ---
 
-<BaseLayout title={`Página no encontrada · ${site.name}`} noindex>
+<BaseLayout title={`Página no encontrada · ${site.name}`} image={routes.shareImage(routes.home)} noindex>
 	<Section aria-labelledby="not-found-title">
 		<p class="kicker">// 404</p>
 		<h1 id="not-found-title">Esta página no existe</h1>
 		<p class="body">Puede que la dirección haya cambiado. Vuelve al inicio y mira los cursos.</p>
-		<Button href="/" variant="primary">Volver al inicio</Button>
+		<Button href={routes.home} variant="primary">Volver al inicio</Button>
 	</Section>
 </BaseLayout>
 

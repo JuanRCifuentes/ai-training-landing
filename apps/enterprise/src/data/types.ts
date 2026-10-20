@@ -3,6 +3,8 @@ export type ModuleLevel = 'Introductorio' | 'Intermedio' | 'Avanzado' | 'Transve
 export interface Module {
 	/** Two-digit reference shown on cards and in role paths, e.g. "03". */
 	ref: string;
+	/** URL segment of the module page, e.g. "fundamentos-de-ia". */
+	slug: string;
 	title: string;
 	summary: string;
 	level: ModuleLevel;
@@ -10,6 +12,10 @@ export interface Module {
 	/** Human-readable duration; undefined while it is still being defined. */
 	duration?: string;
 	prerequisites?: string;
+	/** What participants are able to do after the module. */
+	objectives: string[];
+	/** Syllabus, in teaching order. */
+	topics: string[];
 }
 
 export interface RolePath {
@@ -41,6 +47,11 @@ export interface Fact {
 export interface TitledItem {
 	title: string;
 	body: string;
+}
+
+export interface Link {
+	href: string;
+	label: string;
 }
 
 export interface FaqItem {

@@ -2,7 +2,7 @@
 import Section from '../ui/Section.astro';
 import SectionHeader from '../ui/SectionHeader.astro';
 import ModuleCard from '../modules/ModuleCard.astro';
-import { introSession, modules } from '../../data/modules';
+import { introSession, moduleLabel, modules } from '../../data/modules';
 
 interface Props {
 	index: string;
@@ -20,7 +20,7 @@ const { index } = Astro.props;
 	</SectionHeader>
 	<ul class="catalog">
 		<li class="featured">
-			<ModuleCard module={introSession} featured eyebrow={`${introSession.ref} · Sesión inicial`} />
+			<ModuleCard module={introSession} featured eyebrow={moduleLabel(introSession)} />
 		</li>
 		{
 			modules.map((module) => (

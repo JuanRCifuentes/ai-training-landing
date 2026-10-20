@@ -1,6 +1,7 @@
 ---
 import Logo from './Logo.astro';
 import { nav } from '../../config/site';
+import { routes } from '../../config/routes';
 ---
 
 <header class="header">
@@ -11,7 +12,7 @@ import { nav } from '../../config/site';
 				{
 					nav.map((item) => (
 						<li data-priority={item.priority}>
-							<a href={item.href}>{item.label}</a>
+							<a href={routes.section(item.section)}>{item.label}</a>
 						</li>
 					))
 				}

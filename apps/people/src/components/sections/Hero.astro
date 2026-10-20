@@ -3,6 +3,7 @@ import Button from '../ui/Button.astro';
 import Tag from '../ui/Tag.astro';
 import Terminal from '../ui/Terminal.astro';
 import { site, waitlistCta } from '../../config/site';
+import { routes } from '../../config/routes';
 import { promptExample } from '../../data/promptExample';
 ---
 
@@ -17,7 +18,7 @@ import { promptExample } from '../../data/promptExample';
 			</p>
 			<div class="actions">
 				<Button href={waitlistCta.href} variant="primary">{waitlistCta.label}</Button>
-				<Button href="#courses">Ver cursos</Button>
+				<Button href={routes.section('courses')}>Ver cursos</Button>
 			</div>
 			<p class="backing">
 				Con el respaldo de nuestro <a href={site.enterpriseSiteUrl}>programa de formación para empresas</a>.

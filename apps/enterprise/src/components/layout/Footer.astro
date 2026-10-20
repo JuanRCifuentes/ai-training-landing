@@ -1,28 +1,128 @@
 ---
-import { cities, site } from '../../config/site';
+import { getCollection } from 'astro:content';
+import { cities, nav, site } from '../../config/site';
+import { routes } from '../../config/routes';
+import { programme } from '../../data/modules';
+
+const legal = (await getCollection('legal')).sort((a, b) => a.data.order - b.data.order);
+
+const columns = [
+	{
+		title: 'Módulos',
+		links: programme.map((module) => ({ href: routes.module(module.slug), label: `${module.ref} · ${module.title}` })),
+	},
+	{
+		title: 'Programa',
+		links: [
+			...nav
+				.filter((item) => item.section !== 'modules')
+				.map((item) => ({ href: routes.section(item.section), label: item.label })),
+			{ href: site.peopleSiteUrl, label: 'Cursos para personas' },
+		],
+	},
+	{
+		title: 'Legal',
+		links: legal.map((document) => ({ href: routes.legal(document.id), label: document.data.label })),
+	},
+];
+const year = new Date().getFullYear();
 ---
 
 <footer class="footer">
-	<div class="container inner">
-		<span>{site.name} · {site.tagline}</span>
-		<span>
-			{cities.join(' · ')} · <a href={site.peopleSiteUrl}>Cursos para personas</a>
-		</span>
+	<div class="container">
+		<div class="grid">
+			<div class="brand">
+				<p class="name">{site.name}</p>
+				<p>{site.tagline}</p>
+				<p>{cities.join(' · ')}</p>
+				<p><a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a></p>
+			</div>
+			{
+				columns.map((column) => (
+					<nav aria-label={column.title}>
+						<h2 class="eyebrow">{column.title}</h2>
+						<ul>
+							{column.links.map((link) => (
+								<li>
+									<a href={link.href}>{link.label}</a>
+								</li>
+							))}
+						</ul>
+					</nav>
+				))
+			}
+		</div>
+		<p class="copyright">© {year} {site.name}</p>
 	</div>
 </footer>
 
 <style>
 	.footer {
-		padding: 32px 0;
+		padding: 64px 0 32px;
 		border-top: 1px solid var(--line);
-		font-size: 13px;
+		background: var(--band);
+		font-size: 14px;
 		color: var(--muted);
 	}
 
-	.inner {
+	.grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 40px;
+	}
+
+	@media (min-width: 700px) {
+		.grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (min-width: 1040px) {
+		.grid {
+			grid-template-columns: 1.3fr 1.3fr 1fr 1fr;
+		}
+	}
+
+	.brand {
 		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		gap: 12px;
+		flex-direction: column;
+		gap: 6px;
+	}
+
+	.name {
+		font-family: var(--serif);
+		font-size: 20px;
+		color: var(--ink);
+	}
+
+	h2 {
+		margin-bottom: 14px;
+	}
+
+	ul {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	a {
+		color: var(--ink-2);
+		text-decoration: none;
+	}
+
+	a:hover {
+		color: var(--accent);
+		text-decoration: underline;
+		text-underline-offset: 3px;
+	}
+
+	.copyright {
+		margin-top: 48px;
+		padding-top: 20px;
+		border-top: 1px solid var(--line);
+		font-size: 13px;
 	}
 </style>

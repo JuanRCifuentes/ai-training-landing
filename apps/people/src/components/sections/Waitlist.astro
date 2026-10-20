@@ -2,7 +2,8 @@
 import Section from '../ui/Section.astro';
 import Button from '../ui/Button.astro';
 import Tag from '../ui/Tag.astro';
-import { site, waitlistCta } from '../../config/site';
+import { owner, site, waitlistCta } from '../../config/site';
+import { routes } from '../../config/routes';
 
 const mailto = `mailto:${site.contactEmail}?subject=${encodeURIComponent('Lista de espera')}`;
 ---
@@ -37,6 +38,11 @@ const mailto = `mailto:${site.contactEmail}?subject=${encodeURIComponent('Lista 
 			)
 		}
 		<small>Sin spam. Puedes salir cuando quieras.</small>
+		<p class="privacy">
+			Responsable: {owner.name}. Con tu consentimiento, usamos tu correo solo para avisarte de charlas y cursos, y no lo
+			cedemos a nadie. Puedes acceder a tus datos, corregirlos o borrarlos cuando quieras. Más información en la
+			<a href={routes.legal('privacidad')}>política de privacidad</a>.
+		</p>
 	</div>
 </Section>
 
@@ -92,5 +98,11 @@ const mailto = `mailto:${site.contactEmail}?subject=${encodeURIComponent('Lista 
 	small {
 		color: var(--muted);
 		font-size: 14px;
+	}
+
+	.privacy {
+		max-width: 60ch;
+		color: var(--muted);
+		font-size: 13px;
 	}
 </style>

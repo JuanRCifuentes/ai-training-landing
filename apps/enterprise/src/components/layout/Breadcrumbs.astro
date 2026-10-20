@@ -1,0 +1,52 @@
+---
+import type { Link } from '../../data/types';
+
+interface Props {
+	/** Ancestors of the current page, from the home page down. */
+	trail: Link[];
+	/** Name of the current page. */
+	current: string;
+}
+
+const { trail, current } = Astro.props;
+---
+
+<nav aria-label="Ruta de navegación">
+	<ol>
+		{
+			trail.map((link) => (
+				<li>
+					<a href={link.href}>{link.label}</a>
+				</li>
+			))
+		}
+		<li aria-current="page">{current}</li>
+	</ol>
+</nav>
+
+<style>
+	ol {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		font-size: 13px;
+		color: var(--muted);
+	}
+
+	li + li::before {
+		content: '/';
+		margin-right: 6px;
+		color: var(--line-strong);
+	}
+
+	a {
+		color: var(--ink-2);
+	}
+
+	a:hover {
+		color: var(--accent);
+	}
+</style>

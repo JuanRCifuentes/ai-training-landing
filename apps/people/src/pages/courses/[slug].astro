@@ -1,0 +1,178 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import JsonLd from '../../components/seo/JsonLd.astro';
+import PageHeader from '../../components/layout/PageHeader.astro';
+import Section from '../../components/ui/Section.astro';
+import Button from '../../components/ui/Button.astro';
+import AccentPanel from '../../components/ui/AccentPanel.astro';
+import CoursePager from '../../components/courses/CoursePager.astro';
+import { courseLabel, courses } from '../../data/courses';
+import type { Fact } from '../../data/types';
+import { courseStructuredData } from '../../data/structuredData';
+import { routes } from '../../config/routes';
+import { site, waitlistCta } from '../../config/site';
+
+export const getStaticPaths = (() =>
+	courses.map((course, index) => ({
+		params: { slug: course.slug },
+		props: { course, previous: courses[index - 1], next: courses[index + 1] },
+	}))) satisfies GetStaticPaths;
+
+const { course, previous, next } = Astro.props;
+
+const trail = [
+	{ href: routes.home, label: 'Inicio' },
+	{ href: routes.section('courses'), label: 'Cursos' },
+];
+const facts: Fact[] = [
+	{ term: 'nivel', value: course.level },
+	{ term: 'para quién', value: course.audience },
+	{ term: 'requisitos', value: course.prerequisites },
+	{ term: 'formato', value: 'En vivo, en línea y en grupo pequeño' },
+];
+---
+
+<BaseLayout
+	title={`${course.title} · Curso de IA · ${site.name}`}
+	description={course.summary}
+	imageAlt={`Curso ${course.ref}: ${course.title}`}
+>
+	<JsonLd slot="head" data={courseStructuredData(course, trail, Astro.site)} />
+	<PageHeader kicker={courseLabel(course)} title={course.title} trail={trail} current={course.title}>
+		{course.summary}
+	</PageHeader>
+	<Section aria-label="Datos del curso">
+		<dl class="facts">
+			{
+				facts.map((fact) => (
+					<div>
+						<dt class="kicker">{fact.term}</dt>
+						<dd>{fact.value}</dd>
+					</div>
+				))
+			}
+		</dl>
+	</Section>
+	<Section aria-labelledby="topics-title">
+		<div class="syllabus">
+			<div>
+				<h2 id="topics-title">Qué vas a ver</h2>
+				<p class="outcome"><span>construyes:</span> {course.outcome}</p>
+			</div>
+			<ol class="topics">
+				{
+					course.topics.map((topic) => <li>{topic}</li>)
+				}
+			</ol>
+		</div>
+	</Section>
+	<Section aria-labelledby="next-step-title">
+		<AccentPanel>
+			<h2 id="next-step-title">¿Te apuntas a la primera cohorte?</h2>
+			<p>
+				Únete a la lista y te avisamos cuando abramos plazas, con fechas y precio. Antes puedes venir gratis a la charla
+				abierta.
+			</p>
+			<Button slot="action" href={waitlistCta.href} variant="inverse" size="lg">{waitlistCta.label}</Button>
+		</AccentPanel>
+		<div class="pager">
+			<CoursePager previous={previous} next={next} />
+		</div>
+	</Section>
+</BaseLayout>
+
+<style>
+	.facts {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 12px;
+		margin: 0;
+	}
+
+	@media (min-width: 700px) {
+		.facts {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (min-width: 1040px) {
+		.facts {
+			grid-template-columns: repeat(4, 1fr);
+		}
+	}
+
+	.facts div {
+		padding: 20px 22px;
+		border: 1px solid var(--line);
+		border-radius: var(--radius);
+		background: var(--surface);
+	}
+
+	dt {
+		margin-bottom: 6px;
+	}
+
+	dd {
+		margin: 0;
+		font-size: 16px;
+	}
+
+	.syllabus {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 32px;
+	}
+
+	@media (min-width: 900px) {
+		.syllabus {
+			grid-template-columns: 1fr 1.5fr;
+			gap: 56px;
+		}
+	}
+
+	h2 {
+		font-size: clamp(30px, 4vw, 48px);
+		font-weight: 700;
+		line-height: 1.05;
+	}
+
+	.outcome {
+		display: inline-block;
+		margin-top: 20px;
+		padding: 8px 14px;
+		border-radius: var(--radius-sm);
+		background: var(--pop);
+		color: var(--on-pop);
+		font: 500 14px var(--mono);
+	}
+
+	.topics {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		border-top: 1px solid var(--line);
+		counter-reset: topic;
+	}
+
+	.topics li {
+		display: flex;
+		gap: 18px;
+		padding: 18px 0;
+		border-bottom: 1px solid var(--line);
+		font-size: 18px;
+		counter-increment: topic;
+	}
+
+	.topics li::before {
+		content: counter(topic, decimal-leading-zero);
+		padding-top: 3px;
+		font: 14px var(--mono);
+		color: var(--accent);
+	}
+
+
+	.pager {
+		margin-top: 48px;
+	}
+</style>
