@@ -1,0 +1,57 @@
+---
+import { site } from '../../config/site';
+
+// Pixel "A" of the P5 mark: [x, y] of each 6×6 cell on a 48×48 grid.
+const cells = [
+	[8, 7], [15, 7], [22, 7],
+	[1, 14], [29, 14],
+	[1, 21], [8, 21], [15, 21], [22, 21], [29, 21],
+	[1, 28], [29, 28],
+	[1, 35], [29, 35],
+];
+---
+
+<a class="logo" href="/" aria-label={`${site.name}, inicio`}>
+	<svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
+		{cells.map(([x, y]) => <rect x={x} y={y} width="6" height="6" rx="1.5" class="cell" />)}
+		<rect x="38" y="7" width="7" height="34" rx="2" class="cursor" />
+	</svg>
+	<span class="name">{site.name}</span>
+	<span class="audience">personas</span>
+</a>
+
+<style>
+	.logo {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		color: var(--ink);
+		font-weight: 700;
+		letter-spacing: -0.02em;
+		white-space: nowrap;
+		text-decoration: none;
+	}
+
+	.mark {
+		width: 32px;
+		height: 32px;
+		flex: none;
+	}
+
+	.cell {
+		fill: var(--accent);
+	}
+
+	.cursor {
+		fill: var(--pop);
+	}
+
+	.audience {
+		padding: 2px 8px;
+		border-radius: 999px;
+		background: var(--pop);
+		color: var(--on-pop);
+		font: 500 12px var(--mono);
+		letter-spacing: 0;
+	}
+</style>

@@ -1,0 +1,63 @@
+---
+import type { FaqItem } from '../../data/types';
+
+interface Props {
+	items: FaqItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="accordion">
+	{
+		items.map((item) => (
+			<details>
+				<summary>{item.question}</summary>
+				<p>{item.answer}</p>
+			</details>
+		))
+	}
+</div>
+
+<style>
+	.accordion {
+		max-width: 860px;
+		border-top: 1px solid var(--ink);
+	}
+
+	details {
+		border-bottom: 1px solid var(--line);
+	}
+
+	summary {
+		position: relative;
+		padding: 20px 40px 20px 0;
+		font-weight: 600;
+		list-style: none;
+		cursor: pointer;
+	}
+
+	summary::-webkit-details-marker {
+		display: none;
+	}
+
+	summary::after {
+		content: '+';
+		position: absolute;
+		right: 4px;
+		top: 18px;
+		font-family: var(--mono);
+		font-size: 20px;
+		color: var(--accent);
+	}
+
+	details[open] summary::after {
+		content: '\2212';
+	}
+
+	p {
+		max-width: 68ch;
+		padding: 0 0 20px;
+		color: var(--ink-2);
+	}
+</style>

@@ -1,0 +1,56 @@
+---
+import Section from '../ui/Section.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+import CourseCard from '../courses/CourseCard.astro';
+import { site } from '../../config/site';
+import { courses } from '../../data/courses';
+---
+
+<Section id="courses" aria-labelledby="courses-title">
+	<SectionHeader kicker="cursos" title="Seis cursos. Toma uno o haz la ruta completa." id="courses-title">
+		Cada curso termina con algo que construiste tú y que puedes usar al día siguiente.
+	</SectionHeader>
+	<ol class="courses">
+		{
+			courses.map((course) => (
+				<li>
+					<CourseCard course={course} />
+				</li>
+			))
+		}
+	</ol>
+	<p class="note">
+		El curso 07, Adopción en equipos, está pensado para organizaciones. <a href={site.enterpriseSiteUrl}
+			>Ver formación para empresas</a
+		>.
+	</p>
+</Section>
+
+<style>
+	.courses {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 16px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	@media (min-width: 700px) {
+		.courses {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (min-width: 1040px) {
+		.courses {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	.note {
+		margin-top: 20px;
+		color: var(--muted);
+		font-size: 15px;
+	}
+</style>

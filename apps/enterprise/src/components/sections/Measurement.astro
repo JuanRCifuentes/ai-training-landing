@@ -1,0 +1,49 @@
+---
+import Section from '../ui/Section.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+import { metrics } from '../../data/program';
+
+interface Props {
+	index: string;
+}
+
+const { index } = Astro.props;
+---
+
+<Section id="measurement" aria-labelledby="measurement-title">
+	<SectionHeader index={index} label="Medición" title="Qué medimos y qué recibe la dirección" id="measurement-title">
+		<p class="body-text">Las métricas se acuerdan en el diagnóstico y se miden antes y después del programa.</p>
+	</SectionHeader>
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th scope="col" class="eyebrow">Dimensión</th>
+				<th scope="col" class="eyebrow">Qué se mide</th>
+				<th scope="col" class="eyebrow">Qué recibe la dirección</th>
+			</tr>
+		</thead>
+		<tbody>
+			{
+				metrics.map((metric) => (
+					<tr>
+						<th scope="row">{metric.dimension}</th>
+						<td>{metric.measured}</td>
+						<td>{metric.received}</td>
+					</tr>
+				))
+			}
+		</tbody>
+	</table>
+</Section>
+
+<style>
+	td {
+		color: var(--ink-2);
+	}
+
+	@media (min-width: 701px) {
+		tbody th {
+			width: 24%;
+		}
+	}
+</style>

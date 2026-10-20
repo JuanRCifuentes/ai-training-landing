@@ -1,0 +1,38 @@
+---
+import Section from '../ui/Section.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+import RuledList from '../ui/RuledList.astro';
+import { openCourses } from '../../data/program';
+import { site } from '../../config/site';
+
+interface Props {
+	index: string;
+}
+
+const { index } = Astro.props;
+---
+
+<Section id="open-courses" aria-labelledby="open-courses-title">
+	<SectionHeader
+		index={index}
+		label="Cursos abiertos"
+		title="El programa también se ofrece a personas"
+		id="open-courses-title"
+	>
+		<p class="body-text">
+			Seis de los siete módulos se imparten en formato abierto, en cohortes en línea para profesionales que se
+			inscriben por su cuenta.
+		</p>
+	</SectionHeader>
+	<RuledList items={openCourses} />
+	<p class="more">
+		<a href={site.peopleSiteUrl}>Cursos de IA para personas</a>
+	</p>
+</Section>
+
+<style>
+	.more {
+		margin-top: 24px;
+		font-weight: 500;
+	}
+</style>

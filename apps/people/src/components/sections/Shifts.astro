@@ -1,0 +1,58 @@
+---
+import Section from '../ui/Section.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+import { shifts } from '../../data/content';
+---
+
+<Section aria-labelledby="shifts-title">
+	<SectionHeader kicker="lo que cambia" title="De copiar y pegar a trabajar con método" id="shifts-title" />
+	<ul class="shifts">
+		{
+			shifts.map((shift) => (
+				<li>
+					<s class="from">{shift.from}</s>
+					<span class="to">{shift.to}</span>
+				</li>
+			))
+		}
+	</ul>
+</Section>
+
+<style>
+	.shifts {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 16px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	@media (min-width: 760px) {
+		.shifts {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	li {
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+		padding: 26px;
+		border: 1px solid var(--line);
+		border-radius: var(--radius);
+		background: var(--surface);
+	}
+
+	.from {
+		color: var(--muted);
+		font: 13px var(--mono);
+	}
+
+	.to {
+		font-size: 21px;
+		font-weight: 600;
+		line-height: 1.25;
+		letter-spacing: -0.01em;
+	}
+</style>

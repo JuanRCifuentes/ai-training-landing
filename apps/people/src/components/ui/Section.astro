@@ -1,0 +1,27 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+type Props = HTMLAttributes<'section'>;
+
+const { class: className, ...attrs } = Astro.props;
+
+// Sections only pad their top edge, so consecutive sections are evenly spaced; main pads the end.
+---
+
+<section class:list={['section', className]} {...attrs}>
+	<div class="container">
+		<slot />
+	</div>
+</section>
+
+<style>
+	.section {
+		padding-top: 88px;
+	}
+
+	@media (max-width: 760px) {
+		.section {
+			padding-top: 64px;
+		}
+	}
+</style>

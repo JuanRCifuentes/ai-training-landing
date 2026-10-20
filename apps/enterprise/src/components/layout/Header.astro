@@ -1,0 +1,79 @@
+---
+import Logo from './Logo.astro';
+import { nav } from '../../config/site';
+---
+
+<header class="header">
+	<div class="container inner">
+		<Logo />
+		<nav aria-label="Principal">
+			<ul>
+				{
+					nav.map((item) => (
+						<li data-priority={item.priority}>
+							<a href={item.href}>{item.label}</a>
+						</li>
+					))
+				}
+			</ul>
+		</nav>
+	</div>
+</header>
+
+<style>
+	.header {
+		position: sticky;
+		top: 0;
+		z-index: 5;
+		background: var(--bg);
+		border-bottom: 1px solid var(--line);
+	}
+
+	.inner {
+		display: flex;
+		align-items: center;
+		gap: 32px;
+		min-height: var(--header-height);
+	}
+
+	nav {
+		margin-left: auto;
+	}
+
+	ul {
+		display: flex;
+		gap: 28px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	a {
+		color: var(--ink-2);
+		font-size: 14px;
+		text-decoration: none;
+	}
+
+	a:hover {
+		color: var(--accent);
+		text-decoration: underline;
+		text-underline-offset: 4px;
+	}
+
+	/* Lower-priority links drop out as the viewport narrows. */
+	@media (max-width: 900px) {
+		ul {
+			gap: 16px;
+		}
+
+		li[data-priority='low'] {
+			display: none;
+		}
+	}
+
+	@media (max-width: 560px) {
+		li[data-priority='medium'] {
+			display: none;
+		}
+	}
+</style>

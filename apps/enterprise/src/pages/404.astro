@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/ui/Section.astro';
+import { site } from '../config/site';
+---
+
+<BaseLayout title={`Página no encontrada · ${site.name}`} noindex>
+	<Section aria-labelledby="not-found-title">
+		<p class="code">404</p>
+		<h1 id="not-found-title">Esta página no existe</h1>
+		<p class="body-text">Es posible que la dirección haya cambiado. Puede volver al inicio y explorar el programa.</p>
+		<p class="back"><a href="/">Volver al inicio</a></p>
+	</Section>
+</BaseLayout>
+
+<style>
+	.code {
+		font-family: var(--mono);
+		font-size: 12px;
+		letter-spacing: 0.08em;
+		color: var(--accent);
+	}
+
+	h1 {
+		margin: 16px 0 20px;
+		font-size: clamp(32px, 4.4vw, 52px);
+		line-height: 1.1;
+	}
+
+	.back {
+		margin-top: 28px;
+		font-weight: 500;
+	}
+</style>

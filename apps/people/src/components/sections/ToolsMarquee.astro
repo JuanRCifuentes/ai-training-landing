@@ -1,0 +1,46 @@
+---
+import { tools } from '../../data/content';
+
+// The list is rendered twice so the scroll loops seamlessly; it is decorative for screen readers.
+---
+
+<div class="tools">
+	<p class="visually-hidden">Herramientas que se usan en los cursos: {tools.join(', ')}.</p>
+	<ul aria-hidden="true">
+		{[...tools, ...tools].map((tool) => <li>{tool}</li>)}
+	</ul>
+</div>
+
+<style>
+	.tools {
+		overflow: hidden;
+		padding: 18px 0;
+		border-block: 1px solid var(--line);
+		background: var(--surface);
+	}
+
+	ul {
+		display: flex;
+		gap: 48px;
+		width: max-content;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		color: var(--muted);
+		font-size: 18px;
+		font-weight: 600;
+		animation: slide 30s linear infinite;
+	}
+
+	li::before {
+		content: '✦';
+		margin-right: 12px;
+		color: var(--accent);
+	}
+
+	@keyframes slide {
+		to {
+			transform: translateX(-50%);
+		}
+	}
+</style>

@@ -1,0 +1,83 @@
+---
+import Section from '../ui/Section.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+import { rolePaths } from '../../data/program';
+
+interface Props {
+	index: string;
+}
+
+const { index } = Astro.props;
+---
+
+<Section id="roles" aria-labelledby="roles-title">
+	<SectionHeader index={index} label="Rutas por rol" title="Qué módulos corresponden a cada rol" id="roles-title">
+		<p class="body-text">
+			Una orientación general. Los módulos marcados en azul son la base recomendada para ese rol.
+		</p>
+	</SectionHeader>
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th scope="col" class="eyebrow">Rol</th>
+				<th scope="col" class="eyebrow">Módulos</th>
+			</tr>
+		</thead>
+		<tbody>
+			{
+				rolePaths.map((path) => (
+					<tr>
+						<th scope="row">{path.role}</th>
+						<td>
+							<ul class="chips">
+								{path.core.map((ref) => (
+									<li class="chip core">
+										{ref}
+										<span class="visually-hidden"> (base)</span>
+									</li>
+								))}
+								{path.optional.map((ref) => (
+									<li class="chip">
+										{ref}
+										<span class="visually-hidden"> (opcional)</span>
+									</li>
+								))}
+							</ul>
+						</td>
+					</tr>
+				))
+			}
+		</tbody>
+	</table>
+</Section>
+
+<style>
+	@media (min-width: 701px) {
+		tbody th {
+			width: 28%;
+		}
+	}
+
+	.chips {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.chip {
+		padding: 1px 8px;
+		border: 1px solid var(--line-strong);
+		border-radius: var(--radius);
+		font-family: var(--mono);
+		font-size: 12px;
+		color: var(--ink-2);
+	}
+
+	.chip.core {
+		border-color: var(--accent);
+		color: var(--accent);
+	}
+</style>

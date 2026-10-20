@@ -1,0 +1,11 @@
+---
+import Section from '../ui/Section.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+import Accordion from '../ui/Accordion.astro';
+import { faq } from '../../data/content';
+---
+
+<Section id="faq" aria-labelledby="faq-title">
+	<SectionHeader kicker="preguntas" title="Lo que suelen preguntar" id="faq-title" />
+	<Accordion items={faq} />
+</Section>

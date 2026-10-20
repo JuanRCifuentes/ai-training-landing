@@ -1,0 +1,31 @@
+---
+import { site } from '../../config/site';
+---
+
+<footer class="footer">
+	<div class="container inner">
+		<span>{site.name} · {site.tagline}</span>
+		<span>¿Formación para tu equipo? <a href={site.enterpriseSiteUrl}>{site.name} para empresas →</a></span>
+	</div>
+</footer>
+
+<style>
+	.footer {
+		padding: 28px 0;
+		border-top: 1px solid var(--line);
+		font-size: 14px;
+		color: var(--muted);
+	}
+
+	.inner {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		gap: 12px;
+	}
+
+	a {
+		color: var(--ink);
+		font-weight: 600;
+	}
+</style>

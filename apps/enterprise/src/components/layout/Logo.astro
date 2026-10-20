@@ -1,0 +1,54 @@
+---
+import { site } from '../../config/site';
+---
+
+<a class="logo" href="/" aria-label={`${site.name}, inicio`}>
+	<svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
+		<path
+			fill="currentColor"
+			d="M10.68 31L10.68 29.60L12.03 29.60L17.80 12.85L20.76 12.85L26.54 29.60L27.89 29.60L27.89 31L21.10 31L21.10 29.60L23.34 29.60L21.88 25.25L15.30 25.25L13.85 29.60L16.08 29.60L16.08 31L10.68 31ZM18.53 15.30L15.72 23.77L21.47 23.77L18.66 15.30L18.53 15.30ZM29.55 31L29.55 29.60L31.45 29.60L31.45 14.26L29.55 14.26L29.55 12.85L36.44 12.85L36.44 14.26L34.54 14.26L34.54 29.60L36.44 29.60L36.44 31L29.55 31Z"
+		></path>
+		<path d="M6 36.5H42" stroke="currentColor" stroke-width="1.5"></path>
+		<path d="M6 40H42" stroke="currentColor" stroke-width="0.75"></path>
+	</svg>
+	<span class="words">
+		<span class="name">{site.name}</span>
+		<span class="subtitle">Formación para organizaciones</span>
+	</span>
+</a>
+
+<style>
+	.logo {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		color: var(--ink);
+		text-decoration: none;
+		line-height: 1.15;
+	}
+
+	.mark {
+		flex: none;
+		width: 40px;
+		height: 40px;
+		color: var(--accent);
+	}
+
+	.words {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.name {
+		font-family: var(--serif);
+		font-weight: 500;
+		font-size: 18px;
+	}
+
+	.subtitle {
+		font-size: 11px;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--muted);
+	}
+</style>

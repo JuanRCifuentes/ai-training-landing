@@ -1,0 +1,119 @@
+---
+import { cities } from '../../config/site';
+import { programFacts } from '../../data/program';
+---
+
+<section class="hero" aria-labelledby="hero-title">
+	<div class="container">
+		<p class="label eyebrow"><span class="accent">Programa de formación</span><span>{cities.join(' · ')}</span></p>
+		<h1 id="hero-title">Formación en inteligencia artificial para el trabajo</h1>
+		<p class="lead">
+			Un programa en ocho partes para que equipos directivos y operativos usen la IA con método, con criterio sobre
+			datos y riesgo, y sobre su propio trabajo.
+		</p>
+		<p class="audience">Para direcciones de personas, transformación, operaciones y responsables de IA.</p>
+		<div class="links">
+			<a href="#modules">Explorar los módulos</a>
+			<a href="#roles">Ver rutas por rol</a>
+		</div>
+		<dl class="facts">
+			{
+				programFacts.map((fact) => (
+					<div>
+						<dt class="eyebrow">{fact.term}</dt>
+						<dd>{fact.value}</dd>
+					</div>
+				))
+			}
+		</dl>
+	</div>
+</section>
+
+<style>
+	.hero {
+		padding: 88px 0 0;
+		border-bottom: 1px solid var(--line);
+	}
+
+	.label {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 14px;
+	}
+
+	.accent {
+		color: var(--accent);
+	}
+
+	h1 {
+		max-width: 20ch;
+		margin: 24px 0;
+		font-size: clamp(34px, 5vw, 60px);
+		line-height: 1.06;
+	}
+
+	.audience {
+		margin-top: 16px;
+		font-size: 14px;
+		color: var(--muted);
+	}
+
+	.links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 28px;
+		margin-top: 32px;
+	}
+
+	.links a {
+		padding-bottom: 2px;
+		border-bottom: 1px solid currentColor;
+		font-weight: 500;
+		text-decoration: none;
+	}
+
+	.links a:hover {
+		color: var(--accent-hover);
+	}
+
+	.facts {
+		display: grid;
+		grid-template-columns: 1fr;
+		margin: 72px 0 0;
+		border-top: 1px solid var(--line);
+	}
+
+	.facts div {
+		padding: 22px 0;
+		border-bottom: 1px solid var(--line);
+	}
+
+	dt {
+		margin-bottom: 6px;
+	}
+
+	dd {
+		margin: 0;
+		font-size: 15px;
+	}
+
+	@media (min-width: 760px) {
+		.facts {
+			grid-template-columns: repeat(4, 1fr);
+		}
+
+		.facts div {
+			padding: 24px 24px 28px 0;
+			border-bottom: 0;
+			border-right: 1px solid var(--line);
+		}
+
+		.facts div + div {
+			padding-left: 24px;
+		}
+
+		.facts div:last-child {
+			border-right: 0;
+		}
+	}
+</style>

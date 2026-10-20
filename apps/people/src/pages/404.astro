@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/ui/Section.astro';
+import Button from '../components/ui/Button.astro';
+import { site } from '../config/site';
+---
+
+<BaseLayout title={`Página no encontrada · ${site.name}`} noindex>
+	<Section aria-labelledby="not-found-title">
+		<p class="kicker">// 404</p>
+		<h1 id="not-found-title">Esta página no existe</h1>
+		<p class="body">Puede que la dirección haya cambiado. Vuelve al inicio y mira los cursos.</p>
+		<Button href="/" variant="primary">Volver al inicio</Button>
+	</Section>
+</BaseLayout>
+
+<style>
+	h1 {
+		margin: 16px 0 20px;
+		font-size: clamp(40px, 6vw, 72px);
+		font-weight: 700;
+		line-height: 1;
+	}
+
+	.body {
+		max-width: 48ch;
+		margin-bottom: 32px;
+		color: var(--ink-2);
+		font-size: 19px;
+	}
+</style>

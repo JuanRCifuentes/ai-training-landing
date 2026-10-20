@@ -1,0 +1,38 @@
+---
+interface Props {
+	/** Short code-comment style label above the title, e.g. "cursos". */
+	kicker: string;
+	title: string;
+	/** Id of the heading, referenced by the section's aria-labelledby. */
+	id: string;
+}
+
+const { kicker, title, id } = Astro.props;
+---
+
+<div class="section-header">
+	<p class="kicker">// {kicker}</p>
+	<h2 id={id}>{title}</h2>
+	{Astro.slots.has('default') && <p class="intro"><slot /></p>}
+</div>
+
+<style>
+	.section-header {
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+		max-width: 720px;
+		margin-bottom: 44px;
+	}
+
+	h2 {
+		font-size: clamp(32px, 4.4vw, 52px);
+		font-weight: 700;
+		line-height: 1.05;
+	}
+
+	.intro {
+		color: var(--ink-2);
+		font-size: 19px;
+	}
+</style>

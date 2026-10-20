@@ -1,0 +1,81 @@
+---
+import Section from '../ui/Section.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+import { phases } from '../../data/program';
+
+interface Props {
+	index: string;
+}
+
+const { index } = Astro.props;
+---
+
+<Section id="methodology" band aria-labelledby="methodology-title">
+	<SectionHeader index={index} label="Metodología" title="Cómo se imparte el programa" id="methodology-title">
+		<p class="body-text">
+			Cuando el programa se imparte a una organización, sigue cuatro fases. Cada una termina con un documento que la
+			organización conserva.
+		</p>
+	</SectionHeader>
+	<ol>
+		{
+			phases.map((phase) => (
+				<li>
+					<span class="step eyebrow">{phase.step}</span>
+					<h3>{phase.title}</h3>
+					<p>{phase.summary}</p>
+					<span class="deliverable">Documento: {phase.deliverable}</span>
+				</li>
+			))
+		}
+	</ol>
+</Section>
+
+<style>
+	ol {
+		display: grid;
+		grid-template-columns: 1fr;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	li {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		padding: 28px 24px 8px 0;
+		border-top: 2px solid var(--line);
+	}
+
+	li:first-child {
+		border-top-color: var(--accent);
+	}
+
+	.step {
+		color: var(--accent);
+	}
+
+	p {
+		color: var(--ink-2);
+		font-size: 15px;
+	}
+
+	.deliverable {
+		margin-top: 4px;
+		padding-top: 10px;
+		border-top: 1px solid var(--line);
+		font-size: 14px;
+		color: var(--muted);
+	}
+
+	@media (min-width: 900px) {
+		ol {
+			grid-template-columns: repeat(4, 1fr);
+		}
+
+		li + li {
+			padding-left: 24px;
+		}
+	}
+</style>

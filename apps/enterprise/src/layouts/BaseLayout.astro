@@ -1,0 +1,54 @@
+---
+import type { ComponentProps } from 'astro/types';
+import '../styles/global.css';
+import Seo from '../components/seo/Seo.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import { site } from '../config/site';
+
+type Props = ComponentProps<typeof Seo>;
+
+const seo = Astro.props;
+---
+
+<!doctype html>
+<html lang={site.lang}>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="color-scheme" content="light dark" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@400;500&display=swap"
+		/>
+		<Seo {...seo} />
+		<slot name="head" />
+		<meta name="generator" content={Astro.generator} />
+	</head>
+	<body>
+		<a class="skip-link" href="#main">Saltar al contenido</a>
+		<Header />
+		<main id="main">
+			<slot />
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.skip-link {
+		position: absolute;
+		left: 16px;
+		top: -48px;
+		z-index: 10;
+		padding: 8px 12px;
+		background: var(--accent);
+		color: var(--on-accent);
+	}
+
+	.skip-link:focus {
+		top: 8px;
+	}
+</style>

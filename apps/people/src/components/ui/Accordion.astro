@@ -1,0 +1,70 @@
+---
+import type { FaqItem } from '../../data/types';
+
+interface Props {
+	items: FaqItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="accordion">
+	{
+		items.map((item) => (
+			<details>
+				<summary>{item.question}</summary>
+				<p>
+					{item.answer}
+					{item.link && (
+						<>
+							{' '}
+							<a href={item.link.href}>{item.link.label}</a>.
+						</>
+					)}
+				</p>
+			</details>
+		))
+	}
+</div>
+
+<style>
+	.accordion {
+		max-width: 800px;
+	}
+
+	details {
+		border-bottom: 1px solid var(--line);
+	}
+
+	summary {
+		position: relative;
+		padding: 20px 40px 20px 0;
+		font-size: 19px;
+		font-weight: 600;
+		list-style: none;
+		cursor: pointer;
+	}
+
+	summary::-webkit-details-marker {
+		display: none;
+	}
+
+	summary::after {
+		content: '+';
+		position: absolute;
+		right: 6px;
+		top: 16px;
+		font: 24px var(--mono);
+		color: var(--accent);
+	}
+
+	details[open] summary::after {
+		content: '\2212';
+	}
+
+	p {
+		max-width: 62ch;
+		padding-bottom: 20px;
+		color: var(--ink-2);
+	}
+</style>
