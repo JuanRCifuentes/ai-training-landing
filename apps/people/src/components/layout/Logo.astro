@@ -1,20 +1,12 @@
 ---
 import { site } from '../../config/site';
-
-// Pixel "A" of the P5 mark: [x, y] of each 6×6 cell on a 48×48 grid.
-const cells = [
-	[8, 7], [15, 7], [22, 7],
-	[1, 14], [29, 14],
-	[1, 21], [8, 21], [15, 21], [22, 21], [29, 21],
-	[1, 28], [29, 28],
-	[1, 35], [29, 35],
-];
+import { markCells, markCursor } from '../../config/brand';
 ---
 
-<a class="logo" href="/" aria-label={`${site.name}, inicio`}>
+<a class="logo" href="/">
 	<svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
-		{cells.map(([x, y]) => <rect x={x} y={y} width="6" height="6" rx="1.5" class="cell" />)}
-		<rect x="38" y="7" width="7" height="34" rx="2" class="cursor" />
+		{markCells.map(([x, y]) => <rect x={x} y={y} width="6" height="6" rx="1.5" class="cell" />)}
+		<rect {...markCursor} rx="2" class="cursor" />
 	</svg>
 	<span class="name">{site.name}</span>
 	<span class="audience">personas</span>

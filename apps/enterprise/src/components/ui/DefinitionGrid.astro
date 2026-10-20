@@ -1,0 +1,64 @@
+---
+import type { Fact } from '../../data/types';
+
+interface Props {
+	facts: Fact[];
+}
+
+const { facts } = Astro.props;
+// One column on phones, one column per fact on wider screens.
+---
+
+<dl style={`--columns: ${facts.length}`}>
+	{
+		facts.map((fact) => (
+			<div>
+				<dt class="eyebrow">{fact.term}</dt>
+				<dd>{fact.value}</dd>
+			</div>
+		))
+	}
+</dl>
+
+<style>
+	dl {
+		display: grid;
+		grid-template-columns: 1fr;
+		margin: 0;
+		border-top: 1px solid var(--line);
+	}
+
+	div {
+		padding: 22px 0;
+		border-bottom: 1px solid var(--line);
+	}
+
+	dt {
+		margin-bottom: 6px;
+	}
+
+	dd {
+		margin: 0;
+		font-size: 15px;
+	}
+
+	@media (min-width: 760px) {
+		dl {
+			grid-template-columns: repeat(var(--columns), 1fr);
+		}
+
+		div {
+			padding: 24px 24px 28px 0;
+			border-bottom: 0;
+			border-right: 1px solid var(--line);
+		}
+
+		div + div {
+			padding-left: 24px;
+		}
+
+		div:last-child {
+			border-right: 0;
+		}
+	}
+</style>

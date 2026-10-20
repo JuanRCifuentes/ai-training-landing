@@ -1,0 +1,60 @@
+---
+import { site } from '../../config/site';
+
+interface Props {
+	title: string;
+	/** Subject line prefilled in the email. */
+	subject: string;
+}
+
+const { title, subject } = Astro.props;
+const mailto = `mailto:${site.contactEmail}?subject=${encodeURIComponent(subject)}`;
+---
+
+<aside class="cta" aria-labelledby="cta-title">
+	<div>
+		<h2 id="cta-title">{title}</h2>
+		<p class="body-text"><slot /></p>
+	</div>
+	<a class="button" href={mailto}>Escribir a {site.contactEmail}</a>
+</aside>
+
+<style>
+	.cta {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 24px;
+		align-items: center;
+		padding: 32px;
+		border: 1px solid var(--accent);
+		border-radius: var(--radius);
+		background: var(--surface);
+	}
+
+	@media (min-width: 900px) {
+		.cta {
+			grid-template-columns: 2fr 1fr;
+			padding: 40px;
+		}
+	}
+
+	h2 {
+		margin-bottom: 10px;
+		font-size: 28px;
+		line-height: 1.2;
+	}
+
+	.button {
+		justify-self: start;
+		padding: 14px 20px;
+		background: var(--accent);
+		color: var(--on-accent);
+		font-weight: 500;
+		text-decoration: none;
+		overflow-wrap: anywhere;
+	}
+
+	.button:hover {
+		background: var(--accent-hover);
+	}
+</style>

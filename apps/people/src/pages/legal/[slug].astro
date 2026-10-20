@@ -1,0 +1,98 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import JsonLd from '../../components/seo/JsonLd.astro';
+import PageHeader from '../../components/layout/PageHeader.astro';
+import Section from '../../components/ui/Section.astro';
+import Prose from '../../components/ui/Prose.astro';
+import { pageStructuredData } from '../../data/structuredData';
+import { routes } from '../../config/routes';
+import { owner, site } from '../../config/site';
+
+export const getStaticPaths = (async () =>
+	(await getCollection('legal')).map((document) => ({
+		params: { slug: document.id },
+		props: { document },
+	}))) satisfies GetStaticPaths;
+
+const { document } = Astro.props;
+const { Content } = await render(document);
+const { title, description, updated, showOwner } = document.data;
+
+const trail = [{ href: routes.home, label: 'Inicio' }];
+const updatedLabel = new Intl.DateTimeFormat(site.lang, { dateStyle: 'long' }).format(updated);
+const ownerFacts = [
+	{ term: 'Titular', value: owner.name },
+	{ term: 'NIF', value: owner.taxId },
+	{ term: 'Domicilio', value: owner.address },
+	{ term: 'Registro', value: owner.registry },
+	{ term: 'Correo', value: owner.email },
+];
+---
+
+<BaseLayout
+	title={`${title} · ${site.name}`}
+	description={description}
+	image={routes.shareImage(`legal/${document.id}`)}
+	imageAlt={title}
+>
+	<JsonLd slot="head" data={pageStructuredData(title, trail, Astro.site)} />
+	<PageHeader kicker="legal" title={title} trail={trail} current={title}>
+		{description}
+	</PageHeader>
+	<Section>
+		{
+			showOwner && (
+				<dl class="owner">
+					{ownerFacts.map((fact) => (
+						<>
+							<dt>{fact.term}</dt>
+							<dd>{fact.value}</dd>
+						</>
+					))}
+				</dl>
+			)
+		}
+		<Prose>
+			<Content />
+		</Prose>
+		<p class="updated">Última actualización: <time datetime={updated.toISOString().slice(0, 10)}>{updatedLabel}</time></p>
+	</Section>
+</BaseLayout>
+
+<style>
+	.owner {
+		display: grid;
+		grid-template-columns: 1fr;
+		max-width: 68ch;
+		margin: 0 0 56px;
+		padding: 20px 24px;
+		border: 1px solid var(--line);
+		border-radius: var(--radius);
+		background: var(--surface);
+	}
+
+	@media (min-width: 600px) {
+		.owner {
+			grid-template-columns: 120px 1fr;
+			gap: 8px 24px;
+		}
+	}
+
+	.owner dt {
+		padding-top: 2px;
+		font: 13px var(--mono);
+		color: var(--accent);
+	}
+
+	.owner dd {
+		margin: 0 0 8px;
+	}
+
+	.updated {
+		margin-top: 48px;
+		font: 13px var(--mono);
+		color: var(--muted);
+	}
+</style>

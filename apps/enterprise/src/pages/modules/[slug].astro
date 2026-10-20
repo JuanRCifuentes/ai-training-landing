@@ -1,0 +1,128 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import JsonLd from '../../components/seo/JsonLd.astro';
+import PageHeader from '../../components/layout/PageHeader.astro';
+import Section from '../../components/ui/Section.astro';
+import DefinitionGrid from '../../components/ui/DefinitionGrid.astro';
+import ContactCta from '../../components/ui/ContactCta.astro';
+import ModuleSyllabus from '../../components/modules/ModuleSyllabus.astro';
+import ModulePager from '../../components/modules/ModulePager.astro';
+import { programme } from '../../data/modules';
+import { rolePaths } from '../../data/program';
+import { moduleStructuredData } from '../../data/structuredData';
+import { routes } from '../../config/routes';
+import { site } from '../../config/site';
+
+export const getStaticPaths = (() =>
+	programme.map((module, index) => ({
+		params: { slug: module.slug },
+		props: { module, previous: programme[index - 1], next: programme[index + 1] },
+	}))) satisfies GetStaticPaths;
+
+const { module, previous, next } = Astro.props;
+
+const eyebrow = module.ref === '00' ? `${module.ref} · Sesión inicial` : `Módulo ${module.ref} · ${module.level}`;
+const trail = [
+	{ href: routes.home, label: 'Inicio' },
+	{ href: '/#modules', label: 'Módulos' },
+];
+const facts = [
+	{ term: 'Nivel', value: module.level },
+	{ term: 'Duración', value: module.duration ?? 'Según el plan de cada organización' },
+	{ term: 'Dirigido a', value: module.audience },
+	{ term: 'Requisitos', value: module.prerequisites ?? 'Sesión inicial' },
+];
+const roles = rolePaths
+	.filter((path) => path.core.includes(module.ref) || path.optional.includes(module.ref))
+	.map((path) => ({ role: path.role, core: path.core.includes(module.ref) }));
+---
+
+<BaseLayout
+	title={`${module.title} · Módulo ${module.ref} · ${site.name}`}
+	description={module.summary}
+	image={routes.shareImage(`modules/${module.slug}`)}
+	imageAlt={`Módulo ${module.ref}: ${module.title}`}
+>
+	<JsonLd slot="head" data={moduleStructuredData(module, trail, Astro.site)} />
+	<PageHeader eyebrow={eyebrow} title={module.title} trail={trail} current={module.title}>
+		{module.summary}
+	</PageHeader>
+	<Section aria-label="Datos del módulo">
+		<DefinitionGrid facts={facts} />
+		<div class="syllabus">
+			<ModuleSyllabus module={module} />
+		</div>
+		{
+			roles.length > 0 && (
+				<section class="roles" aria-labelledby="roles-title">
+					<h2 id="roles-title">En qué rutas aparece</h2>
+					<ul>
+						{roles.map(({ role, core }) => (
+							<li>
+								{role}
+								<span class:list={['tag', { core }]}>{core ? 'base' : 'opcional'}</span>
+							</li>
+						))}
+					</ul>
+					<p>
+						<a href="/#roles">Ver todas las rutas por rol</a>
+					</p>
+				</section>
+			)
+		}
+	</Section>
+	<Section band aria-label="Siguiente paso">
+		<ContactCta title="Incluir este módulo en su organización" subject={`Módulo ${module.ref} · ${module.title}`}>
+			Cada programa empieza con un diagnóstico breve. Cuéntenos qué equipos quiere formar y le enviaremos una propuesta.
+		</ContactCta>
+		<div class="pager">
+			<ModulePager previous={previous} next={next} />
+		</div>
+	</Section>
+</BaseLayout>
+
+<style>
+	.syllabus,
+	.roles {
+		margin-top: 72px;
+	}
+
+	h2 {
+		margin-bottom: 20px;
+		font-size: 26px;
+	}
+
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+		margin: 0 0 20px;
+		padding: 0;
+		list-style: none;
+	}
+
+	li {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		padding: 8px 12px;
+		border: 1px solid var(--line);
+		border-radius: var(--radius);
+		font-size: 15px;
+	}
+
+	.tag {
+		font-family: var(--mono);
+		font-size: 12px;
+		color: var(--muted);
+	}
+
+	.tag.core {
+		color: var(--accent);
+	}
+
+	.pager {
+		margin-top: 48px;
+	}
+</style>

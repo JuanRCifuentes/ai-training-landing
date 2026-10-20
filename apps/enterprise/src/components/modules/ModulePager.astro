@@ -1,0 +1,69 @@
+---
+import type { Module } from '../../data/types';
+import { routes } from '../../config/routes';
+
+interface Props {
+	previous?: Module;
+	next?: Module;
+}
+
+const { previous, next } = Astro.props;
+---
+
+<nav class="pager" aria-label="Otros módulos">
+	{
+		previous && (
+			<a class="previous" href={routes.module(previous.slug)}>
+				<span class="eyebrow">← Anterior · {previous.ref}</span>
+				<span class="title">{previous.title}</span>
+			</a>
+		)
+	}
+	{
+		next && (
+			<a class="next" href={routes.module(next.slug)}>
+				<span class="eyebrow">Siguiente · {next.ref} →</span>
+				<span class="title">{next.title}</span>
+			</a>
+		)
+	}
+</nav>
+
+<style>
+	.pager {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 16px;
+	}
+
+	@media (min-width: 700px) {
+		.pager {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		.next {
+			grid-column: 2;
+			text-align: right;
+		}
+	}
+
+	a {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		padding: 20px 22px;
+		border: 1px solid var(--line);
+		border-radius: var(--radius);
+		color: var(--ink);
+		text-decoration: none;
+	}
+
+	a:hover {
+		border-color: var(--accent);
+	}
+
+	.title {
+		font-family: var(--serif);
+		font-size: 20px;
+	}
+</style>

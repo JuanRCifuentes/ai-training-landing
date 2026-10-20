@@ -1,0 +1,73 @@
+---
+import type { Module } from '../../data/types';
+
+interface Props {
+	module: Module;
+}
+
+const { module } = Astro.props;
+---
+
+<div class="syllabus">
+	<section aria-labelledby="objectives-title">
+		<h2 id="objectives-title">Al terminar, los participantes podrán</h2>
+		<ul>{module.objectives.map((objective) => <li>{objective}</li>)}</ul>
+	</section>
+	<section aria-labelledby="topics-title">
+		<h2 id="topics-title">Contenidos</h2>
+		<ol>{module.topics.map((topic) => <li>{topic}</li>)}</ol>
+	</section>
+</div>
+
+<style>
+	.syllabus {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 56px;
+	}
+
+	@media (min-width: 900px) {
+		.syllabus {
+			grid-template-columns: 1fr 1fr;
+			gap: 64px;
+		}
+	}
+
+	h2 {
+		margin-bottom: 20px;
+		font-size: 26px;
+		line-height: 1.25;
+	}
+
+	ul,
+	ol {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		border-top: 1px solid var(--ink);
+		counter-reset: topic;
+	}
+
+	li {
+		display: grid;
+		grid-template-columns: 36px 1fr;
+		padding: 14px 0;
+		border-bottom: 1px solid var(--line);
+		color: var(--ink-2);
+	}
+
+	ul li::before {
+		content: '\2014';
+		color: var(--accent);
+		font-family: var(--mono);
+	}
+
+	ol li::before {
+		content: counter(topic, decimal-leading-zero);
+		counter-increment: topic;
+		color: var(--accent);
+		font-family: var(--mono);
+		font-size: 13px;
+		line-height: 1.9;
+	}
+</style>

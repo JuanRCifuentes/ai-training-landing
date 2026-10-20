@@ -1,5 +1,6 @@
 ---
 import type { Course } from '../../data/types';
+import { routes } from '../../config/routes';
 
 interface Props {
 	course: Course;
@@ -13,13 +14,14 @@ const { course } = Astro.props;
 		<span class="ref">{course.ref}</span>
 		<span class:list={['level', { highlight: course.level === 'avanzado' }]}>{course.level}</span>
 	</div>
-	<h3 id={`course-${course.ref}`}>{course.title}</h3>
+	<h3 id={`course-${course.ref}`}><a href={routes.course(course.slug)}>{course.title}</a></h3>
 	<p>{course.summary}</p>
 	<p class="outcome"><b>construyes:</b> {course.outcome}</p>
 </article>
 
 <style>
 	.course {
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		gap: 12px;
@@ -36,6 +38,28 @@ const { course } = Astro.props;
 	.course:hover {
 		transform: translateY(-3px);
 		border-color: var(--accent);
+	}
+
+	/* The title link covers the whole card, so the card is one click target. */
+	h3 a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	h3 a::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		border-radius: inherit;
+	}
+
+	h3 a:focus-visible {
+		outline: none;
+	}
+
+	.course:has(a:focus-visible) {
+		outline: 2px solid var(--accent);
+		outline-offset: 3px;
 	}
 
 	.meta {

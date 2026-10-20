@@ -1,0 +1,43 @@
+---
+// Typography for long-form text rendered from Markdown.
+---
+
+<div class="prose"><slot /></div>
+
+<style>
+	.prose {
+		max-width: 68ch;
+		color: var(--ink-2);
+	}
+
+	.prose :global(h2) {
+		margin: 48px 0 12px;
+		font-size: 26px;
+		line-height: 1.25;
+		color: var(--ink);
+	}
+
+	.prose :global(h2:first-child) {
+		margin-top: 0;
+	}
+
+	.prose :global(p),
+	.prose :global(ul),
+	.prose :global(ol) {
+		margin: 0 0 16px;
+	}
+
+	.prose :global(ul),
+	.prose :global(ol) {
+		padding-left: 22px;
+	}
+
+	.prose :global(li) {
+		margin-bottom: 8px;
+	}
+
+	.prose :global(strong) {
+		color: var(--ink);
+		font-weight: 600;
+	}
+</style>

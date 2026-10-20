@@ -1,0 +1,77 @@
+---
+import type { Course } from '../../data/types';
+import { routes } from '../../config/routes';
+
+interface Props {
+	previous?: Course;
+	next?: Course;
+}
+
+const { previous, next } = Astro.props;
+---
+
+<nav class="pager" aria-label="Otros cursos">
+	{
+		previous && (
+			<a class="previous" href={routes.course(previous.slug)}>
+				<span class="label">← anterior · {previous.ref}</span>
+				<span class="title">{previous.title}</span>
+			</a>
+		)
+	}
+	{
+		next && (
+			<a class="next" href={routes.course(next.slug)}>
+				<span class="label">siguiente · {next.ref} →</span>
+				<span class="title">{next.title}</span>
+			</a>
+		)
+	}
+</nav>
+
+<style>
+	.pager {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 16px;
+	}
+
+	@media (min-width: 700px) {
+		.pager {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		.next {
+			grid-column: 2;
+			text-align: right;
+		}
+	}
+
+	a {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		padding: 20px 24px;
+		border: 1px solid var(--line);
+		border-radius: var(--radius);
+		background: var(--surface);
+		color: var(--ink);
+		text-decoration: none;
+		transition: border-color 0.15s;
+	}
+
+	a:hover {
+		border-color: var(--accent);
+	}
+
+	.label {
+		font: 13px var(--mono);
+		color: var(--muted);
+	}
+
+	.title {
+		font-size: 20px;
+		font-weight: 700;
+		letter-spacing: -0.01em;
+	}
+</style>

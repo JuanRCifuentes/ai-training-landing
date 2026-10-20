@@ -1,4 +1,5 @@
 ---
+import DefinitionGrid from '../ui/DefinitionGrid.astro';
 import { cities } from '../../config/site';
 import { programFacts } from '../../data/program';
 ---
@@ -16,16 +17,9 @@ import { programFacts } from '../../data/program';
 			<a href="#modules">Explorar los módulos</a>
 			<a href="#roles">Ver rutas por rol</a>
 		</div>
-		<dl class="facts">
-			{
-				programFacts.map((fact) => (
-					<div>
-						<dt class="eyebrow">{fact.term}</dt>
-						<dd>{fact.value}</dd>
-					</div>
-				))
-			}
-		</dl>
+		<div class="facts">
+			<DefinitionGrid facts={programFacts} />
+		</div>
 	</div>
 </section>
 
@@ -77,43 +71,6 @@ import { programFacts } from '../../data/program';
 	}
 
 	.facts {
-		display: grid;
-		grid-template-columns: 1fr;
-		margin: 72px 0 0;
-		border-top: 1px solid var(--line);
-	}
-
-	.facts div {
-		padding: 22px 0;
-		border-bottom: 1px solid var(--line);
-	}
-
-	dt {
-		margin-bottom: 6px;
-	}
-
-	dd {
-		margin: 0;
-		font-size: 15px;
-	}
-
-	@media (min-width: 760px) {
-		.facts {
-			grid-template-columns: repeat(4, 1fr);
-		}
-
-		.facts div {
-			padding: 24px 24px 28px 0;
-			border-bottom: 0;
-			border-right: 1px solid var(--line);
-		}
-
-		.facts div + div {
-			padding-left: 24px;
-		}
-
-		.facts div:last-child {
-			border-right: 0;
-		}
+		margin-top: 72px;
 	}
 </style>
