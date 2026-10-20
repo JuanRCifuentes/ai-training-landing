@@ -33,7 +33,8 @@ const imageUrl = Astro.site ? new URL(image, Astro.site).href : image;
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <link rel="manifest" href="/site.webmanifest" />
 <link rel="sitemap" href="/sitemap-index.xml" />
-<meta name="theme-color" content={site.themeColor} />
+<meta name="theme-color" content={site.themeColor} media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content={site.themeColorDark} media="(prefers-color-scheme: dark)" />
 
 <meta property="og:type" content="website" />
 <meta property="og:locale" content={site.locale} />

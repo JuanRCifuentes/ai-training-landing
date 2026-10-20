@@ -7,6 +7,8 @@ export const site = {
 	locale: 'es_ES',
 	lang: 'es',
 	themeColor: '#14336e',
+	/** Browser UI colour in dark mode; matches the dark page background. */
+	themeColorDark: '#0a111c',
 	// TODO: replace with the real contact address before launch.
 	contactEmail: 'contacto@example.com',
 	peopleSiteUrl: 'https://ai-training-people.juan-r-cifuentes.workers.dev',
