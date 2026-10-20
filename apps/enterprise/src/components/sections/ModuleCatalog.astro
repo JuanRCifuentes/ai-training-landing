@@ -1,0 +1,60 @@
+---
+import Section from '../ui/Section.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+import ModuleCard from '../modules/ModuleCard.astro';
+import { introSession, modules } from '../../data/modules';
+
+interface Props {
+	index: string;
+}
+
+const { index } = Astro.props;
+---
+
+<Section id="modules" band aria-labelledby="modules-title">
+	<SectionHeader index={index} label="Módulos" title="Catálogo del programa" id="modules-title">
+		<p class="body-text">
+			La sesión inicial es común a toda la organización. Los módulos pueden cursarse por separado o como parte de una
+			ruta.
+		</p>
+	</SectionHeader>
+	<ul class="catalog">
+		<li class="featured">
+			<ModuleCard module={introSession} featured eyebrow={`${introSession.ref} · Sesión inicial`} />
+		</li>
+		{
+			modules.map((module) => (
+				<li>
+					<ModuleCard module={module} />
+				</li>
+			))
+		}
+	</ul>
+</Section>
+
+<style>
+	.catalog {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 20px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.featured {
+		grid-column: 1 / -1;
+	}
+
+	@media (min-width: 700px) {
+		.catalog {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (min-width: 1040px) {
+		.catalog {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+</style>

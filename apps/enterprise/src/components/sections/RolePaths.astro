@@ -1,0 +1,134 @@
+---
+import Section from '../ui/Section.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+import { rolePaths } from '../../data/program';
+
+interface Props {
+	index: string;
+}
+
+const { index } = Astro.props;
+---
+
+<Section id="roles" aria-labelledby="roles-title">
+	<SectionHeader index={index} label="Rutas por rol" title="Qué módulos corresponden a cada rol" id="roles-title">
+		<p class="body-text">
+			Una orientación general. Los módulos marcados en azul son la base recomendada para ese rol.
+		</p>
+	</SectionHeader>
+	<table>
+		<thead>
+			<tr>
+				<th scope="col">Rol</th>
+				<th scope="col">Módulos</th>
+			</tr>
+		</thead>
+		<tbody>
+			{
+				rolePaths.map((path) => (
+					<tr>
+						<th scope="row">{path.role}</th>
+						<td>
+							<ul class="chips">
+								{path.core.map((ref) => (
+									<li class="chip core">
+										{ref}
+										<span class="visually-hidden"> (base)</span>
+									</li>
+								))}
+								{path.optional.map((ref) => (
+									<li class="chip">
+										{ref}
+										<span class="visually-hidden"> (opcional)</span>
+									</li>
+								))}
+							</ul>
+						</td>
+					</tr>
+				))
+			}
+		</tbody>
+	</table>
+</Section>
+
+<style>
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		font-size: 15px;
+	}
+
+	thead th {
+		padding: 0 16px 14px 0;
+		border-bottom: 1px solid var(--ink);
+		font-family: var(--mono);
+		font-size: 12px;
+		font-weight: 400;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		text-align: left;
+		color: var(--muted);
+	}
+
+	tbody th,
+	td {
+		padding: 18px 16px 18px 0;
+		border-bottom: 1px solid var(--line);
+		vertical-align: top;
+		text-align: left;
+	}
+
+	tbody th {
+		width: 28%;
+		font-weight: 600;
+	}
+
+	.chips {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.chip {
+		padding: 1px 8px;
+		border: 1px solid var(--line-strong);
+		border-radius: var(--radius);
+		font-family: var(--mono);
+		font-size: 12px;
+		color: var(--ink-2);
+	}
+
+	.chip.core {
+		border-color: var(--accent);
+		color: var(--accent);
+	}
+
+	@media (max-width: 700px) {
+		thead {
+			display: none;
+		}
+
+		table,
+		tbody,
+		tr,
+		tbody th,
+		td {
+			display: block;
+			width: 100%;
+		}
+
+		tr {
+			padding: 16px 0;
+			border-bottom: 1px solid var(--line);
+		}
+
+		tbody th,
+		td {
+			padding: 4px 0;
+			border: 0;
+		}
+	}
+</style>

@@ -1,0 +1,58 @@
+---
+import type { TitledItem } from '../../data/types';
+
+interface Props {
+	items: TitledItem[];
+	heading?: string;
+}
+
+const { items, heading } = Astro.props;
+---
+
+<div>
+	{heading && <h3>{heading}</h3>}
+	<ul>
+		{
+			items.map((item) => (
+				<li>
+					<span>
+						<strong>{item.title}</strong> {item.body}
+					</span>
+				</li>
+			))
+		}
+	</ul>
+</div>
+
+<style>
+	h3 {
+		margin-bottom: 16px;
+	}
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		border-top: 1px solid var(--line);
+	}
+
+	li {
+		display: grid;
+		grid-template-columns: 28px 1fr;
+		gap: 8px;
+		padding: 16px 0;
+		border-bottom: 1px solid var(--line);
+		color: var(--ink-2);
+	}
+
+	li::before {
+		content: '\2014';
+		color: var(--accent);
+		font-family: var(--mono);
+	}
+
+	strong {
+		color: var(--ink);
+		font-weight: 600;
+	}
+</style>

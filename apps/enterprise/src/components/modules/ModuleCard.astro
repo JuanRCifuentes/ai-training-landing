@@ -1,0 +1,135 @@
+---
+import type { Module } from '../../data/types';
+
+interface Props {
+	module: Module;
+	/** Full-width presentation for the opening session. */
+	featured?: boolean;
+	eyebrow?: string;
+}
+
+const { module, featured = false, eyebrow } = Astro.props;
+
+const details = [
+	featured && { term: 'Nivel', value: module.level },
+	{ term: 'Duración', value: module.duration ?? 'Por definir' },
+	{ term: 'Dirigido a', value: module.audience },
+	module.prerequisites && { term: 'Requisitos', value: module.prerequisites },
+].filter((detail): detail is { term: string; value: string } => Boolean(detail));
+---
+
+<article class:list={['card', { featured }]}>
+	<div class="content">
+		<div class="meta">
+			<span class="ref">{eyebrow ?? module.ref}</span>
+			{!featured && <span class="level">{module.level}</span>}
+		</div>
+		<h3>{module.title}</h3>
+		<p>{module.summary}</p>
+	</div>
+	<dl>
+		{
+			details.map((detail) => (
+				<>
+					<dt>{detail.term}</dt>
+					<dd>{detail.value}</dd>
+				</>
+			))
+		}
+	</dl>
+</article>
+
+<style>
+	.card {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		background: var(--surface);
+		border: 1px solid var(--line);
+		border-radius: var(--radius);
+	}
+
+	.content {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+		gap: 8px;
+		padding: 20px 22px 0;
+	}
+
+	.meta {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		gap: 12px;
+	}
+
+	.ref {
+		font-family: var(--mono);
+		font-size: 12px;
+		letter-spacing: 0.06em;
+		color: var(--accent);
+	}
+
+	.level {
+		font-size: 12px;
+		color: var(--muted);
+	}
+
+	h3 {
+		margin-top: 2px;
+		font-size: 18px;
+	}
+
+	p {
+		color: var(--ink-2);
+		font-size: 15px;
+	}
+
+	dl {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 4px 16px;
+		margin: 20px 0 0;
+		padding: 14px 22px 18px;
+		border-top: 1px solid var(--line);
+		font-size: 13px;
+	}
+
+	dt {
+		color: var(--muted);
+	}
+
+	dd {
+		margin: 0;
+	}
+
+	.featured {
+		border-color: var(--accent);
+	}
+
+	.featured h3 {
+		font-family: var(--serif);
+		font-weight: 400;
+		font-size: 26px;
+	}
+
+	.featured .content {
+		padding-bottom: 20px;
+	}
+
+	@media (min-width: 900px) {
+		.featured {
+			display: grid;
+			grid-template-columns: 2fr 1fr;
+		}
+
+		.featured dl {
+			align-content: start;
+			margin: 0;
+			padding: 20px 22px;
+			border-top: 0;
+			border-left: 1px solid var(--line);
+		}
+	}
+</style>

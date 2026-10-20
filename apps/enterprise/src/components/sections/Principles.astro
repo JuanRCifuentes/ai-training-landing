@@ -1,0 +1,81 @@
+---
+import Section from '../ui/Section.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+import { principles } from '../../data/program';
+
+interface Props {
+	index: string;
+}
+
+const { index } = Astro.props;
+const numerals = ['I', 'II', 'III', 'IV', 'V', 'VI'];
+---
+
+<Section id="about" aria-labelledby="about-title">
+	<SectionHeader index={index} label="Acerca de" title="Principios del programa" id="about-title" />
+	<ol>
+		{
+			principles.map((principle, i) => (
+				<li>
+					<span class="numeral" aria-hidden="true">
+						{numerals[i]}
+					</span>
+					<h3>{principle.title}</h3>
+					<p>{principle.body}</p>
+				</li>
+			))
+		}
+	</ol>
+</Section>
+
+<style>
+	ol {
+		display: grid;
+		grid-template-columns: 1fr;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		border-top: 1px solid var(--ink);
+	}
+
+	li {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		padding: 28px 24px 32px 0;
+		border-bottom: 1px solid var(--line);
+	}
+
+	.numeral {
+		font-family: var(--mono);
+		font-size: 13px;
+		color: var(--accent);
+	}
+
+	p {
+		color: var(--ink-2);
+		font-size: 15px;
+	}
+
+	@media (min-width: 760px) {
+		ol {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (min-width: 1080px) {
+		ol {
+			grid-template-columns: repeat(4, 1fr);
+		}
+
+		li {
+			padding-right: 28px;
+			border-bottom: 0;
+		}
+
+		li + li {
+			padding-left: 28px;
+			border-left: 1px solid var(--line);
+		}
+	}
+</style>

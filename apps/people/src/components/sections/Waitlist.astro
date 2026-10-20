@@ -1,0 +1,96 @@
+---
+import Section from '../ui/Section.astro';
+import Button from '../ui/Button.astro';
+import Tag from '../ui/Tag.astro';
+import { site, waitlistCta } from '../../config/site';
+
+const mailto = `mailto:${site.contactEmail}?subject=${encodeURIComponent('Lista de espera')}`;
+---
+
+<Section id="waitlist" aria-labelledby="waitlist-title">
+	<div class="waitlist">
+		<Tag>{[...site.cities, 'en línea'].join(' · ')}</Tag>
+		<h2 id="waitlist-title">Sé de los primeros en entrar</h2>
+		<p>Te avisamos de la próxima charla abierta y de la apertura de la primera cohorte. Nada más.</p>
+		{
+			site.waitlistFormAction ? (
+				<form action={site.waitlistFormAction} method="post">
+					<label class="visually-hidden" for="waitlist-email">
+						Tu correo
+					</label>
+					<input
+						id="waitlist-email"
+						name="email"
+						type="email"
+						placeholder="tu@correo.com"
+						autocomplete="email"
+						required
+					/>
+					<Button type="submit" variant="primary" size="lg">
+						{waitlistCta.label}
+					</Button>
+				</form>
+			) : (
+				<Button href={mailto} variant="primary" size="lg">
+					{waitlistCta.label}
+				</Button>
+			)
+		}
+		<small>Sin spam. Puedes salir cuando quieras.</small>
+	</div>
+</Section>
+
+<style>
+	.waitlist {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 18px;
+		text-align: center;
+	}
+
+	h2 {
+		max-width: 16ch;
+		font-size: clamp(36px, 5.4vw, 64px);
+		font-weight: 700;
+		line-height: 1;
+	}
+
+	p {
+		max-width: 48ch;
+		color: var(--ink-2);
+		font-size: 19px;
+	}
+
+	form {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 10px;
+		width: 100%;
+		max-width: 520px;
+		margin-top: 8px;
+	}
+
+	input {
+		flex: 1 1 240px;
+		min-height: 52px;
+		padding: 0 22px;
+		border: 1.5px solid var(--line);
+		border-radius: 999px;
+		background: var(--surface);
+		color: var(--ink);
+		font: 16px var(--sans);
+	}
+
+	input:focus {
+		border-color: var(--accent);
+		outline: none;
+		box-shadow: 0 0 0 3px var(--accent-soft);
+	}
+
+	small {
+		color: var(--muted);
+		font-size: 14px;
+	}
+</style>

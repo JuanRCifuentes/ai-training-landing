@@ -1,0 +1,101 @@
+---
+import Button from '../ui/Button.astro';
+import Tag from '../ui/Tag.astro';
+import Terminal from '../ui/Terminal.astro';
+import { site, waitlistCta } from '../../config/site';
+import { promptExample } from '../../data/promptExample';
+---
+
+<section class="hero" aria-labelledby="hero-title">
+	<div class="container grid">
+		<div>
+			<Tag>Primera cohorte · inscripciones pronto</Tag>
+			<h1 id="hero-title">Deja de probar la IA. <mark>Aprende a usarla.</mark></h1>
+			<p class="lead">
+				Cursos prácticos en español para que la IA trabaje contigo: mejores instrucciones, tus propios asistentes y
+				agentes que hacen tareas por ti.
+			</p>
+			<div class="actions">
+				<Button href={waitlistCta.href} variant="primary">{waitlistCta.label}</Button>
+				<Button href="#courses">Ver cursos</Button>
+			</div>
+			<p class="backing">
+				Con el respaldo de nuestro <a href={site.enterpriseSiteUrl}>programa de formación para empresas</a>.
+			</p>
+		</div>
+		<Terminal
+			lines={promptExample}
+			filename="prompt.md"
+			label="Ejemplo de una instrucción bien escrita y la respuesta de un asistente de IA"
+		/>
+	</div>
+</section>
+
+<style>
+	.hero {
+		padding: 72px 0 88px;
+	}
+
+	.grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 48px;
+		align-items: center;
+	}
+
+	@media (min-width: 980px) {
+		.grid {
+			grid-template-columns: 1.1fr 1fr;
+		}
+	}
+
+	h1 {
+		margin: 22px 0 24px;
+		font-size: clamp(44px, 7vw, 88px);
+		font-weight: 700;
+		line-height: 0.98;
+	}
+
+	mark {
+		padding: 0 0.05em;
+		background: linear-gradient(transparent 62%, var(--pop) 62%);
+		color: inherit;
+	}
+
+	/* A lime underline disappears on dark backgrounds; colour the text instead. */
+	@media (prefers-color-scheme: dark) {
+		:root:not([data-theme='light']) mark {
+			background: none;
+			color: var(--pop);
+		}
+	}
+
+	:root[data-theme='dark'] mark {
+		background: none;
+		color: var(--pop);
+	}
+
+	.lead {
+		max-width: 46ch;
+		color: var(--ink-2);
+		font-size: clamp(18px, 1.8vw, 21px);
+	}
+
+	.actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+		margin-top: 32px;
+	}
+
+	.backing {
+		margin-top: 22px;
+		color: var(--muted);
+		font-size: 15px;
+	}
+
+	.backing a {
+		color: var(--ink);
+		font-weight: 600;
+	}
+</style>

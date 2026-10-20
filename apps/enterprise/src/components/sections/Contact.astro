@@ -1,0 +1,78 @@
+---
+import Section from '../ui/Section.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+import { site } from '../../config/site';
+
+interface Props {
+	index: string;
+}
+
+const { index } = Astro.props;
+---
+
+<Section id="contact" band aria-labelledby="contact-title">
+	<SectionHeader index={index} label="Contacto" title="Información y consultas" id="contact-title">
+		<p class="body-text">Para información sobre el programa, fechas o formatos para organizaciones.</p>
+	</SectionHeader>
+	<dl>
+		<div>
+			<dt>Correo</dt>
+			<dd><a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a></dd>
+		</div>
+		{
+			site.offices.map((office) => (
+				<div>
+					<dt>{office.city}</dt>
+					<dd>
+						{office.country}
+						<span class="scope">{office.scope}</span>
+					</dd>
+				</div>
+			))
+		}
+	</dl>
+</Section>
+
+<style>
+	dl {
+		display: grid;
+		grid-template-columns: 1fr;
+		margin: 0;
+		border-top: 1px solid var(--ink);
+	}
+
+	dl div {
+		padding: 24px 24px 24px 0;
+		border-bottom: 1px solid var(--line);
+	}
+
+	dt {
+		margin-bottom: 6px;
+		font-family: var(--mono);
+		font-size: 12px;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--muted);
+	}
+
+	dd {
+		margin: 0;
+	}
+
+	.scope {
+		display: block;
+		font-size: 14px;
+		color: var(--muted);
+	}
+
+	@media (min-width: 760px) {
+		dl {
+			grid-template-columns: repeat(3, 1fr);
+		}
+
+		dl div + div {
+			padding-left: 24px;
+			border-left: 1px solid var(--line);
+		}
+	}
+</style>

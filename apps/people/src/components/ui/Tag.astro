@@ -1,0 +1,27 @@
+---
+// Pill with a pulsing lime dot, used for status lines such as the cohort announcement.
+---
+
+<span class="tag"><span class="dot" aria-hidden="true"></span><slot /></span>
+
+<style>
+	.tag {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		padding: 4px 12px;
+		border: 1px solid var(--line);
+		border-radius: 999px;
+		background: var(--surface);
+		color: var(--ink-2);
+		font: 13px var(--mono);
+	}
+
+	.dot {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: var(--pop);
+		box-shadow: 0 0 0 3px color-mix(in srgb, var(--pop) 35%, transparent);
+	}
+</style>

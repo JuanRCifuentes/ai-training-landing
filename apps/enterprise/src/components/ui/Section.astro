@@ -1,0 +1,33 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'section'> {
+	/** Alternate background band. */
+	band?: boolean;
+}
+
+const { band = false, class: className, ...attrs } = Astro.props;
+---
+
+<section class:list={['section', { band }, className]} {...attrs}>
+	<div class="container">
+		<slot />
+	</div>
+</section>
+
+<style>
+	.section {
+		padding: 96px 0;
+		border-bottom: 1px solid var(--line);
+	}
+
+	.band {
+		background: var(--band);
+	}
+
+	@media (max-width: 760px) {
+		.section {
+			padding: 72px 0;
+		}
+	}
+</style>

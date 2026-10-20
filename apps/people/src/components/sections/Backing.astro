@@ -1,0 +1,91 @@
+---
+import Section from '../ui/Section.astro';
+import { site } from '../../config/site';
+import { backingPoints } from '../../data/content';
+---
+
+<Section aria-labelledby="backing-title">
+	<div class="card">
+		<div>
+			<p class="kicker">// de dónde viene</p>
+			<h2 id="backing-title">Lo que enseñamos a equipos de empresas, ahora para ti</h2>
+			<p class="body">
+				Estos cursos salen del programa que impartimos a organizaciones y equipos grandes en {site.cities.join(' y ')}.
+				Mismo contenido, mismo rigor, en un formato pensado para una persona.
+			</p>
+		</div>
+		<ul>
+			{backingPoints.map((point) => <li>{point}</li>)}
+		</ul>
+	</div>
+</Section>
+
+<style>
+	.card {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 28px;
+		align-items: center;
+		padding: 36px 28px;
+		border: 1px solid var(--line);
+		border-radius: var(--radius-lg);
+		background: var(--surface);
+	}
+
+	@media (min-width: 900px) {
+		.card {
+			grid-template-columns: 1.3fr 1fr;
+			padding: 48px;
+		}
+	}
+
+	.kicker {
+		font: 13px var(--mono);
+		color: var(--accent);
+	}
+
+	h2 {
+		margin-top: 12px;
+		font-size: clamp(28px, 3.6vw, 42px);
+		font-weight: 700;
+		line-height: 1.08;
+	}
+
+	.body {
+		max-width: 52ch;
+		margin-top: 14px;
+		color: var(--ink-2);
+		font-size: 18px;
+	}
+
+	ul {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	li {
+		display: flex;
+		gap: 12px;
+		align-items: flex-start;
+		color: var(--ink-2);
+		font-size: 16px;
+	}
+
+	li::before {
+		content: '✓';
+		display: grid;
+		place-items: center;
+		flex: none;
+		width: 24px;
+		height: 24px;
+		border-radius: 50%;
+		background: var(--pop);
+		color: var(--on-pop);
+		font-size: 13px;
+		font-weight: 700;
+	}
+</style>

@@ -1,0 +1,98 @@
+---
+import Section from '../ui/Section.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+import { metrics } from '../../data/program';
+
+interface Props {
+	index: string;
+}
+
+const { index } = Astro.props;
+---
+
+<Section id="measurement" aria-labelledby="measurement-title">
+	<SectionHeader index={index} label="Medición" title="Qué medimos y qué recibe la dirección" id="measurement-title">
+		<p class="body-text">Las métricas se acuerdan en el diagnóstico y se miden antes y después del programa.</p>
+	</SectionHeader>
+	<table>
+		<thead>
+			<tr>
+				<th scope="col">Dimensión</th>
+				<th scope="col">Qué se mide</th>
+				<th scope="col">Qué recibe la dirección</th>
+			</tr>
+		</thead>
+		<tbody>
+			{
+				metrics.map((metric) => (
+					<tr>
+						<th scope="row">{metric.dimension}</th>
+						<td>{metric.measured}</td>
+						<td>{metric.received}</td>
+					</tr>
+				))
+			}
+		</tbody>
+	</table>
+</Section>
+
+<style>
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		font-size: 15px;
+	}
+
+	thead th {
+		padding: 0 16px 14px 0;
+		border-bottom: 1px solid var(--ink);
+		font-family: var(--mono);
+		font-size: 12px;
+		font-weight: 400;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		text-align: left;
+		color: var(--muted);
+	}
+
+	tbody th,
+	td {
+		padding: 18px 16px 18px 0;
+		border-bottom: 1px solid var(--line);
+		vertical-align: top;
+		text-align: left;
+		color: var(--ink-2);
+	}
+
+	tbody th {
+		width: 24%;
+		font-weight: 600;
+		color: var(--ink);
+	}
+
+	@media (max-width: 700px) {
+		thead {
+			display: none;
+		}
+
+		table,
+		tbody,
+		tr,
+		tbody th,
+		td {
+			display: block;
+			width: 100%;
+		}
+
+		tr {
+			padding: 14px 0;
+			border-bottom: 1px solid var(--line);
+		}
+
+		tbody th,
+		td {
+			padding: 3px 0;
+			border: 0;
+		}
+	}
+</style>

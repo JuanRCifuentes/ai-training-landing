@@ -1,0 +1,74 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+type Variant = 'primary' | 'outline' | 'inverse';
+type Size = 'md' | 'lg' | 'sm';
+
+type Props = (HTMLAttributes<'a'> | HTMLAttributes<'button'>) & {
+	/** Renders a link when set, otherwise a button. */
+	href?: string;
+	variant?: Variant;
+	size?: Size;
+};
+
+const { href, variant = 'outline', size = 'md', class: className, ...attrs } = Astro.props;
+const Element = href ? 'a' : 'button';
+---
+
+<Element href={href} class:list={['button', variant, size, className]} {...attrs}>
+	<slot />
+</Element>
+
+<style>
+	.button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+		min-height: 48px;
+		padding: 0 22px;
+		border: 1.5px solid var(--ink);
+		border-radius: 999px;
+		background: transparent;
+		color: var(--ink);
+		font: 600 16px var(--sans);
+		text-decoration: none;
+		white-space: nowrap;
+		cursor: pointer;
+	}
+
+	.button:hover {
+		background: var(--surface-2);
+	}
+
+	.sm {
+		min-height: 40px;
+		padding: 0 18px;
+		font-size: 15px;
+	}
+
+	.lg {
+		min-height: 52px;
+	}
+
+	.primary {
+		border-color: var(--accent);
+		background: var(--accent);
+		color: var(--on-accent);
+	}
+
+	.primary:hover {
+		border-color: var(--accent-hover);
+		background: var(--accent-hover);
+	}
+
+	/* For use on accent-coloured surfaces. */
+	.inverse {
+		border-color: var(--on-accent);
+		color: var(--on-accent);
+	}
+
+	.inverse:hover {
+		background: color-mix(in srgb, var(--on-accent) 14%, transparent);
+	}
+</style>

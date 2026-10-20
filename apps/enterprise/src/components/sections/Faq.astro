@@ -1,0 +1,17 @@
+---
+import Section from '../ui/Section.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+import Accordion from '../ui/Accordion.astro';
+import { faq } from '../../data/program';
+
+interface Props {
+	index: string;
+}
+
+const { index } = Astro.props;
+---
+
+<Section id="faq" band aria-labelledby="faq-title">
+	<SectionHeader index={index} label="Preguntas frecuentes" title="Situaciones habituales" id="faq-title" />
+	<Accordion items={faq} />
+</Section>

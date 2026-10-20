@@ -1,0 +1,30 @@
+---
+import { site } from '../../config/site';
+
+const cities = site.offices.map((office) => office.city).join(' · ');
+---
+
+<footer class="footer">
+	<div class="container inner">
+		<span>{site.name} · {site.tagline}</span>
+		<span>
+			{cities} · <a href={site.peopleSiteUrl}>Cursos para personas</a>
+		</span>
+	</div>
+</footer>
+
+<style>
+	.footer {
+		padding: 32px 0;
+		border-top: 1px solid var(--line);
+		font-size: 13px;
+		color: var(--muted);
+	}
+
+	.inner {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		gap: 12px;
+	}
+</style>

@@ -1,0 +1,39 @@
+---
+import Section from '../ui/Section.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+import RuledList from '../ui/RuledList.astro';
+import { dataHandling, regulation } from '../../data/program';
+
+interface Props {
+	index: string;
+}
+
+const { index } = Astro.props;
+---
+
+<Section id="responsible-use" band aria-labelledby="responsible-use-title">
+	<SectionHeader index={index} label="Uso responsable" title="Marco de uso responsable" id="responsible-use-title">
+		<p class="body-text">
+			El uso de datos, la verificación de resultados y la responsabilidad humana forman parte de cada módulo.
+		</p>
+	</SectionHeader>
+	<div class="columns">
+		<RuledList heading="Tratamiento de la información" items={dataHandling} />
+		<RuledList heading="Marco regulatorio" items={regulation} />
+	</div>
+</Section>
+
+<style>
+	.columns {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 48px;
+	}
+
+	@media (min-width: 900px) {
+		.columns {
+			grid-template-columns: 1fr 1fr;
+			gap: 64px;
+		}
+	}
+</style>
