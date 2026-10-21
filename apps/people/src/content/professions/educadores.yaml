@@ -1,0 +1,53 @@
+name: Educadores
+order: 5
+title: IA para docentes, desde cero
+description: Curso práctico para docentes que empiezan con la IA. Planificación de clases, materiales interactivos, evaluación y uso responsable de la IA con tus estudiantes.
+summary: Planificación, materiales interactivos y evaluación, con tu criterio siempre al frente del aula.
+lead: Para docentes que todavía no usan la IA o la usan poco. Trabajas con tus programaciones, tus materiales y tus rúbricas reales, y aprendes a proteger los datos de tus estudiantes.
+audience: Docentes de colegios, academias y universidades que empiezan a usar la IA.
+reviewer: Un profesional de la educación
+tools:
+  - ChatGPT, Claude o Gemini
+  - Artifacts de Claude, Canvas de ChatGPT o Canvas de Gemini
+  - Google Workspace for Education o Microsoft 365
+tasks:
+  - title: Planificación de clases
+    body: Preparas unidades, sesiones y actividades a partir del currículo y de tus objetivos.
+  - title: Atención a la diversidad
+    body: Adaptas una misma actividad a distintos niveles, ritmos y necesidades de tu grupo.
+  - title: Materiales interactivos
+    body: Creas cuestionarios, simulaciones, tarjetas de repaso y presentaciones que compartes con un enlace.
+  - title: Evaluación
+    body: Redactas rúbricas y borradores de retroalimentación que revisas antes de entregar.
+  - title: Comunicación con familias
+    body: Preparas circulares, avisos y resúmenes claros sin incluir datos personales de tus estudiantes.
+weeks:
+  - title: Fundamentos y datos de tus estudiantes
+    goal: Entiendes la IA, sus errores habituales y qué datos de tus estudiantes no debes compartir, sobre todo si son menores.
+    outcome: Tus reglas de uso de la IA en clase.
+  - title: Planificación y adaptación
+    goal: Preparas unidades y sesiones, y adaptas actividades a distintos niveles con IA.
+    outcome: Una unidad didáctica planificada y adaptada con IA.
+  - title: Materiales interactivos
+    goal: Creas cuestionarios, simulaciones y presentaciones interactivas con artifacts y canvas, y los compartes con tus estudiantes.
+    outcome: Un material interactivo listo para usar en clase.
+  - title: Evaluación y uso de la IA por tus estudiantes
+    goal: Redactas rúbricas y retroalimentación, y defines cómo pueden usar la IA tus estudiantes en sus trabajos.
+    outcome: Una rúbrica y una política de uso de la IA para tu aula.
+objection:
+  question: ¿La IA va a sustituirme?
+  answer: No. La IA te ayuda a preparar materiales y borradores, pero enseñar, acompañar y evaluar sigue siendo tu trabajo. Aprendes a revisar todo lo que produce, a no compartir datos de tus estudiantes y a respetar las normas de tu centro sobre el uso de la IA.
+forWho:
+  - Docentes que todavía no usan la IA o la usan poco.
+  - Quien pasa demasiadas horas preparando materiales y corrigiendo.
+  - Docentes que quieren saber cómo usan la IA sus estudiantes y qué hacer al respecto.
+notForWho:
+  - Quien busca que la IA corrija y califique sin revisar nada.
+  - Quien quiere desarrollar plataformas educativas propias con agentes. Eso es IA avanzada.
+faq:
+  - question: ¿Sirve para cualquier etapa educativa?
+    answer: Sí. Trabajas con tus propias asignaturas, sean de primaria, secundaria, formación profesional o universidad.
+  - question: ¿Necesito saber programar para crear materiales interactivos?
+    answer: No. Describes lo que necesitas, la IA lo crea y tú lo revisas antes de usarlo en clase.
+  - question: ¿Y si quiero formar a todo mi centro?
+    answer: Hay una versión para centros educativos del mismo programa, con un grupo privado y ejercicios con los materiales de tu equipo.

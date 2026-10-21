@@ -1,0 +1,53 @@
+name: Educadores
+order: 5
+title: IA aplicada a la docencia
+description: Formación desde cero para docentes de colegios, academias y universidades. Planificación de clases, materiales interactivos, evaluación y uso responsable de la IA con el alumnado.
+summary: Planificación, materiales interactivos y evaluación, con el docente siempre al frente del aula.
+lead: Un programa para claustros y equipos docentes que empiezan a usar la IA. Se trabaja con sus programaciones, sus materiales y sus rúbricas reales, y con criterio para proteger los datos del alumnado.
+audience: Docentes de colegios, academias y universidades que empiezan a usar la IA.
+reviewer: Un profesional de la educación
+tools:
+  - ChatGPT, Claude o Gemini
+  - Artifacts de Claude, Canvas de ChatGPT o Canvas de Gemini
+  - Google Workspace for Education o Microsoft 365
+tasks:
+  - title: Planificación de clases
+    body: Preparar unidades, sesiones y actividades a partir del currículo y de los objetivos de la asignatura.
+  - title: Atención a la diversidad
+    body: Adaptar una misma actividad a distintos niveles, ritmos y necesidades del grupo.
+  - title: Materiales interactivos
+    body: Crear cuestionarios, simulaciones, tarjetas de repaso y presentaciones que se comparten con un enlace.
+  - title: Evaluación
+    body: Redactar rúbricas y borradores de retroalimentación que el docente revisa antes de entregar.
+  - title: Comunicación con familias
+    body: Preparar circulares, avisos y resúmenes claros sin incluir datos personales del alumnado.
+weeks:
+  - title: Fundamentos y datos del alumnado
+    goal: Entender la IA, sus errores habituales y qué datos del alumnado no deben compartirse, sobre todo si son menores.
+    outcome: Reglas de uso de la IA para el centro.
+  - title: Planificación y adaptación
+    goal: Preparar unidades y sesiones, y adaptar actividades a distintos niveles con IA.
+    outcome: Una unidad didáctica planificada y adaptada con IA.
+  - title: Materiales interactivos
+    goal: Crear cuestionarios, simulaciones y presentaciones interactivas con artifacts y canvas, y compartirlos con el alumnado.
+    outcome: Un material interactivo listo para usar en clase.
+  - title: Evaluación y uso de la IA por el alumnado
+    goal: Redactar rúbricas y retroalimentación, y definir cómo puede usar la IA el alumnado en sus trabajos.
+    outcome: Una rúbrica y una política de uso de la IA para el aula.
+objection:
+  question: ¿La IA va a sustituir al docente?
+  answer: No. La IA ayuda a preparar materiales y borradores, pero enseñar, acompañar y evaluar sigue siendo responsabilidad del docente. El programa enseña a revisar todo lo que produce, a no compartir datos del alumnado y a decidir con el centro cómo se usa la IA en el aula.
+forWho:
+  - Docentes que todavía no usan la IA o la usan poco.
+  - Equipos docentes que dedican mucho tiempo a preparar materiales y corregir.
+  - Centros que quieren una forma común de usar la IA en el aula.
+notForWho:
+  - Quien busca que la IA corrija y califique sin revisión docente.
+  - Quien quiere desarrollar plataformas educativas propias con agentes. Eso es IA avanzada.
+faq:
+  - question: ¿Sirve para cualquier etapa educativa?
+    answer: Sí. Los ejercicios se adaptan a primaria, secundaria, formación profesional y universidad.
+  - question: ¿Hace falta saber programar para crear materiales interactivos?
+    answer: No. Los materiales se crean describiendo lo que se necesita, y el docente los revisa antes de usarlos.
+  - question: ¿Qué pasa con la protección de datos del alumnado?
+    answer: Es lo primero que se trabaja. El programa parte de las normas del centro y del RGPD, y enseña a usar la IA sin introducir datos personales del alumnado.
