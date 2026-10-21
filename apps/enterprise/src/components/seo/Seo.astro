@@ -20,7 +20,7 @@ const {
 	noindex = false,
 } = Astro.props;
 
-// Astro.site comes from SITE_URL; without it, URLs fall back to relative paths.
+// Astro.site is the production domain (astro.config); without it, URLs fall back to relative paths.
 const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined;
 const imageUrl = Astro.site ? new URL(image, Astro.site).href : image;
 ---

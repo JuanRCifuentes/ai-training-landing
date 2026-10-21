@@ -11,7 +11,7 @@ export const site = {
 	themeColorDark: '#0a111c',
 	// TODO: replace with the real contact address before launch.
 	contactEmail: 'contacto@example.com',
-	peopleSiteUrl: 'https://ai-training-people.juan-r-cifuentes.workers.dev',
+	peopleSiteUrl: 'https://ai-people.ankornova.com',
 	offices: [
 		{ city: 'Bogotá', country: 'Colombia', scope: 'Atención a Latinoamérica' },
 		{ city: 'Madrid', country: 'España', scope: 'Atención a España y Europa' },
