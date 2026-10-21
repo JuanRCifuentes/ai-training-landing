@@ -21,7 +21,7 @@ export const getStaticPaths = (async () =>
 	}))) satisfies GetStaticPaths;
 
 const { profession } = Astro.props;
-const { name, title, description, lead, tools, tasks, weeks, objection, forWho, notForWho, faq } = profession.data;
+const { name, title, description, lead, reviewer, tools, tasks, weeks, objection, forWho, notForWho, faq } = profession.data;
 
 const trail = [
 	{ href: routes.home, label: 'Inicio' },
@@ -31,6 +31,7 @@ const facts = [
 	{ term: 'Punto de partida', value: 'Desde cero' },
 	{ term: 'Duración', value: `${weeks.length} semanas` },
 	{ term: 'Herramientas', value: tools.join(' · ') },
+	{ term: 'Revisado por', value: reviewer },
 ];
 const teamTerms = [
 	'Grupo privado para su organización',

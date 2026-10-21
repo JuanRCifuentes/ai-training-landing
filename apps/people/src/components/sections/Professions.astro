@@ -5,13 +5,15 @@ import ProfessionCard from '../professions/ProfessionCard.astro';
 import { getProfessions } from '../../data/professions';
 
 const professions = await getProfessions();
+// Three columns when the cards fill every row, otherwise two wider ones.
+const columns = professions.length % 3 === 0 ? 3 : 2;
 ---
 
 <Section id="professions" aria-labelledby="professions-title">
 	<SectionHeader kicker="por profesión" title="IA aplicada a lo que haces cada día" id="professions-title">
 		Cursos desde cero con las tareas y las herramientas de tu profesión. Sin teoría de más.
 	</SectionHeader>
-	<ul class="card-grid">
+	<ul class="card-grid" style={`--columns: ${columns}`}>
 		{
 			professions.map((profession) => (
 				<li>

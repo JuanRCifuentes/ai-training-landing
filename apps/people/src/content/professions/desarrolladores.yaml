@@ -5,6 +5,7 @@ description: Curso práctico para desarrolladores que empiezan con la IA. Copilo
 summary: Copilot, Cursor o Claude Code en tu día a día. Depurar, probar, revisar y documentar.
 lead: Para desarrolladores que todavía no usan la IA, o que solo le hacen preguntas sueltas. Trabajas sobre tu propio código y sales sabiendo revisar todo lo que la IA te propone.
 audience: Desarrolladores que empiezan a usar la IA.
+reviewer: Un profesional del desarrollo de software
 tools:
   - GitHub Copilot
   - Cursor

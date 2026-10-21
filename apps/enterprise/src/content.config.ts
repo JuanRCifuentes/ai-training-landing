@@ -35,6 +35,8 @@ const professions = defineCollection({
 		lead: z.string(),
 		/** Who the programme is for, in one line, for structured data. */
 		audience: z.string(),
+		/** Practitioner who reviews the content, described by role only until they agree to be named. */
+		reviewer: z.string(),
 		/** Starter pack of tools covered in the programme. */
 		tools: z.array(z.string()),
 		/** Everyday tasks where the programme applies AI. */

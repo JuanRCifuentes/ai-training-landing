@@ -74,7 +74,7 @@ a {
 	white-space: nowrap;
 }
 
-/* List of cards: one column on phones, two on tablets, three on wide screens. */
+/* List of cards: one column on phones, two on tablets, three (or --columns) on wide screens. */
 .card-grid {
 	display: grid;
 	grid-template-columns: 1fr;
@@ -92,7 +92,7 @@ a {
 
 @media (min-width: 1040px) {
 	.card-grid {
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(var(--columns, 3), 1fr);
 	}
 }
 

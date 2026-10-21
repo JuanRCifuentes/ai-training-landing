@@ -22,17 +22,17 @@ export const getStaticPaths = (async () =>
 	}))) satisfies GetStaticPaths;
 
 const { profession } = Astro.props;
-const { name, title, description, lead, tools, tasks, weeks, objection, forWho, notForWho, faq } = profession.data;
+const { name, title, description, lead, reviewer, tools, tasks, weeks, objection, forWho, notForWho, faq } = profession.data;
 
 const trail = [
 	{ href: routes.home, label: 'Inicio' },
 	{ href: routes.section('professions'), label: 'Por profesión' },
 ];
 const facts = [
-	{ term: 'punto de partida', value: 'Desde cero' },
 	{ term: 'duración', value: `${weeks.length} semanas` },
 	{ term: 'formato', value: 'En vivo, en línea y en grupo pequeño' },
 	{ term: 'herramientas', value: tools.join(' · ') },
+	{ term: 'revisado por', value: reviewer },
 ];
 // The enterprise site publishes the same profession at the same path.
 const teamUrl = new URL(routes.profession(profession.id), site.enterpriseSiteUrl).href;

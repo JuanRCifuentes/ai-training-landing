@@ -1,0 +1,53 @@
+name: Abogados
+order: 3
+title: IA aplicada a la abogacía
+description: Formación desde cero para despachos y asesorías jurídicas. Contratos, investigación jurídica, borradores y comunicación con clientes, con el secreto profesional protegido y cada cita verificada.
+summary: Contratos, investigación jurídica, borradores y clientes, con el secreto profesional protegido.
+lead: Un programa para despachos y asesorías jurídicas que empiezan a usar la IA. Se trabaja con las tareas que más tiempo consumen, con un método para verificar cada cita y con reglas claras sobre el secreto profesional.
+audience: Despachos de abogados y asesorías jurídicas que empiezan a usar la IA.
+reviewer: Un profesional de la abogacía
+tools:
+  - ChatGPT, Claude o Gemini
+  - Copilot en Word
+  - Sus bases de datos jurídicas, para verificar
+tasks:
+  - title: Revisión de contratos
+    body: Resumir contratos, señalar cláusulas inusuales y comparar versiones.
+  - title: Investigación jurídica
+    body: Ordenar una búsqueda y preparar las preguntas, verificando cada norma y cada sentencia en la fuente oficial.
+  - title: Primeros borradores
+    body: Preparar borradores de escritos, cartas y requerimientos que el abogado revisa y firma.
+  - title: Comunicación con clientes
+    body: Explicar en lenguaje claro el estado de un asunto o el alcance de un contrato.
+  - title: Expedientes
+    body: Resumir documentación extensa y preparar cronologías de los hechos.
+weeks:
+  - title: Fundamentos, confidencialidad y citas inventadas
+    goal: Entender cómo funciona la IA, por qué puede inventar normas y sentencias, y qué información de clientes no debe salir del despacho.
+    outcome: Una política de uso de la IA para el despacho.
+  - title: Contratos
+    goal: Resumir, comparar y revisar contratos con IA, con una lista de comprobación propia.
+    outcome: Instrucciones reutilizables para revisar contratos.
+  - title: Investigación y escritos
+    goal: Preparar investigaciones y borradores con IA, verificando cada referencia en la fuente oficial.
+    outcome: Un método de verificación de citas que el equipo aplica siempre.
+  - title: Clientes y expedientes
+    goal: Resumir expedientes y preparar comunicaciones con clientes en lenguaje claro.
+    outcome: Plantillas de comunicación con clientes revisadas por el equipo.
+objection:
+  question: ¿Es compatible con el secreto profesional?
+  answer: Solo con reglas claras, y por eso es la primera semana. Se revisa qué herramientas y planes no usan sus datos para entrenar modelos, cómo anonimizar documentos antes de usarlos y qué información no debe introducirse nunca. Hasta que su despacho apruebe una herramienta, se trabaja con documentos de ejemplo o anonimizados. La responsabilidad sobre cada escrito sigue siendo del abogado que lo firma.
+forWho:
+  - Despachos y asesorías jurídicas que todavía no usan la IA.
+  - Abogados que dedican muchas horas a revisar contratos y documentación.
+  - Socios que necesitan reglas sobre confidencialidad antes de permitir la IA.
+notForWho:
+  - Quien espera que la IA dé asesoramiento jurídico sin revisión.
+  - Equipos que ya automatizan procesos completos con agentes. Eso es IA avanzada.
+faq:
+  - question: ¿Puede la IA inventarse sentencias?
+    answer: Sí. Por eso el programa enseña a verificar cada norma y cada sentencia en la fuente oficial antes de usarla.
+  - question: ¿Sirve en España y en Colombia?
+    answer: Sí. Los ejercicios se adaptan a cada ordenamiento y se verifican en sus fuentes oficiales.
+  - question: ¿Necesitamos una herramienta jurídica especializada?
+    answer: No. Se empieza con asistentes generales, y se compara qué aportan las herramientas especializadas.

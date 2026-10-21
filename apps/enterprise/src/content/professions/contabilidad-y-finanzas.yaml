@@ -1,0 +1,55 @@
+name: Contabilidad y finanzas
+order: 2
+title: IA aplicada a la contabilidad y las finanzas
+description: Formación desde cero para despachos, equipos contables y departamentos financieros. Conciliaciones, Excel y ERP, impuestos, análisis financiero e informes, con los datos de los clientes protegidos.
+summary: Conciliaciones, Excel y ERP, impuestos, presupuestos e informes financieros, con los datos protegidos.
+lead: Un programa para despachos, equipos contables y departamentos financieros que empiezan a usar la IA. Se trabaja con las tareas que más tiempo ocupan cada mes, y con reglas claras sobre qué datos pueden salir de la organización.
+audience: Despachos, equipos contables y departamentos financieros que empiezan a usar la IA.
+reviewer: Un profesional de las finanzas
+tools:
+  - Copilot en Excel
+  - ChatGPT, Claude o Gemini
+  - Las exportaciones de su ERP
+tasks:
+  - title: Conciliación bancaria
+    body: Cruzar extractos con movimientos contables y explicar las diferencias que quedan.
+  - title: Excel y exportaciones del ERP
+    body: Escribir fórmulas, montar tablas dinámicas y limpiar datos exportados, con cada paso explicado.
+  - title: Impuestos
+    body: Preparar resúmenes y listas de comprobación para las declaraciones, y contrastar cada dato con la fuente oficial.
+  - title: Presupuestos y tesorería
+    body: Comparar el real con el presupuesto, preparar previsiones de tesorería y explicar cada desviación.
+  - title: Informes para la dirección
+    body: Convertir cierres y análisis en informes claros, con las cifras siempre trazables a su origen.
+  - title: Correos a clientes
+    body: Redactar solicitudes de documentación, recordatorios y explicaciones de resultados en lenguaje claro.
+weeks:
+  - title: Fundamentos y datos confidenciales
+    goal: Entender cómo funciona la IA, dónde se equivoca con las cifras y qué datos no deben salir nunca de la organización.
+    outcome: Una política de datos clara para el equipo.
+  - title: Excel y el ERP
+    goal: Usar la IA para fórmulas, limpieza de datos y análisis de las exportaciones del ERP.
+    outcome: Plantillas e instrucciones reutilizables para las hojas de cálculo del equipo.
+  - title: Conciliaciones, cierre y análisis
+    goal: Usar la IA en conciliaciones, cierres y análisis de desviaciones, con revisión humana en cada paso.
+    outcome: Un procedimiento de cierre y análisis con IA, documentado.
+  - title: Impuestos, informes y clientes
+    goal: Preparar resúmenes fiscales, informes para la dirección y correos a clientes, comprobando cada dato contra su fuente.
+    outcome: Una biblioteca de informes, correos y listas de comprobación lista para usar.
+objection:
+  question: ¿Qué pasa con la confidencialidad de nuestros datos y los de nuestros clientes?
+  answer: Es la primera pregunta de cualquier equipo financiero, y por eso ocupa la primera semana. Se revisa qué herramientas y planes no usan sus datos para entrenar modelos, cómo anonimizar antes de pedir ayuda y qué información no debe salir nunca, como identificadores fiscales, cuentas bancarias o datos personales. Hasta que su organización apruebe una herramienta, se trabaja con datos de ejemplo o anonimizados.
+forWho:
+  - Despachos, departamentos contables y equipos financieros que todavía no usan la IA.
+  - Equipos que dedican muchas horas a Excel, conciliaciones, informes y correos repetitivos.
+  - Responsables que necesitan reglas sobre datos confidenciales antes de permitir la IA.
+notForWho:
+  - Equipos que quieren automatizar la contabilidad de principio a fin con agentes. Eso es IA avanzada.
+  - Quien espera que la IA presente declaraciones o cierre el mes sola. El criterio profesional sigue siendo del equipo.
+faq:
+  - question: ¿Funciona con nuestro ERP?
+    answer: Se trabaja con lo que el ERP exporta, como hojas de cálculo, informes y extractos. No hace falta integrar nada.
+  - question: ¿Sirve en España y en Colombia?
+    answer: Sí. Los ejercicios se adaptan a la normativa y los formatos de cada país, y siempre se contrastan con la fuente oficial.
+  - question: ¿La IA puede equivocarse con las cifras?
+    answer: Sí, y con aparente seguridad. Por eso cada ejercicio incluye comprobar los resultados contra los datos de origen y la revisión de una persona.

@@ -5,6 +5,7 @@ description: Formación desde cero para equipos de desarrollo. Asistentes de có
 summary: Primeros pasos con Copilot, Cursor o Claude Code en el trabajo diario del equipo. Depurar, probar, revisar y documentar.
 lead: Un programa para desarrolladores que todavía no usan la IA o la usan poco. Se trabaja sobre el código y las tareas reales del equipo, con el criterio necesario para revisar todo lo que la IA propone.
 audience: Equipos de desarrollo de software que empiezan a usar la IA.
+reviewer: Un profesional del desarrollo de software
 tools:
   - GitHub Copilot
   - Cursor

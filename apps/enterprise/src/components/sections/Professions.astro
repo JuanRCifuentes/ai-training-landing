@@ -10,6 +10,8 @@ interface Props {
 
 const { index } = Astro.props;
 const professions = await getProfessions();
+// Three columns when the cards fill every row, otherwise two wider ones.
+const columns = professions.length % 3 === 0 ? 3 : 2;
 ---
 
 <Section id="professions" aria-labelledby="professions-title">
@@ -19,7 +21,7 @@ const professions = await getProfessions();
 			a la IA avanzada.
 		</p>
 	</SectionHeader>
-	<ul class="card-grid">
+	<ul class="card-grid" style={`--columns: ${columns}`}>
 		{
 			professions.map((profession) => (
 				<li>

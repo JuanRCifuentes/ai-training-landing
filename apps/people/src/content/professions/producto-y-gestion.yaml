@@ -1,0 +1,53 @@
+name: Producto y gestión
+order: 4
+title: IA para product owners y mánagers, desde cero
+description: Curso práctico para product owners, responsables de proyecto y mánagers que empiezan con la IA. Historias de usuario, priorización, reuniones, informes e investigación de usuarios.
+summary: Historias de usuario, priorización, reuniones e informes, con la decisión siempre en tus manos.
+lead: Para product owners, responsables de proyecto y mánagers que todavía no usan la IA. Trabajas con tu backlog, tus reuniones y tus informes reales, y aprendes qué delegar en la IA y qué no.
+audience: Product owners, responsables de proyecto y mánagers que empiezan a usar la IA.
+reviewer: Un profesional de la gestión de producto
+tools:
+  - ChatGPT, Claude o Gemini
+  - Copilot en Microsoft 365
+  - Jira, Linear, Asana o la herramienta de tu equipo
+tasks:
+  - title: Historias de usuario
+    body: Escribes historias y criterios de aceptación a partir de notas, peticiones o conversaciones.
+  - title: Priorización
+    body: Ordenas el backlog con criterios explícitos y explicas el porqué de cada decisión.
+  - title: Reuniones
+    body: Preparas agendas, resumes decisiones y repartes las tareas de seguimiento.
+  - title: Informes de estado
+    body: Conviertes el avance del equipo en informes claros para la dirección.
+  - title: Investigación de usuarios
+    body: Resumes entrevistas y comentarios de clientes en temas y oportunidades.
+weeks:
+  - title: Fundamentos e información de la empresa
+    goal: Entiendes la IA, sus errores habituales y qué información de tu empresa no debes compartir.
+    outcome: Tus reglas de uso de la IA.
+  - title: Backlog e historias
+    goal: Escribes historias y criterios de aceptación, y priorizas el backlog con IA.
+    outcome: Tus plantillas de historias y criterios.
+  - title: Reuniones y seguimiento
+    goal: Preparas y resumes reuniones, y haces seguimiento de decisiones y tareas.
+    outcome: Tu flujo de actas y seguimiento semanal.
+  - title: Informes y usuarios
+    goal: Preparas informes de estado y síntesis de investigación de usuarios.
+    outcome: Un informe de estado y una síntesis de usuarios hechos con datos reales.
+objection:
+  question: ¿La IA va a decidir por mí?
+  answer: No. La IA ordena información, propone y redacta, pero priorizar y decidir sigue siendo tu trabajo. Aprendes a pedirle que justifique cada propuesta, a contrastarla con datos reales y a no compartir información confidencial de tu empresa.
+forWho:
+  - Product owners y responsables de proyecto que todavía no usan la IA.
+  - Mánagers que pasan mucho tiempo en reuniones, informes y seguimiento.
+  - Quien quiere llevar la IA a su equipo empezando por su propio trabajo.
+notForWho:
+  - Quien busca automatizar la gestión de proyectos de principio a fin con agentes. Eso es IA avanzada.
+  - Quien espera que la IA sustituya la conversación con el equipo o con los clientes.
+faq:
+  - question: ¿Funciona con Jira, Linear o Asana?
+    answer: Trabajas con lo que esas herramientas exportan o con texto copiado de ellas. No hace falta integrar nada.
+  - question: ¿Necesito saber programar?
+    answer: No.
+  - question: ¿Y si quiero formar a todo mi equipo?
+    answer: Hay una versión para empresas del mismo programa, con un grupo privado y ejercicios con los documentos de tu equipo.
