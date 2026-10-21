@@ -5,8 +5,8 @@ import ProfessionCard from '../professions/ProfessionCard.astro';
 import { getProfessions } from '../../data/professions';
 
 const professions = await getProfessions();
-// Three columns when the cards fill every row, otherwise two wider ones.
-const columns = professions.length % 3 === 0 ? 3 : 2;
+// Three columns unless that would leave a single card on the last row.
+const columns = professions.length % 3 === 1 ? 2 : 3;
 ---
 
 <Section id="professions" aria-labelledby="professions-title">

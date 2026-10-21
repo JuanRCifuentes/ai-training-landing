@@ -22,7 +22,7 @@ export const getStaticPaths = (async () =>
 	}))) satisfies GetStaticPaths;
 
 const { profession } = Astro.props;
-const { name, title, description, lead, reviewer, tools, tasks, weeks, objection, forWho, notForWho, faq } = profession.data;
+const { name, title, description, lead, reviewer, teamEdition, tools, tasks, weeks, objection, forWho, notForWho, faq } = profession.data;
 
 const trail = [
 	{ href: routes.home, label: 'Inicio' },
@@ -97,7 +97,13 @@ const teamUrl = new URL(routes.profession(profession.id), site.enterpriseSiteUrl
 			<p>Únete a la lista y te avisamos cuando abramos plazas, con fechas y precio.</p>
 			<Button slot="action" href={waitlistCta.href} variant="inverse" size="lg">{waitlistCta.label}</Button>
 		</AccentPanel>
-		<p class="team">¿Quieres formar a tu equipo? <a href={teamUrl}>Ver la versión para empresas</a>.</p>
+		{
+			teamEdition && (
+				<p class="team">
+					¿Quieres formar a tu equipo? <a href={teamUrl}>Ver la versión para empresas</a>.
+				</p>
+			)
+		}
 	</Section>
 </BaseLayout>
 

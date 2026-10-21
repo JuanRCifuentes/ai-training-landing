@@ -37,6 +37,8 @@ const professions = defineCollection({
 		audience: z.string(),
 		/** Practitioner who reviews the content, described by role only until they agree to be named. */
 		reviewer: z.string(),
+		/** Whether the enterprise site publishes the same profession for teams. */
+		teamEdition: z.boolean().default(true),
 		/** Starter pack of tools covered in the programme. */
 		tools: z.array(z.string()),
 		/** Everyday tasks where the programme applies AI. */
