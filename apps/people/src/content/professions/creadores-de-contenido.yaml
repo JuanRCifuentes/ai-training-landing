@@ -15,13 +15,13 @@ tasks:
   - title: Ideas y guiones
     body: Investigas temas, pruebas ganchos y escribes guiones que suenan a ti.
   - title: Edición de vídeo
-    body: Transcribes, haces un primer montaje, añades subtítulos y limpias el audio en menos tiempo.
+    body: Transcribes, haces un primer montaje, añades subtítulos y limpias el audio con menos pasos manuales.
   - title: Imágenes y miniaturas
     body: Generas recursos visuales y miniaturas, y sabes cuándo tienes que etiquetarlos como IA.
   - title: Reutilización
     body: Conviertes un vídeo largo en clips, publicaciones y un boletín.
   - title: Calendario
-    body: Planificas tu calendario de publicaciones y no se te escapa ninguna entrega.
+    body: Planificas tu calendario de publicaciones y tienes cada entrega a la vista.
 weeks:
   - title: Fundamentos, derechos y transparencia
     goal: Entiendes la IA, sus errores habituales, los derechos de autor y cuándo debes etiquetar contenido generado con IA.

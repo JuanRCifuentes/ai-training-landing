@@ -50,4 +50,4 @@ faq:
   - question: ¿Hace falta saber programar para crear materiales interactivos?
     answer: No. Los materiales se crean describiendo lo que se necesita, y el docente los revisa antes de usarlos.
   - question: ¿Qué pasa con la protección de datos del alumnado?
-    answer: Es lo primero que se trabaja. El programa parte de las normas del centro y del RGPD, y enseña a usar la IA sin introducir datos personales del alumnado.
+    answer: Es lo primero que se trabaja. El programa parte de las normas del centro y de la normativa de protección de datos aplicable (el RGPD en Europa, la de cada país en Latinoamérica), y enseña a usar la IA sin introducir datos personales del alumnado.
