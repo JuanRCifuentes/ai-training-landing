@@ -1,5 +1,5 @@
 name: Freelancers
-order: 5
+order: 7
 teamEdition: false
 title: IA para freelancers, desde cero
 description: Curso práctico para freelancers que empiezan con la IA. Búsqueda de proyectos, propuestas, varios clientes a la vez, presupuestos, facturas y seguimiento, con automatizaciones sencillas.
@@ -21,7 +21,7 @@ tasks:
   - title: Presupuestos y facturas
     body: Preparas presupuestos, facturas y recordatorios de pago a partir de tus plantillas.
   - title: Seguimiento
-    body: Envías actualizaciones de estado a tus clientes y no se te escapa ningún pendiente.
+    body: Envías actualizaciones de estado a tus clientes y tienes cada pendiente a la vista.
 weeks:
   - title: Fundamentos y datos de tus clientes
     goal: Entiendes la IA, sus errores habituales y qué información de tus clientes no debes compartir.

@@ -1,0 +1,54 @@
+name: Creadores de contenido
+order: 6
+teamEdition: false
+title: IA para creadores de contenido, desde cero
+description: Curso práctico para creadores de contenido que empiezan con la IA. Ideas y guiones, edición de vídeo, imágenes y voz, y reutilización de contenido, con uso responsable y etiquetado.
+summary: Guiones, edición de vídeo y reutilización de contenido, con tu voz y tu estilo por delante.
+lead: Para creadores que todavía no usan la IA o la usan poco. Trabajas con tus ideas, tus vídeos y tus canales reales, y aprendes a usar la IA sin perder tu voz ni la confianza de tu audiencia.
+audience: Creadores de contenido, editores de vídeo y comunicadores que empiezan a usar la IA.
+reviewer: Un profesional de la creación de contenido
+tools:
+  - ChatGPT, Claude o Gemini
+  - CapCut, Descript o tu editor de vídeo
+  - Generadores de imagen y voz
+tasks:
+  - title: Ideas y guiones
+    body: Investigas temas, pruebas ganchos y escribes guiones que suenan a ti.
+  - title: Edición de vídeo
+    body: Transcribes, haces un primer montaje, añades subtítulos y limpias el audio con menos pasos manuales.
+  - title: Imágenes y miniaturas
+    body: Generas recursos visuales y miniaturas, y sabes cuándo tienes que etiquetarlos como IA.
+  - title: Reutilización
+    body: Conviertes un vídeo largo en clips, publicaciones y un boletín.
+  - title: Calendario
+    body: Planificas tu calendario de publicaciones y tienes cada entrega a la vista.
+weeks:
+  - title: Fundamentos, derechos y transparencia
+    goal: Entiendes la IA, sus errores habituales, los derechos de autor y cuándo debes etiquetar contenido generado con IA.
+    outcome: Tus reglas de uso de la IA para tu canal.
+  - title: Ideas y guiones
+    goal: Investigas temas, escribes guiones con tu voz y planificas tu calendario con IA.
+    outcome: Tu plantilla de guion y un calendario de un mes.
+  - title: Edición, imagen y voz
+    goal: Editas vídeo con transcripciones, subtítulos y montaje asistido, y generas imágenes y voz con permiso y etiquetado.
+    outcome: Un vídeo editado de principio a fin con ayuda de IA.
+  - title: Reutilización y automatización
+    goal: Conviertes una pieza larga en varios formatos y automatizas los pasos que repites cada semana.
+    outcome: Una automatización sencilla funcionando con tu contenido real.
+objection:
+  question: ¿Mi contenido va a perder autenticidad?
+  answer: No, si la IA trabaja para ti y no en tu lugar. Te ayuda con la investigación, los borradores y la edición, pero la idea, la voz y el criterio son tuyos. Aprendes a etiquetar el contenido generado cuando las plataformas o la ley lo piden, a respetar los derechos de autor y a no usar nunca la cara o la voz de otra persona sin su permiso.
+forWho:
+  - Creadores que pierden demasiadas horas editando y preparando publicaciones.
+  - Quien publica en varias plataformas y quiere aprovechar mejor cada pieza.
+  - Comunicadores y editores de vídeo que empiezan con la IA, sin saber programar.
+notForWho:
+  - Quien busca una fórmula para crecer. La IA te ahorra tiempo, pero no garantiza visualizaciones, seguidores ni ingresos.
+  - Quien quiere publicar contenido generado por IA sin revisarlo ni etiquetarlo.
+faq:
+  - question: ¿Sirve para cualquier plataforma?
+    answer: Sí. Trabajas con tu propio contenido, sea para YouTube, TikTok, Instagram, un pódcast o un boletín.
+  - question: ¿Necesito un equipo caro?
+    answer: No. Empiezas con las herramientas que ya usas y versiones gratuitas o de prueba de las demás.
+  - question: ¿Puedo clonar mi propia voz?
+    answer: Puedes, con tu consentimiento y dejando claro a tu audiencia cuándo es una voz generada. Con la voz o la imagen de otra persona, nunca sin su permiso.
