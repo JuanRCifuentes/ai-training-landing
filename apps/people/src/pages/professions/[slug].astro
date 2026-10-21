@@ -1,0 +1,218 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import JsonLd from '../../components/seo/JsonLd.astro';
+import PageHeader from '../../components/layout/PageHeader.astro';
+import Section from '../../components/ui/Section.astro';
+import Button from '../../components/ui/Button.astro';
+import AccentPanel from '../../components/ui/AccentPanel.astro';
+import FactCards from '../../components/ui/FactCards.astro';
+import Accordion from '../../components/ui/Accordion.astro';
+import ProfessionWeeks from '../../components/professions/ProfessionWeeks.astro';
+import ProfessionPath from '../../components/professions/ProfessionPath.astro';
+import { getProfessions, professionLabel } from '../../data/professions';
+import { professionStructuredData } from '../../data/structuredData';
+import { routes } from '../../config/routes';
+import { site, waitlistCta } from '../../config/site';
+
+export const getStaticPaths = (async () =>
+	(await getProfessions()).map((profession) => ({
+		params: { slug: profession.id },
+		props: { profession },
+	}))) satisfies GetStaticPaths;
+
+const { profession } = Astro.props;
+const { name, title, description, lead, reviewer, teamEdition, tools, tasks, weeks, objection, forWho, notForWho, faq } = profession.data;
+
+const trail = [
+	{ href: routes.home, label: 'Inicio' },
+	{ href: routes.section('professions'), label: 'Por profesión' },
+];
+const facts = [
+	{ term: 'duración', value: `${weeks.length} semanas` },
+	{ term: 'formato', value: 'En vivo, en línea y en grupo pequeño' },
+	{ term: 'herramientas', value: tools.join(' · ') },
+	{ term: 'revisado por', value: reviewer },
+];
+// The enterprise site publishes the same profession at the same path.
+const teamUrl = new URL(routes.profession(profession.id), site.enterpriseSiteUrl).href;
+---
+
+<BaseLayout title={`${title} · ${site.name}`} description={description} imageAlt={title}>
+	<JsonLd slot="head" data={professionStructuredData(profession, trail, Astro.site)} />
+	<PageHeader kicker={professionLabel(profession)} title={title} trail={trail} current={name}>
+		{lead}
+	</PageHeader>
+	<Section aria-label="Datos del curso">
+		<FactCards facts={facts} />
+	</Section>
+	<Section aria-labelledby="tasks-title">
+		<h2 id="tasks-title">Dónde te ayuda la IA</h2>
+		<ul class="card-grid tasks">
+			{
+				tasks.map((task) => (
+					<li>
+						<h3>{task.title}</h3>
+						<p>{task.body}</p>
+					</li>
+				))
+			}
+		</ul>
+	</Section>
+	<Section aria-labelledby="weeks-title">
+		<h2 id="weeks-title">Semana a semana</h2>
+		<ProfessionWeeks weeks={weeks} />
+	</Section>
+	<Section aria-labelledby="objection-title">
+		<div class="objection">
+			<p class="kicker">// la pregunta de siempre</p>
+			<h2 id="objection-title">{objection.question}</h2>
+			<p>{objection.answer}</p>
+		</div>
+	</Section>
+	<Section aria-labelledby="audience-title">
+		<h2 id="audience-title">¿Es para ti?</h2>
+		<div class="audience">
+			<div>
+				<h3>Sí, si…</h3>
+				<ul class="yes">{forWho.map((item) => <li>{item}</li>)}</ul>
+			</div>
+			<div>
+				<h3>No, si…</h3>
+				<ul class="no">{notForWho.map((item) => <li>{item}</li>)}</ul>
+			</div>
+		</div>
+	</Section>
+	<Section aria-labelledby="path-title">
+		<h2 id="path-title">Dónde encaja</h2>
+		<ProfessionPath />
+	</Section>
+	<Section aria-labelledby="faq-title">
+		<h2 id="faq-title">Preguntas</h2>
+		<Accordion items={faq} />
+	</Section>
+	<Section aria-labelledby="next-step-title">
+		<AccentPanel>
+			<h2 id="next-step-title">¿Te apuntas a la primera cohorte?</h2>
+			<p>Únete a la lista y te avisamos cuando abramos plazas, con fechas y precio.</p>
+			<Button slot="action" href={waitlistCta.href} variant="inverse" size="lg">{waitlistCta.label}</Button>
+		</AccentPanel>
+		{
+			teamEdition && (
+				<p class="team">
+					¿Quieres formar a tu equipo? <a href={teamUrl}>Ver la versión para empresas</a>.
+				</p>
+			)
+		}
+	</Section>
+</BaseLayout>
+
+<style>
+	h2 {
+		margin-bottom: 28px;
+		font-size: clamp(30px, 4vw, 48px);
+		font-weight: 700;
+		line-height: 1.05;
+	}
+
+	h3 {
+		font-size: 20px;
+		line-height: 1.2;
+		letter-spacing: -0.01em;
+	}
+
+	.tasks li {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		padding: 22px;
+		border: 1px solid var(--line);
+		border-radius: var(--radius);
+		background: var(--surface);
+	}
+
+	.tasks p {
+		color: var(--ink-2);
+		font-size: 16px;
+	}
+
+	.objection {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		padding: 40px 28px;
+		border-radius: var(--radius-lg);
+		background: var(--terminal);
+		color: var(--terminal-ink);
+	}
+
+	@media (min-width: 900px) {
+		.objection {
+			padding: 56px;
+		}
+	}
+
+	.objection .kicker {
+		color: var(--pop);
+	}
+
+	.objection h2 {
+		max-width: 22ch;
+		margin: 0;
+	}
+
+	.objection p:last-child {
+		max-width: 64ch;
+		font-size: 18px;
+		color: var(--terminal-ink);
+	}
+
+	.audience {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 32px;
+	}
+
+	@media (min-width: 900px) {
+		.audience {
+			grid-template-columns: 1fr 1fr;
+			gap: 48px;
+		}
+	}
+
+	.audience ul {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		margin: 16px 0 0;
+		padding: 0;
+		list-style: none;
+		color: var(--ink-2);
+	}
+
+	.audience li {
+		display: flex;
+		gap: 12px;
+	}
+
+	.audience li::before {
+		flex: none;
+		font: 500 16px var(--mono);
+	}
+
+	.yes li::before {
+		content: '+';
+		color: var(--accent);
+	}
+
+	.no li::before {
+		content: '−';
+		color: var(--muted);
+	}
+
+	.team {
+		margin-top: 20px;
+		color: var(--muted);
+		font-size: 15px;
+	}
+</style>

@@ -1,0 +1,54 @@
+name: Freelancers
+order: 5
+teamEdition: false
+title: IA para freelancers, desde cero
+description: Curso práctico para freelancers que empiezan con la IA. Búsqueda de proyectos, propuestas, varios clientes a la vez, presupuestos, facturas y seguimiento, con automatizaciones sencillas.
+summary: Propuestas, varios clientes a la vez y la administración, con menos horas que no puedes facturar.
+lead: Para freelancers que todavía no usan la IA o la usan poco. Trabajas con tus propuestas, tus clientes y tu administración reales, y montas un sistema sencillo que puedes llevar tú solo.
+audience: Freelancers y profesionales independientes que empiezan a usar la IA.
+reviewer: Un profesional independiente
+tools:
+  - ChatGPT, Claude o Gemini
+  - Google Workspace o Microsoft 365
+  - Zapier, Make o una herramienta parecida
+tasks:
+  - title: Búsqueda de proyectos
+    body: Investigas posibles clientes y ofertas, y decides en cuáles merece la pena invertir tiempo.
+  - title: Propuestas
+    body: Adaptas cada propuesta y tu portafolio al encargo concreto, sin empezar desde cero cada vez.
+  - title: Varios clientes a la vez
+    body: Ordenas encargos, notas de reuniones y el contexto de cada cliente por separado.
+  - title: Presupuestos y facturas
+    body: Preparas presupuestos, facturas y recordatorios de pago a partir de tus plantillas.
+  - title: Seguimiento
+    body: Envías actualizaciones de estado a tus clientes y no se te escapa ningún pendiente.
+weeks:
+  - title: Fundamentos y datos de tus clientes
+    goal: Entiendes la IA, sus errores habituales y qué información de tus clientes no debes compartir.
+    outcome: Tus reglas de uso de la IA con clientes.
+  - title: Conseguir proyectos
+    goal: Investigas clientes y ofertas, y adaptas propuestas y portafolio a cada encargo.
+    outcome: Tu plantilla de propuesta y tu lista de posibles clientes.
+  - title: Varios clientes a la vez
+    goal: Gestionas encargos, reuniones y el contexto de cada cliente sin mezclarlos.
+    outcome: Tu ficha por cliente y tu flujo de notas y seguimiento.
+  - title: Administración y automatización
+    goal: Preparas presupuestos, facturas y recordatorios, y conectas los pasos que repites cada semana.
+    outcome: Una automatización sencilla funcionando con tu trabajo real.
+objection:
+  question: ¿Mis clientes van a notar que uso IA?
+  answer: Lo que notan es la calidad y la rapidez de tu trabajo. La IA te ayuda a preparar borradores, ordenar información y no olvidar pendientes, pero lo que envías lo revisas y lo firmas tú. Aprendes a no compartir datos confidenciales de tus clientes y a respetar lo que hayas pactado con ellos sobre el uso de IA.
+forWho:
+  - Freelancers que pierden demasiadas horas en propuestas, correos y administración.
+  - Quien trabaja con varios clientes a la vez y quiere más orden.
+  - Profesionales independientes de cualquier sector, sin saber programar.
+notForWho:
+  - Quien busca una fórmula para conseguir clientes. La IA te ahorra tiempo, pero no garantiza encargos ni ingresos.
+  - Quien quiere montar agentes que trabajen solos. Eso es IA avanzada.
+faq:
+  - question: ¿Sirve para cualquier sector?
+    answer: Sí. Trabajas con tus propias propuestas, clientes y plantillas, sean de diseño, desarrollo, traducción, consultoría o cualquier otro servicio.
+  - question: ¿Necesito saber programar para las automatizaciones?
+    answer: No. Usas herramientas visuales como Zapier o Make y empiezas por un solo paso que repites cada semana.
+  - question: ¿Cubre impuestos o temas legales de ser autónomo?
+    answer: No. La IA te ayuda a preparar presupuestos y facturas, pero las obligaciones fiscales de tu país las consultas con un asesor.

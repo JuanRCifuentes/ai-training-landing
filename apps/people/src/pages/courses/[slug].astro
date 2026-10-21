@@ -6,6 +6,7 @@ import PageHeader from '../../components/layout/PageHeader.astro';
 import Section from '../../components/ui/Section.astro';
 import Button from '../../components/ui/Button.astro';
 import AccentPanel from '../../components/ui/AccentPanel.astro';
+import FactCards from '../../components/ui/FactCards.astro';
 import CoursePager from '../../components/courses/CoursePager.astro';
 import { courseLabel, courses } from '../../data/courses';
 import type { Fact } from '../../data/types';
@@ -43,16 +44,7 @@ const facts: Fact[] = [
 		{course.summary}
 	</PageHeader>
 	<Section aria-label="Datos del curso">
-		<dl class="facts">
-			{
-				facts.map((fact) => (
-					<div>
-						<dt class="kicker">{fact.term}</dt>
-						<dd>{fact.value}</dd>
-					</div>
-				))
-			}
-		</dl>
+		<FactCards facts={facts} />
 	</Section>
 	<Section aria-labelledby="topics-title">
 		<div class="syllabus">
@@ -83,41 +75,6 @@ const facts: Fact[] = [
 </BaseLayout>
 
 <style>
-	.facts {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 12px;
-		margin: 0;
-	}
-
-	@media (min-width: 700px) {
-		.facts {
-			grid-template-columns: repeat(2, 1fr);
-		}
-	}
-
-	@media (min-width: 1040px) {
-		.facts {
-			grid-template-columns: repeat(4, 1fr);
-		}
-	}
-
-	.facts div {
-		padding: 20px 22px;
-		border: 1px solid var(--line);
-		border-radius: var(--radius);
-		background: var(--surface);
-	}
-
-	dt {
-		margin-bottom: 6px;
-	}
-
-	dd {
-		margin: 0;
-		font-size: 16px;
-	}
-
 	.syllabus {
 		display: grid;
 		grid-template-columns: 1fr;

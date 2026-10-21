@@ -1,0 +1,69 @@
+---
+import type { Profession } from '../../data/professions';
+
+interface Props {
+	weeks: Profession['data']['weeks'];
+}
+
+const { weeks } = Astro.props;
+---
+
+<ol class="weeks">
+	{
+		weeks.map((week, index) => (
+			<li>
+				<p class="eyebrow">Semana {index + 1}</p>
+				<h3>{week.title}</h3>
+				<p>{week.goal}</p>
+				<p class="outcome">
+					<span class="eyebrow">Resultado</span> {week.outcome}
+				</p>
+			</li>
+		))
+	}
+</ol>
+
+<style>
+	.weeks {
+		display: grid;
+		grid-template-columns: 1fr;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		border-top: 1px solid var(--line);
+	}
+
+	@media (min-width: 900px) {
+		.weeks {
+			grid-template-columns: repeat(2, 1fr);
+			column-gap: 48px;
+		}
+	}
+
+	li {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		padding: 24px 0 28px;
+		border-bottom: 1px solid var(--line);
+	}
+
+	.eyebrow:first-child {
+		color: var(--accent);
+	}
+
+	h3 {
+		font-family: var(--serif);
+		font-size: 22px;
+		font-weight: 400;
+	}
+
+	p {
+		color: var(--ink-2);
+		font-size: 15px;
+	}
+
+	.outcome .eyebrow {
+		margin-right: 6px;
+	}
+</style>

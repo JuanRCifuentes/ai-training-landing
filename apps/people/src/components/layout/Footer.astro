@@ -4,8 +4,12 @@ import Logo from './Logo.astro';
 import { nav, site } from '../../config/site';
 import { routes } from '../../config/routes';
 import { courses } from '../../data/courses';
+import { getProfessions } from '../../data/professions';
 
 const legal = (await getCollection('legal')).sort((a, b) => a.data.order - b.data.order);
+const professions = await getProfessions();
+// Sections that have their own column are left out of the school column.
+const ownColumns = ['courses', 'professions'];
 
 const columns = [
 	{
@@ -13,10 +17,14 @@ const columns = [
 		links: courses.map((course) => ({ href: routes.course(course.slug), label: `${course.ref} · ${course.title}` })),
 	},
 	{
+		title: 'por profesión',
+		links: professions.map((profession) => ({ href: routes.profession(profession.id), label: profession.data.name })),
+	},
+	{
 		title: 'la escuela',
 		links: [
 			...nav
-				.filter((item) => item.section !== 'courses')
+				.filter((item) => !ownColumns.includes(item.section))
 				.map((item) => ({ href: routes.section(item.section), label: item.label })),
 			{ href: site.enterpriseSiteUrl, label: 'Formación para empresas' },
 		],
@@ -80,7 +88,7 @@ const year = new Date().getFullYear();
 
 	@media (min-width: 1040px) {
 		.grid {
-			grid-template-columns: 1.3fr 1.3fr 1fr 1fr;
+			grid-template-columns: 1.2fr 1.4fr 1fr 1fr 1fr;
 		}
 	}
 

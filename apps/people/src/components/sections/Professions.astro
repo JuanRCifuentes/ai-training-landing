@@ -1,0 +1,26 @@
+---
+import Section from '../ui/Section.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+import ProfessionCard from '../professions/ProfessionCard.astro';
+import { getProfessions } from '../../data/professions';
+
+const professions = await getProfessions();
+// Three columns unless that would leave a single card on the last row.
+const columns = professions.length % 3 === 1 ? 2 : 3;
+---
+
+<Section id="professions" aria-labelledby="professions-title">
+	<SectionHeader kicker="por profesión" title="IA aplicada a lo que haces cada día" id="professions-title">
+		Cursos desde cero con las tareas y las herramientas de tu profesión. Sin teoría de más.
+	</SectionHeader>
+	<ul class="card-grid" style={`--columns: ${columns}`}>
+		{
+			professions.map((profession) => (
+				<li>
+					<ProfessionCard profession={profession} />
+				</li>
+			))
+		}
+	</ul>
+</Section>
+

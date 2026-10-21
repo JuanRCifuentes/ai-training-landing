@@ -18,7 +18,7 @@ const { index } = Astro.props;
 			ruta.
 		</p>
 	</SectionHeader>
-	<ul class="catalog">
+	<ul class="card-grid">
 		<li class="featured">
 			<ModuleCard module={introSession} featured eyebrow={moduleLabel(introSession)} />
 		</li>
@@ -33,28 +33,7 @@ const { index } = Astro.props;
 </Section>
 
 <style>
-	.catalog {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 20px;
-		margin: 0;
-		padding: 0;
-		list-style: none;
-	}
-
 	.featured {
 		grid-column: 1 / -1;
-	}
-
-	@media (min-width: 700px) {
-		.catalog {
-			grid-template-columns: repeat(2, 1fr);
-		}
-	}
-
-	@media (min-width: 1040px) {
-		.catalog {
-			grid-template-columns: repeat(3, 1fr);
-		}
 	}
 </style>

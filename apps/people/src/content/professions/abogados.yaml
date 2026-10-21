@@ -1,0 +1,53 @@
+name: Abogados
+order: 3
+title: IA para abogados, desde cero
+description: Curso práctico para abogados que empiezan con la IA. Contratos, investigación jurídica, borradores y clientes, con el secreto profesional protegido y cada cita verificada.
+summary: Contratos, investigación jurídica, borradores y clientes, sin poner en riesgo el secreto profesional.
+lead: Para abogados que todavía no usan la IA. Trabajas con las tareas que más tiempo te quitan, aprendes a verificar cada cita y sales con reglas claras sobre lo que nunca debes compartir.
+audience: Abogados que empiezan a usar la IA.
+reviewer: Un profesional de la abogacía
+tools:
+  - ChatGPT, Claude o Gemini
+  - Copilot en Word
+  - Tus bases de datos jurídicas, para verificar
+tasks:
+  - title: Revisión de contratos
+    body: Resumes contratos, detectas cláusulas inusuales y comparas versiones.
+  - title: Investigación jurídica
+    body: Ordenas una búsqueda y preparas las preguntas, verificando cada norma y cada sentencia en la fuente oficial.
+  - title: Primeros borradores
+    body: Preparas borradores de escritos, cartas y requerimientos que tú revisas y firmas.
+  - title: Comunicación con clientes
+    body: Explicas en lenguaje claro el estado de un asunto o el alcance de un contrato.
+  - title: Expedientes
+    body: Resumes documentación extensa y preparas cronologías de los hechos.
+weeks:
+  - title: Fundamentos, confidencialidad y citas inventadas
+    goal: Entiendes cómo funciona la IA, por qué puede inventar normas y sentencias, y qué información de clientes no debes compartir.
+    outcome: Tus reglas de uso de la IA, por escrito.
+  - title: Contratos
+    goal: Resumes, comparas y revisas contratos con IA, con tu propia lista de comprobación.
+    outcome: Tus instrucciones reutilizables para revisar contratos.
+  - title: Investigación y escritos
+    goal: Preparas investigaciones y borradores con IA, verificando cada referencia en la fuente oficial.
+    outcome: Tu método de verificación de citas.
+  - title: Clientes y expedientes
+    goal: Resumes expedientes y preparas comunicaciones con clientes en lenguaje claro.
+    outcome: Tus plantillas de comunicación con clientes.
+objection:
+  question: ¿Es compatible con el secreto profesional?
+  answer: Solo con reglas claras, y por eso es lo primero que vemos. Aprendes qué herramientas y planes no usan tus datos para entrenar modelos, cómo anonimizar documentos y qué información no debes introducir nunca. Practicas con documentos de ejemplo, no con los de tus clientes. La responsabilidad sobre cada escrito sigue siendo tuya.
+forWho:
+  - Abogados que todavía no usan la IA.
+  - Quien dedica muchas horas a revisar contratos y documentación.
+  - Abogados independientes que quieren ganar tiempo sin arriesgar la confidencialidad.
+notForWho:
+  - Quien espera que la IA dé asesoramiento jurídico sin revisión.
+  - Quien ya automatiza procesos completos con agentes. Eso es IA avanzada.
+faq:
+  - question: ¿Puede la IA inventarse sentencias?
+    answer: Sí. Por eso aprendes a verificar cada norma y cada sentencia en la fuente oficial antes de usarla.
+  - question: ¿Sirve en España y en Colombia?
+    answer: Sí. Los ejercicios se adaptan a cada ordenamiento y se verifican en sus fuentes oficiales.
+  - question: ¿Necesito una herramienta jurídica especializada?
+    answer: No. Empiezas con asistentes generales y comparas qué aportan las herramientas especializadas.

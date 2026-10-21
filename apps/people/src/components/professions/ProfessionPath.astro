@@ -1,0 +1,69 @@
+---
+import { courses } from '../../data/courses';
+import { routes } from '../../config/routes';
+
+// IA avanzada is one track for every profession; until it has its own page, it starts with this course.
+const advancedCourse = courses.find((course) => course.slug === 'agentes-y-automatizacion');
+if (!advancedCourse) throw new Error('ProfessionPath: the advanced course is missing from data/courses.ts.');
+---
+
+<ol class="path">
+	<li>
+		<p class="kicker">punto de partida</p>
+		<p class="title">Nunca has usado la IA</p>
+		<p>O la has probado sin sacarle partido. Da igual.</p>
+	</li>
+	<li class="current" aria-current="step">
+		<p class="kicker">este curso</p>
+		<p class="title">IA aplicada</p>
+		<p>La IA en las tareas y las herramientas de tu profesión.</p>
+	</li>
+	<li>
+		<p class="kicker">siguiente paso</p>
+		<p class="title">IA avanzada</p>
+		<p>
+			Agentes, orquestación y automatización, para todas las profesiones. Empieza con <a
+				href={routes.course(advancedCourse.slug)}>{advancedCourse.title}</a
+			>.
+		</p>
+	</li>
+</ol>
+
+<style>
+	.path {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 12px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	@media (min-width: 900px) {
+		.path {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	li {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		padding: 22px;
+		border: 1px solid var(--line);
+		border-radius: var(--radius);
+		background: var(--surface);
+		color: var(--ink-2);
+	}
+
+	.current {
+		border: 2px solid var(--accent);
+	}
+
+	.title {
+		font-size: 22px;
+		font-weight: 700;
+		letter-spacing: -0.01em;
+		color: var(--ink);
+	}
+</style>

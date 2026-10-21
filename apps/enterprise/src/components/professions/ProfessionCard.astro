@@ -1,0 +1,51 @@
+---
+import type { Profession } from '../../data/professions';
+import { routes } from '../../config/routes';
+
+interface Props {
+	profession: Profession;
+}
+
+const { profession } = Astro.props;
+---
+
+<article class="card card-link">
+	<p class="eyebrow">IA aplicada</p>
+	<h3><a href={routes.profession(profession.id)}>{profession.data.name}</a></h3>
+	<p class="summary">{profession.data.summary}</p>
+	<p class="weeks">{profession.data.weeks.length} semanas · desde cero</p>
+</article>
+
+<style>
+	.card {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		height: 100%;
+		padding: 22px;
+	}
+
+	.eyebrow {
+		color: var(--accent);
+	}
+
+	h3 {
+		font-family: var(--serif);
+		font-size: 26px;
+		font-weight: 400;
+	}
+
+	.summary {
+		flex: 1;
+		color: var(--ink-2);
+		font-size: 15px;
+	}
+
+	.weeks {
+		padding-top: 12px;
+		border-top: 1px solid var(--line);
+		font-family: var(--mono);
+		font-size: 13px;
+		color: var(--muted);
+	}
+</style>

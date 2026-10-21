@@ -1,0 +1,34 @@
+---
+import Section from '../ui/Section.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+import ProfessionCard from '../professions/ProfessionCard.astro';
+import { getProfessions } from '../../data/professions';
+
+interface Props {
+	index: string;
+}
+
+const { index } = Astro.props;
+const professions = await getProfessions();
+// Three columns unless that would leave a single card on the last row.
+const columns = professions.length % 3 === 1 ? 2 : 3;
+---
+
+<Section id="professions" aria-labelledby="professions-title">
+	<SectionHeader index={index} label="Por profesión" title="IA aplicada a cada profesión" id="professions-title">
+		<p class="body-text">
+			Programas desde cero con las tareas, las herramientas y las dudas habituales de cada profesión. Son el paso previo
+			a la IA avanzada.
+		</p>
+	</SectionHeader>
+	<ul class="card-grid" style={`--columns: ${columns}`}>
+		{
+			professions.map((profession) => (
+				<li>
+					<ProfessionCard profession={profession} />
+				</li>
+			))
+		}
+	</ul>
+</Section>
+

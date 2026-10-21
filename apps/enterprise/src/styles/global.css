@@ -142,3 +142,62 @@ a {
 	color: var(--ink-2);
 	max-width: 60ch;
 }
+
+/* List of cards: one column on phones, two on tablets, three (or --columns) on wide screens. */
+.card-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 20px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+@media (min-width: 700px) {
+	.card-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: 1040px) {
+	.card-grid {
+		grid-template-columns: repeat(var(--columns, 3), 1fr);
+	}
+}
+
+/* Card whose title link covers it, so the card is one click target with one accessible name. */
+.card-link {
+	position: relative;
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+	background: var(--surface);
+}
+
+.card-link:hover {
+	border-color: var(--accent);
+}
+
+.card-link h3 a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.card-link h3 a::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+}
+
+.card-link:hover h3 a {
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.card-link h3 a:focus-visible {
+	outline: none;
+}
+
+.card-link:has(a:focus-visible) {
+	outline: 2px solid var(--accent);
+	outline-offset: 3px;
+}
