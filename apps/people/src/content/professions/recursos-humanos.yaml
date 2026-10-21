@@ -1,0 +1,52 @@
+name: Recursos humanos
+order: 3
+title: IA para recursos humanos, desde cero
+description: Curso práctico para profesionales de RR. HH. que empiezan con la IA. Ofertas de empleo, selección, políticas y bienvenida, con criterio sobre los datos personales.
+summary: Ofertas de empleo, selección, políticas y bienvenida, cuidando los datos personales.
+lead: Para profesionales de recursos humanos que todavía no usan la IA. Trabajas con tus documentos y procesos reales, y aprendes dónde la IA ayuda y dónde la decisión tiene que seguir siendo tuya.
+audience: Profesionales de recursos humanos y selección que empiezan a usar la IA.
+tools:
+  - ChatGPT, Claude o Gemini
+  - Copilot en Word y Outlook
+  - Tu plataforma de selección o de RR. HH.
+tasks:
+  - title: Ofertas de empleo
+    body: Escribes descripciones de puesto claras, inclusivas y con el tono de tu empresa.
+  - title: Selección
+    body: Preparas guiones de entrevista, criterios de evaluación y resúmenes, sin delegar la decisión.
+  - title: Políticas internas
+    body: Redactas y actualizas políticas, y las conviertes en preguntas frecuentes para la plantilla.
+  - title: Bienvenida
+    body: Preparas planes de incorporación, materiales para el primer día y respuestas a las dudas habituales.
+  - title: Comunicación interna
+    body: Escribes anuncios, encuestas y resúmenes de resultados en un tono cercano.
+weeks:
+  - title: Fundamentos y datos personales
+    goal: Entiendes la IA y qué datos de candidatos y empleados no debes introducir en ella.
+    outcome: Tus reglas de uso de datos personales.
+  - title: Ofertas y selección
+    goal: Redactas ofertas y preparas entrevistas con IA, revisando los sesgos de cada texto.
+    outcome: Tus plantillas de ofertas y guiones de entrevista.
+  - title: Políticas y documentación
+    goal: Redactas, resumes y actualizas políticas internas con la IA.
+    outcome: Una política real, reescrita y con sus preguntas frecuentes.
+  - title: Bienvenida y comunicación
+    goal: Montas un plan de incorporación y materiales de comunicación interna.
+    outcome: Un plan de bienvenida listo para la próxima incorporación.
+objection:
+  question: ¿Puedo usar la IA para seleccionar candidatos?
+  answer: Para preparar y redactar, sí. Para decidir sobre personas, no. El Reglamento Europeo de Inteligencia Artificial considera de alto riesgo los sistemas que filtran candidatos o evalúan a empleados, y la protección de datos limita qué información personal puedes usar. En el curso, la IA te ayuda con ofertas, guiones y resúmenes, y la evaluación sigue siendo tuya.
+forWho:
+  - Profesionales de RR. HH. y selección que todavía no usan la IA.
+  - Quien quiere liderar la llegada de la IA a su empresa y necesita empezar por lo básico.
+  - Profesionales con mucha carga de documentación, ofertas y comunicación interna.
+notForWho:
+  - Quien busca un sistema que filtre o puntúe candidatos de forma automática.
+  - Quien ya automatiza procesos completos con agentes. Eso es IA avanzada.
+faq:
+  - question: ¿Es compatible con el RGPD?
+    answer: Aprendes a trabajar sin introducir datos personales identificables y a revisar las condiciones de cada herramienta. Lo que tu empresa puede hacer con esos datos lo decide ella.
+  - question: ¿Necesito una plataforma concreta?
+    answer: No. Trabajas con asistentes generales y con los documentos que ya usas.
+  - question: ¿Y si quiero formar a todo mi equipo?
+    answer: Tenemos una versión para empresas del mismo programa, con un grupo privado y ejercicios con los documentos de tu equipo.

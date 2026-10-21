@@ -36,6 +36,7 @@ export const owner = {
 export const nav = [
 	{ section: 'modules', label: 'Módulos', priority: 'always' },
 	{ section: 'roles', label: 'Rutas por rol', priority: 'medium' },
+	{ section: 'professions', label: 'Por profesión', priority: 'medium' },
 	{ section: 'methodology', label: 'Metodología', priority: 'low' },
 	{ section: 'responsible-use', label: 'Uso responsable', priority: 'low' },
 	{ section: 'about', label: 'Acerca de', priority: 'medium' },

@@ -1,6 +1,7 @@
 import { site } from '../config/site';
 import { routes } from '../config/routes';
 import { programme } from './modules';
+import type { Profession } from './professions';
 import type { Link, Module } from './types';
 
 const organizationId = (url: string) => `${url}#organization`;
@@ -74,6 +75,23 @@ function breadcrumbList(trail: Link[], current: string, siteUrl?: URL) {
 /** schema.org graph for a module page. */
 export function moduleStructuredData(module: Module, trail: Link[], siteUrl?: URL) {
 	return { '@graph': [course(module, siteUrl), breadcrumbList(trail, module.title, siteUrl)] };
+}
+
+/** schema.org graph for a profession page. */
+export function professionStructuredData(profession: Profession, trail: Link[], siteUrl?: URL) {
+	const { title, description, audience, tasks } = profession.data;
+	const course = {
+		'@type': 'Course',
+		name: title,
+		description,
+		url: siteUrl ? new URL(routes.profession(profession.id), siteUrl).href : undefined,
+		inLanguage: site.lang,
+		educationalLevel: 'Inicial',
+		audience: { '@type': 'Audience', audienceType: audience },
+		teaches: tasks.map((task) => task.title),
+		provider: provider(siteUrl),
+	};
+	return { '@graph': [course, breadcrumbList(trail, profession.data.name, siteUrl)] };
 }
 
 /** schema.org graph for a plain content page, such as a legal document. */

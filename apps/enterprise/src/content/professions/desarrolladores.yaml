@@ -1,0 +1,53 @@
+name: Desarrolladores
+order: 1
+title: IA aplicada al desarrollo de software
+description: Formación desde cero para equipos de desarrollo. Asistentes de código en el trabajo diario, revisión de lo que escribe la IA y uso seguro del código de la empresa.
+summary: Primeros pasos con Copilot, Cursor o Claude Code en el trabajo diario del equipo. Depurar, probar, revisar y documentar.
+lead: Un programa para desarrolladores que todavía no usan la IA o la usan poco. Se trabaja sobre el código y las tareas reales del equipo, con el criterio necesario para revisar todo lo que la IA propone.
+audience: Equipos de desarrollo de software que empiezan a usar la IA.
+tools:
+  - GitHub Copilot
+  - Cursor
+  - Claude Code
+  - ChatGPT o Claude
+tasks:
+  - title: Depurar
+    body: Explicar un error, acotar su causa y proponer una corrección que el desarrollador valida.
+  - title: Escribir pruebas
+    body: Generar casos de prueba a partir del código existente y detectar los que faltan.
+  - title: Revisar código
+    body: Hacer una primera revisión de cada cambio antes de la revisión entre compañeros.
+  - title: Documentar
+    body: Redactar comentarios, archivos README y documentación de APIs a partir del código.
+  - title: Entender código ajeno
+    body: Recorrer un repositorio desconocido y explicar qué hace cada parte.
+weeks:
+  - title: El asistente de código, configurado
+    goal: Instalar y configurar el asistente en el editor de cada persona, y entender qué información ve y cuál no.
+    outcome: Cada participante trabaja con el asistente en su propio proyecto.
+  - title: Depurar y entender código
+    goal: Usar la IA para leer código ajeno, explicar errores y acotar fallos.
+    outcome: Un método para pedir ayuda con un error sin perder el control del diagnóstico.
+  - title: Pruebas y revisión
+    goal: Generar pruebas, revisar cambios y reconocer los errores habituales del código generado.
+    outcome: Una lista de comprobación del equipo para revisar lo que escribe la IA.
+  - title: Documentación y reglas del equipo
+    goal: Documentar con IA y acordar qué código se comparte con cada herramienta y cómo se revisa.
+    outcome: Una guía de uso de la IA escrita por el propio equipo.
+objection:
+  question: ¿Podemos usar la IA con el código de la empresa?
+  answer: Depende de la herramienta y del plan contratado. En la primera semana se revisa qué datos envía cada asistente, qué planes excluyen el código del entrenamiento de los modelos y cómo dejar fuera secretos, credenciales y archivos de configuración. La política final la decide su organización, y el programa le ayuda a escribirla.
+forWho:
+  - Desarrolladores que no usan asistentes de IA, o que solo les hacen preguntas sueltas.
+  - Equipos que quieren adoptar Copilot, Cursor o Claude Code con criterios comunes.
+  - Responsables técnicos que necesitan reglas claras sobre el código y los datos.
+notForWho:
+  - Equipos que ya coordinan agentes o automatizan flujos completos con IA. Eso es IA avanzada.
+  - Quien quiere aprender a programar. El programa da por hecho que el equipo ya programa.
+faq:
+  - question: ¿Qué asistente de código usamos?
+    answer: El que tenga o elija su organización. Los ejercicios funcionan con GitHub Copilot, Cursor o Claude Code, y se comparan las diferencias entre ellos.
+  - question: ¿Sirve para cualquier lenguaje de programación?
+    answer: Sí. Se trabaja con los lenguajes y los repositorios del propio equipo.
+  - question: ¿La IA sustituye la revisión entre compañeros?
+    answer: No. Se usa como primera revisión, y la aprobación de cada cambio sigue siendo de una persona.

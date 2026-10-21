@@ -6,6 +6,7 @@ export const routes = {
 	home: '/',
 	module: (slug: string) => `/modules/${slug}/`,
 	legal: (slug: string) => `/legal/${slug}/`,
+	profession: (slug: string) => `/professions/${slug}/`,
 	/** Anchor of a section on the home page, e.g. section('faq') is "/#faq". */
 	section: (id: string) => `/#${id}`,
 	shareImageKey,

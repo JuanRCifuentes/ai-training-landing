@@ -40,6 +40,7 @@ export const waitlistCta = { href: routes.section('waitlist'), label: 'Únete a 
 /** Home page sections in the main navigation; `section` is the id of the section element. */
 export const nav = [
 	{ section: 'courses', label: 'Cursos' },
+	{ section: 'professions', label: 'Por profesión' },
 	{ section: 'free-talk', label: 'Charla gratis' },
 	{ section: 'how-it-works', label: 'Cómo funciona' },
 	{ section: 'faq', label: 'Preguntas' },

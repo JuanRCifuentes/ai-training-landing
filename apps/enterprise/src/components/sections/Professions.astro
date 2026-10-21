@@ -1,0 +1,54 @@
+---
+import Section from '../ui/Section.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+import ProfessionCard from '../professions/ProfessionCard.astro';
+import { getProfessions } from '../../data/professions';
+
+interface Props {
+	index: string;
+}
+
+const { index } = Astro.props;
+const professions = await getProfessions();
+---
+
+<Section id="professions" aria-labelledby="professions-title">
+	<SectionHeader index={index} label="Por profesión" title="IA aplicada a cada profesión" id="professions-title">
+		<p class="body-text">
+			Programas desde cero con las tareas, las herramientas y las dudas habituales de cada profesión. Son el paso previo
+			a la IA avanzada.
+		</p>
+	</SectionHeader>
+	<ul class="professions">
+		{
+			professions.map((profession) => (
+				<li>
+					<ProfessionCard profession={profession} />
+				</li>
+			))
+		}
+	</ul>
+</Section>
+
+<style>
+	.professions {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 20px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	@media (min-width: 700px) {
+		.professions {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (min-width: 1040px) {
+		.professions {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+</style>

@@ -1,0 +1,53 @@
+name: Desarrolladores
+order: 1
+title: IA para desarrolladores, desde cero
+description: Curso práctico para desarrolladores que empiezan con la IA. Copilot, Cursor o Claude Code en tu trabajo diario, y cómo revisar lo que escribe la IA.
+summary: Copilot, Cursor o Claude Code en tu día a día. Depurar, probar, revisar y documentar.
+lead: Para desarrolladores que todavía no usan la IA, o que solo le hacen preguntas sueltas. Trabajas sobre tu propio código y sales sabiendo revisar todo lo que la IA te propone.
+audience: Desarrolladores que empiezan a usar la IA.
+tools:
+  - GitHub Copilot
+  - Cursor
+  - Claude Code
+  - ChatGPT o Claude
+tasks:
+  - title: Depurar
+    body: Le explicas un error a la IA, acotas la causa con su ayuda y tú validas la corrección.
+  - title: Escribir pruebas
+    body: Generas casos de prueba a partir de tu código y encuentras los que faltan.
+  - title: Revisar código
+    body: Haces una primera revisión de cada cambio antes de pedírsela a un compañero.
+  - title: Documentar
+    body: Escribes comentarios, archivos README y documentación de APIs a partir del código.
+  - title: Entender código ajeno
+    body: Recorres un repositorio que no conoces y entiendes qué hace cada parte.
+weeks:
+  - title: Tu asistente de código, configurado
+    goal: Instalas y configuras el asistente en tu editor, y entiendes qué información ve y cuál no.
+    outcome: Trabajas con el asistente en tu propio proyecto.
+  - title: Depurar y entender código
+    goal: Usas la IA para leer código ajeno, explicar errores y acotar fallos.
+    outcome: Un método para pedir ayuda con un error sin perder el control del diagnóstico.
+  - title: Pruebas y revisión
+    goal: Generas pruebas, revisas cambios y aprendes a reconocer los errores típicos del código generado.
+    outcome: Tu lista de comprobación para revisar lo que escribe la IA.
+  - title: Documentación y buenos hábitos
+    goal: Documentas con IA y decides qué código compartes con cada herramienta.
+    outcome: Tus reglas personales de uso de la IA, por escrito.
+objection:
+  question: ¿Puedo usar la IA con el código de mi empresa?
+  answer: Depende de la herramienta, del plan y de la política de tu empresa. En la primera semana ves qué datos envía cada asistente, qué planes no usan tu código para entrenar modelos y cómo dejar fuera secretos, credenciales y archivos de configuración. Si tu empresa no tiene política, sales con lo necesario para proponer una.
+forWho:
+  - Desarrolladores que no usan asistentes de IA, o que solo les hacen preguntas sueltas.
+  - Quien probó Copilot o ChatGPT, no le convenció y quiere aprender a usarlos bien.
+  - Desarrolladores que quieren ir más rápido sin perder el control de su código.
+notForWho:
+  - Quien ya coordina agentes o automatiza flujos completos con IA. Eso es IA avanzada.
+  - Quien quiere aprender a programar. El curso da por hecho que ya programas.
+faq:
+  - question: ¿Qué asistente necesito?
+    answer: El que ya tengas o el que prefieras. Los ejercicios funcionan con GitHub Copilot, Cursor o Claude Code, y verás las diferencias entre ellos.
+  - question: ¿Sirve para mi lenguaje de programación?
+    answer: Sí. Trabajas con tu lenguaje y tus propios proyectos.
+  - question: ¿La IA me va a hacer peor programador?
+    answer: Si copias sin entender, puede. Por eso el curso insiste en revisar, probar y entender cada línea que aceptas.

@@ -1,0 +1,46 @@
+---
+import Section from '../ui/Section.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+import ProfessionCard from '../professions/ProfessionCard.astro';
+import { getProfessions } from '../../data/professions';
+
+const professions = await getProfessions();
+---
+
+<Section id="professions" aria-labelledby="professions-title">
+	<SectionHeader kicker="por profesión" title="IA aplicada a lo que haces cada día" id="professions-title">
+		Cursos desde cero con las tareas y las herramientas de tu profesión. Sin teoría de más.
+	</SectionHeader>
+	<ul class="professions">
+		{
+			professions.map((profession) => (
+				<li>
+					<ProfessionCard profession={profession} />
+				</li>
+			))
+		}
+	</ul>
+</Section>
+
+<style>
+	.professions {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 16px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	@media (min-width: 700px) {
+		.professions {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (min-width: 1040px) {
+		.professions {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+</style>

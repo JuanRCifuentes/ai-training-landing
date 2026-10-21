@@ -1,0 +1,74 @@
+---
+import { programme } from '../../data/modules';
+import { routes } from '../../config/routes';
+
+// IA avanzada is one track for every profession; until it has its own page, it starts with this module.
+const advancedModule = programme.find((module) => module.slug === 'agentes-y-automatizacion');
+if (!advancedModule) throw new Error('ProfessionPath: the advanced module is missing from data/modules.ts.');
+---
+
+<ol class="path">
+	<li>
+		<p class="eyebrow">Punto de partida</p>
+		<p class="title">Sin experiencia con IA</p>
+		<p>No hace falta haber usado la IA antes.</p>
+	</li>
+	<li class="current" aria-current="step">
+		<p class="eyebrow">Este programa</p>
+		<p class="title">IA aplicada</p>
+		<p>La IA en las tareas y las herramientas de su profesión.</p>
+	</li>
+	<li>
+		<p class="eyebrow">Siguiente paso</p>
+		<p class="title">IA avanzada</p>
+		<p>
+			Agentes, orquestación y automatización, comunes a todas las profesiones. Empieza con el módulo <a
+				href={routes.module(advancedModule.slug)}>{advancedModule.title}</a
+			>.
+		</p>
+	</li>
+</ol>
+
+<style>
+	.path {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 16px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	@media (min-width: 900px) {
+		.path {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	li {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		padding: 22px;
+		border: 1px solid var(--line);
+		border-radius: var(--radius);
+		background: var(--surface);
+		font-size: 15px;
+		color: var(--ink-2);
+	}
+
+	.current {
+		border-color: var(--accent);
+		box-shadow: inset 0 3px 0 var(--accent);
+	}
+
+	.current .eyebrow {
+		color: var(--accent);
+	}
+
+	.title {
+		font-family: var(--serif);
+		font-size: 22px;
+		color: var(--ink);
+	}
+</style>
