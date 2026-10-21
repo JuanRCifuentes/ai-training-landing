@@ -9,7 +9,7 @@ interface Props {
 const { profession } = Astro.props;
 ---
 
-<article class="card">
+<article class="card card-link">
 	<p class="eyebrow">IA aplicada</p>
 	<h3><a href={routes.profession(profession.id)}>{profession.data.name}</a></h3>
 	<p class="summary">{profession.data.summary}</p>
@@ -18,15 +18,11 @@ const { profession } = Astro.props;
 
 <style>
 	.card {
-		position: relative;
 		display: flex;
 		flex-direction: column;
 		gap: 10px;
 		height: 100%;
 		padding: 22px;
-		background: var(--surface);
-		border: 1px solid var(--line);
-		border-radius: var(--radius);
 	}
 
 	.eyebrow {
@@ -37,36 +33,6 @@ const { profession } = Astro.props;
 		font-family: var(--serif);
 		font-size: 26px;
 		font-weight: 400;
-	}
-
-	/* The title link covers the whole card, so the card is one click target with one accessible name. */
-	h3 a {
-		color: inherit;
-		text-decoration: none;
-	}
-
-	h3 a::after {
-		content: '';
-		position: absolute;
-		inset: 0;
-	}
-
-	.card:hover {
-		border-color: var(--accent);
-	}
-
-	.card:hover h3 a {
-		text-decoration: underline;
-		text-underline-offset: 3px;
-	}
-
-	.card:has(a:focus-visible) {
-		outline: 2px solid var(--accent);
-		outline-offset: 3px;
-	}
-
-	h3 a:focus-visible {
-		outline: none;
 	}
 
 	.summary {

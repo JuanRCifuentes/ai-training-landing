@@ -48,7 +48,7 @@ const teamUrl = new URL(routes.profession(profession.id), site.enterpriseSiteUrl
 	</Section>
 	<Section aria-labelledby="tasks-title">
 		<h2 id="tasks-title">Dónde te ayuda la IA</h2>
-		<ul class="tasks">
+		<ul class="card-grid tasks">
 			{
 				tasks.map((task) => (
 					<li>
@@ -113,27 +113,6 @@ const teamUrl = new URL(routes.profession(profession.id), site.enterpriseSiteUrl
 		font-size: 20px;
 		line-height: 1.2;
 		letter-spacing: -0.01em;
-	}
-
-	.tasks {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 12px;
-		margin: 0;
-		padding: 0;
-		list-style: none;
-	}
-
-	@media (min-width: 700px) {
-		.tasks {
-			grid-template-columns: repeat(2, 1fr);
-		}
-	}
-
-	@media (min-width: 1040px) {
-		.tasks {
-			grid-template-columns: repeat(3, 1fr);
-		}
 	}
 
 	.tasks li {

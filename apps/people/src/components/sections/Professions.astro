@@ -11,7 +11,7 @@ const professions = await getProfessions();
 	<SectionHeader kicker="por profesión" title="IA aplicada a lo que haces cada día" id="professions-title">
 		Cursos desde cero con las tareas y las herramientas de tu profesión. Sin teoría de más.
 	</SectionHeader>
-	<ul class="professions">
+	<ul class="card-grid">
 		{
 			professions.map((profession) => (
 				<li>
@@ -22,25 +22,3 @@ const professions = await getProfessions();
 	</ul>
 </Section>
 
-<style>
-	.professions {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 16px;
-		margin: 0;
-		padding: 0;
-		list-style: none;
-	}
-
-	@media (min-width: 700px) {
-		.professions {
-			grid-template-columns: repeat(2, 1fr);
-		}
-	}
-
-	@media (min-width: 1040px) {
-		.professions {
-			grid-template-columns: repeat(3, 1fr);
-		}
-	}
-</style>

@@ -10,17 +10,39 @@ function provider(siteUrl?: URL) {
 	return siteUrl ? { '@id': organizationId(siteUrl.href) } : { '@type': 'Organization', name: site.name };
 }
 
-function course(module: Module, siteUrl?: URL) {
+interface CourseFields {
+	name: string;
+	description: string;
+	/** Path of the page that describes the course. */
+	path: string;
+	level: string;
+	audience: string;
+	teaches: string[];
+}
+
+function course({ name, description, path, level, audience, teaches }: CourseFields, siteUrl?: URL) {
 	return {
 		'@type': 'Course',
+		name,
+		description,
+		url: siteUrl ? new URL(path, siteUrl).href : undefined,
+		inLanguage: site.lang,
+		educationalLevel: level,
+		audience: { '@type': 'Audience', audienceType: audience },
+		teaches,
+		provider: provider(siteUrl),
+	};
+}
+
+/** schema.org Course fields of a programme module. */
+function moduleFields(module: Module): CourseFields {
+	return {
 		name: module.title,
 		description: module.summary,
-		url: siteUrl ? new URL(routes.module(module.slug), siteUrl).href : undefined,
-		inLanguage: site.lang,
-		educationalLevel: module.level,
-		audience: { '@type': 'Audience', audienceType: module.audience },
+		path: routes.module(module.slug),
+		level: module.level,
+		audience: module.audience,
 		teaches: module.objectives,
-		provider: provider(siteUrl),
 	};
 }
 
@@ -53,7 +75,7 @@ export function homeStructuredData(siteUrl?: URL) {
 				itemListElement: programme.map((module, position) => ({
 					'@type': 'ListItem',
 					position: position + 1,
-					item: course(module, siteUrl),
+					item: course(moduleFields(module), siteUrl),
 				})),
 			},
 		],
@@ -74,24 +96,21 @@ function breadcrumbList(trail: Link[], current: string, siteUrl?: URL) {
 
 /** schema.org graph for a module page. */
 export function moduleStructuredData(module: Module, trail: Link[], siteUrl?: URL) {
-	return { '@graph': [course(module, siteUrl), breadcrumbList(trail, module.title, siteUrl)] };
+	return { '@graph': [course(moduleFields(module), siteUrl), breadcrumbList(trail, module.title, siteUrl)] };
 }
 
 /** schema.org graph for a profession page. */
 export function professionStructuredData(profession: Profession, trail: Link[], siteUrl?: URL) {
-	const { title, description, audience, tasks } = profession.data;
-	const course = {
-		'@type': 'Course',
+	const { name, title, description, audience, tasks } = profession.data;
+	const fields = {
 		name: title,
 		description,
-		url: siteUrl ? new URL(routes.profession(profession.id), siteUrl).href : undefined,
-		inLanguage: site.lang,
-		educationalLevel: 'Inicial',
-		audience: { '@type': 'Audience', audienceType: audience },
+		path: routes.profession(profession.id),
+		level: 'Inicial',
+		audience,
 		teaches: tasks.map((task) => task.title),
-		provider: provider(siteUrl),
 	};
-	return { '@graph': [course, breadcrumbList(trail, profession.data.name, siteUrl)] };
+	return { '@graph': [course(fields, siteUrl), breadcrumbList(trail, name, siteUrl)] };
 }
 
 /** schema.org graph for a plain content page, such as a legal document. */
