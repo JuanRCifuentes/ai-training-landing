@@ -18,7 +18,7 @@ export const site = {
 	 * falls back to a mailto link to contactEmail.
 	 */
 	waitlistFormAction: undefined as string | undefined,
-	enterpriseSiteUrl: 'https://ai-training-enterprise.juan-r-cifuentes.workers.dev',
+	enterpriseSiteUrl: 'https://ai-enterprise.ankornova.com',
 	cities: ['Bogotá', 'Madrid'],
 } as const;
 

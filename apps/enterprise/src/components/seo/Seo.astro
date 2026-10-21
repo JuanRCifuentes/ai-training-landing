@@ -20,14 +20,13 @@ const {
 	noindex = false,
 } = Astro.props;
 
-// Astro.site comes from SITE_URL; without it, URLs fall back to relative paths.
-const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined;
-const imageUrl = Astro.site ? new URL(image, Astro.site).href : image;
+const canonical = new URL(Astro.url.pathname, Astro.site!).href;
+const imageUrl = new URL(image, Astro.site!).href;
 ---
 
 <title>{title}</title>
 <meta name="description" content={description} />
-{canonical && <link rel="canonical" href={canonical} />}
+<link rel="canonical" href={canonical} />
 {noindex && <meta name="robots" content="noindex" />}
 
 <link rel="icon" href="/favicon.ico" sizes="32x32" />
@@ -43,7 +42,7 @@ const imageUrl = Astro.site ? new URL(image, Astro.site).href : image;
 <meta property="og:site_name" content={site.name} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-{canonical && <meta property="og:url" content={canonical} />}
+<meta property="og:url" content={canonical} />
 <meta property="og:image" content={imageUrl} />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content={String(shareImageSize.width)} />
