@@ -1,0 +1,3 @@
+# Old URLs of renamed pages. Cloudflare serves these before static assets.
+/professions/creadores-de-contenido/ /professions/medios-y-comunicacion/ 301
+/professions/creadores-de-contenido /professions/medios-y-comunicacion/ 301

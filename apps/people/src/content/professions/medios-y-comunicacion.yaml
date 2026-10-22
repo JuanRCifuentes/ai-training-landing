@@ -1,0 +1,61 @@
+name: Medios y comunicación
+order: 6
+teamEdition: false
+title: IA para profesionales de los medios y la comunicación, desde cero
+description: Curso práctico para periodistas, comunicadores, productores y creadores de contenido. Aprendes a dirigir a la IA para que maneje por ti herramientas profesionales de vídeo, sonido, voz, gráficos y 3D, con verificación, derechos y etiquetado.
+summary: No aprendes Blender ni DaVinci. Aprendes a dirigir a la IA para que los use por ti.
+lead: Para profesionales de los medios y creadores que todavía no usan la IA o solo la usan para pedir textos. Trabajas con tus piezas reales y aprendes a darle a la IA el control de tus herramientas de producción, con tu criterio editorial siempre al frente.
+audience: Periodistas, comunicadores, equipos de prensa y PR, productores, editores de vídeo y sonido, y creadores de contenido.
+reviewer: Un profesional de los medios
+tools:
+  - Claude, ChatGPT o Gemini, conectados a tus herramientas
+  - Blender, DaVinci Resolve o tu editor de vídeo
+  - FFmpeg, Python y scripts que escribe la IA por ti
+  - Herramientas de voz, sonido e imagen
+tasks:
+  - title: Elegir la herramienta correcta
+    body: Sabes cuándo basta con un generador de vídeo o imagen y cuándo conviene que la IA maneje una herramienta profesional para tener un resultado limpio y repetible.
+  - title: 3D y animación sin aprender 3D
+    body: Pides en lenguaje natural una escena, un personaje animado o un gráfico en movimiento, y la IA lo construye en Blender con fondo transparente.
+  - title: Edición de vídeo dirigida
+    body: Transcribes, cortas, subtitulas y exportas en varios formatos dando instrucciones, no haciendo clics.
+  - title: Sonido y voz
+    body: Limpias audio, generas locuciones y doblajes con permiso, y mezclas sin conocer la herramienta.
+  - title: Verificación y fuentes
+    body: Contrastas datos, transcripciones y material de terceros antes de publicar.
+  - title: La IA como revisora
+    body: Le pides a la IA que evalúe un vídeo, un audio o un gráfico contra lo que pediste y te diga qué corregir.
+  - title: Del bruto a todos los canales
+    body: Montas un flujo que convierte una pieza en clips, publicaciones, artículo y boletín.
+weeks:
+  - title: Criterio, verificación y derechos
+    goal: Entiendes cómo funciona la IA y dónde falla, cuándo usar un generador y cuándo una herramienta real, y qué exigen la verificación, los derechos de autor y el etiquetado.
+    outcome: Tus reglas editoriales de uso de la IA.
+  - title: La IA a los mandos
+    goal: Conectas la IA a tus herramientas de producción y aprendes a dirigirla con instrucciones claras, revisando cada resultado.
+    outcome: Tu primera pieza hecha por la IA en Blender o en tu editor, sin tocar sus menús.
+  - title: Dirigir, revisar y corregir
+    goal: Diriges a la IA en vídeo, sonido, voz y gráficos, y la usas también para revisar lo que produce y pedirle correcciones hasta que encaja con lo que buscas.
+    outcome: Una pieza hecha y revisada con IA, de principio a fin.
+  - title: Tu flujo de producción
+    goal: Automatizas los pasos que repites con cada pieza, del material en bruto a cada formato y canal.
+    outcome: Un flujo automático funcionando con tu material real.
+objection:
+  question: ¿Voy a perder rigor o credibilidad?
+  answer: No, si la IA trabaja para ti y no en tu lugar. Ella maneja las herramientas, tú decides qué se publica. Aprendes a verificar todo lo que entra y sale, a etiquetar el contenido generado cuando corresponde y a no usar nunca la cara o la voz de alguien sin su permiso.
+forWho:
+  - Periodistas y comunicadores que quieren producir más formatos sin depender de un equipo técnico.
+  - Productores, editores y creadores que pierden horas en tareas de edición repetitivas.
+  - Equipos de prensa, comunicación y medios que quieren un flujo de producción común.
+notForWho:
+  - Quien busca una fórmula para crecer. La IA te ahorra tiempo, pero no garantiza audiencia ni ingresos.
+  - Quien quiere publicar contenido generado sin revisarlo, verificarlo ni etiquetarlo.
+faq:
+  - question: ¿Tengo que saber usar Blender o DaVinci?
+    answer: No. La idea es justo esa. El curso es de IA, no de herramientas. Aprendes a pedirle a la IA lo que quieres y a usarla también para revisar el resultado; ella se encarga de la herramienta.
+  - question: ¿Tengo que saber programar?
+    answer: No. Vas a ver Python y scripts, pero los escribe la IA. Te damos las conexiones ya preparadas y aprendes a leer lo justo para revisar qué hace.
+  - question: ¿Sirve si soy creador independiente?
+    answer: Sí. Trabajas con tu propio material, sea para un medio, una marca, YouTube, TikTok, un pódcast o un boletín.
+  - question: ¿Puedo clonar mi propia voz?
+    answer: Puedes, con tu consentimiento y dejando claro a tu audiencia cuándo es una voz generada. Con la voz o la imagen de otra persona, nunca sin su permiso.
