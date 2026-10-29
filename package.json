@@ -7,6 +7,7 @@
   "scripts": {
     "dev:enterprise": "bun --filter enterprise dev",
     "dev:people": "bun --filter people dev",
+    "dev:companion": "bun --filter companion dev",
     "build": "bun --filter '*' build"
   },
   "devDependencies": {

@@ -1,0 +1,30 @@
+{
+	"name": "ai-training-companion",
+	"main": "src/index.ts",
+	"compatibility_date": "2026-10-01",
+	"compatibility_flags": ["nodejs_compat"],
+	"workers_dev": true,
+	"preview_urls": true,
+	"build": {
+		// Bundles the course YAMLs from the people site into src/generated/content.json.
+		"command": "bun run build"
+	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "ai-training-companion",
+			// TODO: replace with the id from `wrangler d1 create ai-training-companion` before the first deploy.
+			"database_id": "00000000-0000-0000-0000-000000000000",
+			"migrations_dir": "migrations"
+		}
+	],
+	"ratelimits": [
+		{
+			"name": "LIMITER",
+			"namespace_id": "1001",
+			"simple": { "limit": 120, "period": 60 }
+		}
+	],
+	// Required by `wrangler preview`, which Workers Builds runs for non-production branches.
+	"previews": {}
+}

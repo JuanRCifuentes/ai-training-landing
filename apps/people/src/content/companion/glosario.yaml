@@ -1,0 +1,96 @@
+# Conceptos que el compañero del curso explica con `explicar`. Cada explicación debe coincidir con lo
+# que se cuenta en la sesión introductoria; `seeAlso` dice dónde se ve en directo.
+- id: modelo-de-lenguaje
+  term: Modelo de lenguaje
+  aliases: [LLM, modelo, IA generativa, chatbot]
+  explanation: >-
+    Un programa entrenado con muchísimo texto para predecir cómo sigue una respuesta. No busca en una
+    base de datos ni "sabe" las cosas como una persona: escribe la continuación más probable de lo que
+    le pides. Por eso redacta muy bien y aun así puede equivocarse con total seguridad.
+  seeAlso: Sesión introductoria, tema 01 (Qué es la IA), diapositivas 3 a 5.
+- id: token
+  term: Token
+  aliases: [tokens]
+  explanation: >-
+    El trozo de texto con el que trabaja el modelo, más o menos tres cuartos de una palabra. Los límites
+    de lo que puede leer y escribir de una vez se miden en tokens.
+  seeAlso: Sesión introductoria, tema 01 (Qué es la IA), diapositivas 3 a 5.
+- id: ventana-de-contexto
+  term: Ventana de contexto
+  aliases: [contexto, memoria, se olvida, olvida]
+  explanation: >-
+    Todo lo que el modelo tiene delante en una conversación: tus mensajes, sus respuestas y los
+    archivos que adjuntas. Lo que queda fuera no existe para él. En conversaciones muy largas lo del
+    principio pierde peso, por eso a veces parece que "olvida"; empezar una conversación nueva con un
+    buen resumen suele funcionar mejor.
+  seeAlso: Sesión introductoria, tema 01 (Qué es la IA), diapositivas 3 a 5.
+- id: errores-con-seguridad
+  term: Errores con total seguridad
+  aliases: [alucinación, alucinaciones, se inventa, inventa, errores]
+  explanation: >-
+    Cuando el modelo da un dato, una cita o una fuente que suena bien pero es falsa. Pasa más con datos
+    recientes, cifras exactas, nombres y referencias. La defensa es verificar todo lo que vayas a usar o
+    publicar, y pedirle que diga cuándo no está seguro.
+  seeAlso: Sesión introductoria, tema 01 (Qué es la IA), diapositivas 3 a 5.
+- id: brief
+  term: Brief o prompt
+  aliases: [prompt, instrucción, pedir bien, cómo pedir]
+  explanation: >-
+    Lo que le pides a la IA. Un buen brief dice el objetivo, el contexto que necesita, el formato que
+    quieres y, si puedes, un ejemplo de cómo se ve un buen resultado. Cuanto más se parece a lo que le
+    darías a un compañero nuevo, mejor responde.
+  seeAlso: Sesión introductoria, tema 02 (Cómo pedir bien), diapositivas 6 a 9.
+- id: iterar
+  term: Iterar
+  aliases: [corregir, retroalimentación, feedback, rehacer]
+  explanation: >-
+    Mejorar un resultado con indicaciones concretas ("acorta el segundo párrafo y quita la jerga") en
+    lugar de volver a escribir la petición desde cero. Casi nada sale perfecto a la primera, y no hace
+    falta.
+  seeAlso: Sesión introductoria, tema 02 (Cómo pedir bien), diapositivas 6 a 9.
+- id: proyecto
+  term: Proyecto e instrucciones permanentes
+  aliases: [proyectos, instrucciones, asistente propio, GPT personalizado, Gem]
+  explanation: >-
+    Un espacio donde guardas una vez tus documentos de referencia y unas instrucciones fijas (tono,
+    terminología, formato) para no repetirlas en cada conversación. Claude los llama proyectos, ChatGPT
+    GPT personalizados y Gemini Gems.
+  seeAlso: Sesión introductoria, tema 04 (Trabajo repetible), diapositivas 13 a 15.
+- id: habilidad
+  term: Habilidad
+  aliases: [habilidades, skill, skills, plantilla]
+  explanation: >-
+    Un conjunto de instrucciones y archivos para una tarea que repites, que la IA carga cuando la
+    necesita. Es la forma de que una tarea salga siempre igual de bien, la haga quien la haga.
+  seeAlso: Sesión introductoria, tema 04 (Trabajo repetible), diapositivas 13 a 15.
+- id: agente
+  term: Agente
+  aliases: [agentes, automatización, automatizar]
+  explanation: >-
+    Una IA que no solo responde, sino que planea varios pasos, usa herramientas y te entrega un
+    resultado para que lo revises. La clave es definir bien el objetivo, los límites y en qué momentos
+    tiene que pararse a preguntarte.
+  seeAlso: Sesión introductoria, tema 05 (Agentes y automatización), diapositivas 16 y 17.
+- id: conector
+  term: Conector o MCP
+  aliases: [conectores, MCP, integración, herramienta conectada]
+  explanation: >-
+    La conexión que deja a la IA leer o usar otra herramienta: tu calendario, tus documentos, un editor
+    de vídeo. MCP es el estándar abierto con el que se construyen muchos de ellos. Este compañero del
+    curso es uno: lo conectaste a tu asistente y por eso sabe en qué semana estás.
+  seeAlso: Sesión introductoria, tema 05 (Agentes y automatización), diapositivas 16 y 17.
+- id: datos-confidenciales
+  term: Datos personales y confidenciales
+  aliases: [privacidad, datos de clientes, confidencial, RGPD, datos personales]
+  explanation: >-
+    Antes de pegar algo en una IA, pregúntate de quién es y si puedes compartirlo. Quita nombres,
+    documentos de identidad, datos de salud o cifras de clientes que no necesite, y usa solo las
+    herramientas que tu organización ha aprobado para ese tipo de información.
+  seeAlso: Sesión introductoria, tema 06 (Datos y seguridad), diapositivas 18 a 20.
+- id: verificacion
+  term: Verificación
+  aliases: [verificar, comprobar, contrastar, fuentes]
+  explanation: >-
+    Comprobar en una fuente fiable los datos, citas y cifras que da la IA antes de usarlos. La
+    responsabilidad final de lo que envías o publicas es siempre tuya, no de la herramienta.
+  seeAlso: Sesión introductoria, tema 06 (Datos y seguridad), diapositivas 18 a 20.

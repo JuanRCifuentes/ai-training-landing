@@ -1,0 +1,22 @@
+# Reglas de uso que el compañero del curso recuerda en cada sesión y aplica al revisar una entrega.
+rules:
+  - title: Tú decides y tú firmas
+    body: >-
+      La IA prepara borradores y maneja herramientas por ti, pero lo que envías, entregas o publicas lo
+      revisas y lo firmas tú.
+  - title: Nada confidencial sin pensarlo
+    body: >-
+      No pegues datos personales, de clientes o de tu organización que la tarea no necesite. Quita
+      nombres y cifras sensibles, y usa solo herramientas aprobadas para ese tipo de información.
+  - title: Verifica antes de usar
+    body: >-
+      Comprueba en una fuente fiable cada dato, cifra, cita o referencia que vayas a usar. Si no puedes
+      verificarlo, no lo uses.
+  - title: Di cuándo es contenido generado
+    body: >-
+      Etiqueta el contenido generado cuando corresponda, y nunca uses la cara, la voz o el trabajo de
+      otra persona sin su permiso.
+  - title: Practica con tu trabajo real
+    body: >-
+      Los ejercicios funcionan con tu material de verdad, no con ejemplos inventados. Si algo no se
+      puede compartir, crea una versión anonimizada que conserve lo importante.
