@@ -35,7 +35,6 @@ export const courseSchema = z.object({
 	title: z.string(),
 	summary: z.string(),
 	lead: z.string(),
-	teamEdition: z.boolean().default(true),
 	tools: z.array(z.string()),
 	weeks: z.array(weekSchema).min(1),
 });

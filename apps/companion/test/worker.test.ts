@@ -94,3 +94,21 @@ describe('routing', () => {
 		expect(await response.text()).toContain('https://companion.test/mcp/');
 	});
 });
+
+test('a group whose course was removed gets a clear answer instead of a crash', async () => {
+	const e = env();
+	const { cohort, leadPageUrl, students } = await body(
+		await admin(e, '/admin/cohorts', { course: 'freelancers', label: 'Grupo viejo', leadPage: true, students: 1 }),
+	);
+	await e.DB.prepare("UPDATE cohorts SET course = 'curso-borrado' WHERE code = ?").bind(cohort).run();
+
+	const lead = await worker.fetch(new Request(leadPageUrl), e);
+	expect(lead.status).toBe(404);
+	expect(await lead.text()).toContain('ya no existe');
+
+	const path = new URL(students[0].connectorUrl).pathname;
+	for (const name of ['marcar_hecho', 'mi_progreso']) {
+		const result = await toolText(await rpc(e, path, 'tools/call', { name, arguments: { ejercicio: 'x' } }));
+		expect(result.instruccion).toContain('No existe el curso «curso-borrado»');
+	}
+});

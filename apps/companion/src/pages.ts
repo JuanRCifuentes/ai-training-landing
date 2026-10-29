@@ -22,9 +22,10 @@ td.num{font-variant-numeric:tabular-nums}
 .now{color:var(--accent);font-weight:600}
 ol li{margin-bottom:8px}`;
 
-function page(title: string, body: string): Response {
+function page(title: string, body: string, status = 200): Response {
 	const html = `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>${escape(title)}</title><style>${style}</style></head><body><main>${body}</main></body></html>`;
 	return new Response(html, {
+		status,
 		headers: {
 			'content-type': 'text/html; charset=utf-8',
 			'cache-control': 'no-store',
@@ -53,6 +54,13 @@ export function homePage(origin: string): Response {
 /** Progress of a whole group for its team lead: exercises done per week, no content. */
 export function leadPage(cohort: Cohort, students: StudentProgress[], content: Content, today: Date): Response {
 	const course = content.courses[cohort.course];
+	if (!course) {
+		return page(
+			`Progreso · ${cohort.label}`,
+			`<h1>${escape(cohort.label)}</h1><p>El curso de este grupo ya no existe. Escríbenos para pasarlo al curso nuevo.</p>`,
+			404,
+		);
+	}
 	const position = cohort.startsOn ? currentWeek(course, cohort.startsOn, [], today) : null;
 	const now = position && !position.outside ? position.number : null;
 	const head = course.weeks

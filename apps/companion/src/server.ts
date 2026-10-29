@@ -28,6 +28,9 @@ const instructions = `Eres el compañero del curso «IA en el trabajo». Ayudas 
 const noCourse =
 	'El alumno no ha conectado el compañero con el enlace de su grupo. Pregúntale qué curso sigue (usa «listar_cursos») y vuelve a llamar con «curso».';
 
+const needsPersonalLink =
+	'El progreso solo se guarda con un enlace personal. Dile al alumno que se lo pida a su formador o a su responsable de equipo.';
+
 const reply = (payload: Record<string, unknown>) => ({
 	content: [{ type: 'text' as const, text: JSON.stringify(payload, null, 2) }],
 });
@@ -55,6 +58,10 @@ export function createServer(ctx: Context): McpServer {
 		if (!course) return { error: `No existe el curso «${chosen}». Usa «listar_cursos» para ver los cursos.` };
 		return { slug: chosen, course };
 	}
+
+	/** The week to work on; the cohort's dates apply only to the cohort's own course. */
+	const weekNow = (found: { slug: string; course: Course }, completed: string[]) =>
+		currentWeek(found.course, found.slug === cohort?.course ? cohort.startsOn : null, completed, ctx.today);
 
 	const done = () => (student ? store.done(student.id) : Promise.resolve([]));
 	const courseArg = z
@@ -129,7 +136,7 @@ export function createServer(ctx: Context): McpServer {
 			}
 			const position: WeekPosition = semana
 				? { number: semana, week: course.weeks[semana - 1] }
-				: currentWeek(course, found.slug === cohort?.course ? cohort.startsOn : null, completed, ctx.today);
+				: weekNow(found, completed);
 			const { week } = position;
 			const next = nextExercise(week, completed);
 			const notes: string[] = [];
@@ -221,8 +228,7 @@ export function createServer(ctx: Context): McpServer {
 			const found = resolveCourse(curso);
 			if ('error' in found) return reply({ instruccion: found.error });
 			const { course } = found;
-			const number =
-				semana ?? currentWeek(course, found.slug === cohort?.course ? cohort.startsOn : null, await done(), ctx.today).number;
+			const number = semana ?? weekNow(found, await done()).number;
 			const week = course.weeks[number - 1];
 			if (!week) return reply({ instruccion: `El curso tiene ${course.weeks.length} semanas. Pregunta al alumno qué semana quiere revisar.` });
 			return reply({
@@ -247,11 +253,12 @@ export function createServer(ctx: Context): McpServer {
 			if (access.kind !== 'student') {
 				return reply({
 					guardado: false,
-					instruccion:
-						'El progreso solo se guarda con un enlace personal. Dile al alumno que se lo pida a su formador o a su responsable de equipo.',
+					instruccion: needsPersonalLink,
 				});
 			}
-			const match = findExercise(content.courses[access.cohort.course], ejercicio);
+			const found = resolveCourse(undefined);
+			if ('error' in found) return reply({ guardado: false, instruccion: found.error });
+			const match = findExercise(found.course, ejercicio);
 			if (!match) return reply({ guardado: false, instruccion: `No hay ningún ejercicio «${ejercicio}» en su curso. Usa «hoy».` });
 			const isNew = await store.markDone(access.student.id, ejercicio);
 			return reply({
@@ -272,15 +279,15 @@ export function createServer(ctx: Context): McpServer {
 		async () => {
 			if (access.kind !== 'student') {
 				return reply({
-					instruccion:
-						'El progreso solo se guarda con un enlace personal. Dile al alumno que se lo pida a su formador o a su responsable de equipo.',
+					instruccion: needsPersonalLink,
 				});
 			}
-			const course = content.courses[access.cohort.course];
+			const found = resolveCourse(undefined);
+			if ('error' in found) return reply({ instruccion: found.error });
 			const completed = await done();
 			return reply({
-				curso: access.cohort.course,
-				semanas: course.weeks.map((w, i) => ({
+				curso: found.slug,
+				semanas: found.course.weeks.map((w, i) => ({
 					semana: i + 1,
 					titulo: w.title,
 					hechos: w.exercises.filter((e) => completed.includes(e.id)).map((e) => e.title),

@@ -3,7 +3,7 @@ import { handleAdmin } from './admin';
 import { isCohortCode, isLeadToken, isStudentCode, sha256 } from './codes';
 import generated from './generated/content.json';
 import { homePage, leadPage } from './pages';
-import { contentSchema } from './schema';
+import type { Content } from './schema';
 import { createServer, type Access } from './server';
 import { Store } from './store';
 
@@ -15,8 +15,8 @@ export interface Env {
 	LIMITER?: RateLimit;
 }
 
-// Validated by scripts/build-content.ts; parsed again here to apply the schema's defaults and types.
-const content = contentSchema.parse(generated);
+// Validated, with defaults applied, by scripts/build-content.ts.
+const content = generated as Content;
 
 const cors = {
 	'access-control-allow-origin': '*',

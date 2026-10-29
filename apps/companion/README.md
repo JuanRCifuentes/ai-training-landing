@@ -11,8 +11,8 @@ Design: [Course companion MCP: design](https://claude.ai/artifact/FH2XFNp8gvmyeR
 | What | Where |
 | --- | --- |
 | Courses (weeks, goals, outcomes, and optional `rule`, `exercises`, `rubric` per week) | `apps/people/src/content/professions/*.yaml` |
-| Glossary for `explicar` | `apps/people/src/content/companion/glosario.yaml` |
-| Usage rules | `apps/people/src/content/companion/reglas.yaml` |
+| Glossary for `explicar` | `content/glosario.yaml` |
+| Usage rules | `content/reglas.yaml` |
 | Schema for the fields above | `src/schema.ts` |
 | MCP tools, resources and prompts | `src/server.ts` |
 | Database tables | `migrations/` |

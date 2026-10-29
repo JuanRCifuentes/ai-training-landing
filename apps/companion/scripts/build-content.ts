@@ -7,7 +7,8 @@ import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import { basename, join } from 'node:path';
 import { contentSchema, conceptSchema, courseSchema, rulesSchema, type Course } from '../src/schema';
 
-const contentDir = join(import.meta.dir, '../../people/src/content');
+const professionsDir = join(import.meta.dir, '../../people/src/content/professions');
+const companionDir = join(import.meta.dir, '../content');
 const outFile = join(import.meta.dir, '../src/generated/content.json');
 
 const readYaml = async (path: string): Promise<unknown> => Bun.YAML.parse(await readFile(path, 'utf8'));
@@ -17,7 +18,6 @@ function fail(message: string): never {
 }
 
 const courses: Record<string, Course> = {};
-const professionsDir = join(contentDir, 'professions');
 for (const file of (await readdir(professionsDir)).filter((f) => f.endsWith('.yaml')).sort()) {
 	const parsed = courseSchema.safeParse(await readYaml(join(professionsDir, file)));
 	if (!parsed.success) fail(`${file}: ${parsed.error.message}`);
@@ -27,9 +27,9 @@ for (const file of (await readdir(professionsDir)).filter((f) => f.endsWith('.ya
 	courses[basename(file, '.yaml')] = parsed.data;
 }
 
-const glossary = conceptSchema.array().safeParse(await readYaml(join(contentDir, 'companion/glosario.yaml')));
+const glossary = conceptSchema.array().safeParse(await readYaml(join(companionDir, 'glosario.yaml')));
 if (!glossary.success) fail(`glosario.yaml: ${glossary.error.message}`);
-const rules = rulesSchema.safeParse(await readYaml(join(contentDir, 'companion/reglas.yaml')));
+const rules = rulesSchema.safeParse(await readYaml(join(companionDir, 'reglas.yaml')));
 if (!rules.success) fail(`reglas.yaml: ${rules.error.message}`);
 
 const content = contentSchema.parse({ courses, glossary: glossary.data, rules: rules.data.rules });
